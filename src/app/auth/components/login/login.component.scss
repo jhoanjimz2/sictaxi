@@ -1,0 +1,315 @@
+@import '../../../variables';
+
+
+.container{
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	position: relative;	
+	overflow: hidden;
+	background-color: white;
+	> * {
+		width: 50%;
+		height: 100%;
+	}
+	.img{
+		background-position: center;
+		background-size: cover; 
+		background-image: url(#{$assets}/img/login.jpg);
+	}
+	.name{
+		text-align: center;
+    	max-width: 64%;
+		p{
+			font-size: 17px;
+			font-weight: 300;
+			opacity: 0.7;
+		}
+
+	}
+	.form{
+		display: flex;
+	    flex-direction: column;
+	    justify-content: center;
+	    align-items: center;
+	    background-color: white;
+	    position: relative;
+	   	transition: transform 0.5s $curve, width 0.5s $curve, opacity 0.5s $curve;
+	   	.error-message{
+	   		transform: translateY(57px);
+		    cursor: default;
+		    opacity: 0;
+		    font-weight: 300;
+	   		transition: all 0.5s $curve;
+	   		color: #ed5565;
+    		font-size: 14px;
+	   		&.show{
+	   			margin: 20px 0;
+	   			opacity: 0.6;
+	   			transform: translateY(-10px);
+	   		}
+	   	}
+	    form{
+	    	width: 100%;
+	    	display: flex;
+		    flex-direction: column;
+		    justify-content: center;
+		    align-items: center;
+	    }
+	    .name{
+	    	font-family: Raleway;
+	    	font-weight: 400;
+	    	font-size: 38px;
+	    	opacity: 0.8;
+	    	.logo{
+	    		width: 200px;
+	    		margin-bottom: 20px;
+	    	}
+	    }
+	    input{
+	    	padding: 10px;
+	    	margin-bottom: 30px;
+	    	outline: none;
+	    }
+	    input, .button-container{
+	    	width: 70%;
+		    max-width: 220px;
+	    }
+	    .button-container{
+	    	display: flex;
+		    flex-direction: column;
+		    align-items: flex-end;
+		    max-width: 242px;
+		    .loading-element{
+		    	width: 60px;
+		    	height: 20px;
+    			margin-top: -30px;
+		    	div{
+		    		width: 20px;
+		    		height: 20px;
+		    		border-radius: 50%;
+		    		animation: a-circle 5s $curve infinite;
+					@keyframes a-circle {
+						0%{
+		    				background-color: #ed5565;
+							transform: translateX(0);
+						}
+						10%{
+		    				background-color: #ed5565;
+							transform: translateX(6px);
+						}
+						33%{
+		    				background-color: #f3bba2;
+							transform: translateX(26px);
+						}
+						93%{
+		    				background-color: #4be6a4;
+							transform: translateX(40px);
+						}
+						100%{
+		    				background-color: gray;
+							transform: translateX(86px);
+						}
+					}
+		    	}
+		    }
+		    button[type="submit"]{
+		    	width: 100%;
+    			transition: opacity 0.5s $curve;
+		    }
+		    .help{
+		    	font-size: 12px;
+		    	cursor: pointer;
+    			transition: transform 0.5s $curve;
+		    }
+	    }
+	    &.loading .button-container{
+	    	.loading-element{
+	    		margin-top: 0 !important;
+	    		opacity: 1 !important;
+	    		& + button{
+	    			opacity: 0;
+	    			pointer-events: none;
+	    		}
+	    	}
+	    	.help{
+	    		transform: translateY(-20px);
+	    	}
+
+	    }
+	}
+	.button{
+    	width: calc(100% - 20px);
+	    background-color: #FFF25C;
+	    border: none;
+	    border-radius: 2px;
+	    padding: 10px;
+	    margin-bottom: 10px;
+	    color: black;
+	    font-size: 18px;
+	    font-weight: 300;
+	    font-family: Roboto;
+	    cursor: pointer;
+	    text-align: center;
+	    position: relative;
+	    overflow: hidden;
+	    outline: none;
+	    &::before {
+		    content: '';
+		    width: 0%;
+		    height: 100%;
+		    position: absolute;
+		    transition: all 0.5s $curve;
+		    top: 0;
+		    left: 0;
+		    background-color: white;
+		    opacity: 0.2;
+		}
+		&:hover::before{
+			width: 100%;
+		}
+    }
+    .innlab{
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		color: #293642;
+		justify-content: flex-end;
+		width: 100%;
+	    position: absolute;
+	    bottom: 20px;
+	    right: 30px;
+		span{
+			opacity: 0.8;
+			font-weight: 300;				
+		}
+		.icon{
+			box-sizing: border-box;
+			height: 40px;
+			width: 40px;
+			padding: 5px;
+			/*circle, .liquid{
+				fill: #293642;
+			}
+			.lines path:not(.thread-border){
+				fill: none;
+				stroke: #293642;
+				stroke-width: 14;
+				stroke-miterlimit:10;
+			}
+			.thread-border{
+				fill: #293642;
+			    stroke: #293642;
+			    stroke-width: 1px;
+			}*/
+		}
+	}
+    .reset{
+    	position: absolute;
+    	width: 100%;
+    	background-color: white;
+    	opacity: 0;
+    	right: -100%;
+    	display: flex;
+    	flex-direction: column;
+    	align-items: center;
+    	justify-content: center;
+    	transition: right 0.5s $curve, opacity 0.5s $curve;
+    	.reset-form{
+    		display: flex;
+	    	align-items: center;
+	    	justify-content: center;
+	    	position: relative;
+    		transition: opacity 0.5s $curve;
+    		.loading-element{
+    			position: absolute;
+    			transform: translateX(120px) translateY(-55px);
+    		}	    	
+    	}
+    	.back{
+    		position: absolute;
+    		top: 10px;
+    		left: 10px;
+    		display: flex;
+    		align-items: center;
+    		cursor: pointer;
+    		svg{
+    			width: 40px;
+    			height: 40px;
+    			transition: transform 0.5s $curve, fill 0.5s $curve;
+    		}
+    		&:hover{
+    			svg{
+    				transform: scale(0.8);
+    				fill: $azul;
+    			}
+    		}
+    	}
+    	input{
+    		height: 42px;
+		    margin-right: 20px;
+		    font-size: 18px;
+		    padding: 10px;
+		    box-sizing: border-box;
+    	}
+    	.button{
+    		width: 203px;
+    		margin: 0;
+    		background-color: $azulMasOscuro;
+    		transition: transform 0.5s $curve, opacity 0.5s $curve;
+    	}
+    	.notice{
+    		margin-top: -17px;
+    		opacity: 0;
+    		transition: margin 0.5s $curve, opacity 0.5s $curve;
+    	}
+    	&.done, &.error{
+    		input, .button{
+    			pointer-events: none;
+    		}
+    		.reset-form{
+    			opacity: 0.2;
+    			pointer-events: none;
+    		}
+    		&.error .notice-error{
+    			margin-top: 63px;
+    			margin-bottom: 10px;
+    			opacity: 1;
+    		}
+    		&.done .notice-ok{
+    			margin-top: 63px;
+    			margin-bottom: 10px;
+    			opacity: 1;
+    		}
+    	}
+    	&.loading .reset-form{
+    		input, .button{
+    			pointer-events: none;
+    			cursor: default;
+    		}
+    		.button{
+    			opacity: 0;
+    			transform: translateY(80px);
+    		}
+    		.loading-element{
+    			opacity: 1;
+    			transform: translateX(120px) translateY(0px);
+    		}
+    	}
+    }
+    // clase para mostrar la ayuda de contrasena
+	&.throubles{
+		.img{
+			width: 0;
+		}
+		> .form{
+			width: 100%;
+			opacity: 0;
+			transform: scale(0.4);
+		}
+		.reset{
+			right: 0;
+			opacity: 1;
+		}
+	}
+}

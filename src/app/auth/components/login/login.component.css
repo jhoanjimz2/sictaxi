@@ -1,0 +1,261 @@
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-color: white; }
+  .container > * {
+    width: 50%;
+    height: 100%; }
+  .container .img {
+    background-position: center;
+    background-size: cover;
+    background-image: url(src/assets/img/login.jpg); }
+  .container .name {
+    margin-top: 38px;
+    margin-bottom: 38px;
+    text-align: center;
+    max-width: 64%; }
+    .container .name p {
+      font-size: 17px;
+      font-weight: 300;
+      opacity: 0.7; 
+      display: block;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      letter-spacing: .009375em;
+      line-height: 1.1;
+    }
+  .container .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0, 0, 0.09, 0.87), width 0.5s cubic-bezier(0, 0, 0.09, 0.87), opacity 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+    .container .form .error-message {
+      transform: translateY(57px);
+      cursor: default;
+      opacity: 0;
+      font-weight: 300;
+      transition: all 0.5s cubic-bezier(0, 0, 0.09, 0.87);
+      color: #ed5565;
+      font-size: 14px; }
+      .container .form .error-message.show {
+        margin: 20px 0;
+        opacity: 0.6;
+        transform: translateY(-10px); }
+    .container .form form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+    .container .form .name {
+      font-family: Raleway;
+      font-weight: 400;
+      font-size: 38px;
+      opacity: 0.8; }
+      .container .form .name .logo {
+        width: 200px;
+        margin-bottom: 20px; }
+    .container .form input {
+      padding: 10px;
+      margin-bottom: 30px;
+      outline: none; 
+      max-width: 242px !important;
+      max-height: 37px !important;}
+    .container .form input, .container .form .button-container {
+      width: 70%;
+      max-width: 220px; }
+    .container .form .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      max-width: 242px; }
+      .container .form .button-container .loading-element {
+        width: 60px;
+        height: 32px;
+        margin-top: -30px; }
+        .container .form .button-container .loading-element div {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          animation: a-circle 5s cubic-bezier(0, 0, 0.09, 0.87) infinite; }
+@keyframes a-circle {
+  0% {
+    background-color: #ed5565;
+    transform: translateX(0); }
+  10% {
+    background-color: #ed5565;
+    transform: translateX(6px); }
+  33% {
+    background-color: #f3bba2;
+    transform: translateX(26px); }
+  93% {
+    background-color: #4be6a4;
+    transform: translateX(40px); }
+  100% {
+    background-color: gray;
+    transform: translateX(86px); } }
+      .container .form .button-container button[type="submit"] {
+        width: 100%;
+        transition: opacity 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+      .container .form .button-container .help {
+        font-size: 12px;
+        cursor: pointer;
+        transition: transform 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+    .container .form.loading .button-container .loading-element {
+      margin-top: 0 !important;
+      opacity: 1 !important; }
+      .container .form.loading .button-container .loading-element + button {
+        opacity: 0;
+        pointer-events: none; }
+    .container .form.loading .button-container .help {
+      transform: translateY(-20px); }
+  .container .button {
+    width: calc(100% - 20px);
+    background-color: #FFF25C;
+    border: none;
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: black;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: Roboto;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    outline: none; }
+    .container .button::before {
+      content: '';
+      width: 0%;
+      height: 100%;
+      position: absolute;
+      transition: all 0.5s cubic-bezier(0, 0, 0.09, 0.87);
+      top: 0;
+      left: 0;
+      background-color: white;
+      opacity: 0.2; }
+    .container .button:hover::before {
+      width: 100%; }
+  .container .innlab {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #293642;
+    justify-content: flex-end;
+    width: 100%;
+    position: absolute;
+    bottom: 20px;
+    right: 30px; }
+    .container .innlab span {
+      opacity: 0.8;
+      font-weight: 300; }
+    .container .innlab .icon {
+      box-sizing: border-box;
+      height: 40px;
+      width: 40px;
+      padding: 5px;
+      /*circle, .liquid{
+      	fill: #293642;
+      }
+      .lines path:not(.thread-border){
+      	fill: none;
+      	stroke: #293642;
+      	stroke-width: 14;
+      	stroke-miterlimit:10;
+      }
+      .thread-border{
+      	fill: #293642;
+          stroke: #293642;
+          stroke-width: 1px;
+      }*/ }
+  .container .reset {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    opacity: 0;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.5s cubic-bezier(0, 0, 0.09, 0.87), opacity 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+    .container .reset .reset-form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: opacity 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+      .container .reset .reset-form .loading-element {
+        position: absolute;
+        transform: translateX(120px) translateY(-55px); }
+    .container .reset .back {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      cursor: pointer; }
+      .container .reset .back svg {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.5s cubic-bezier(0, 0, 0.09, 0.87), fill 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+      .container .reset .back:hover svg {
+        transform: scale(0.8);
+        fill: #009EE3; }
+    .container .reset input {
+      height: 42px;
+      margin-right: 20px;
+      font-size: 18px;
+      padding: 10px;
+      box-sizing: border-box; }
+    .container .reset .button {
+      width: 203px;
+      margin: 0;
+      background-color: #293846;
+      transition: transform 0.5s cubic-bezier(0, 0, 0.09, 0.87), opacity 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+    .container .reset .notice {
+      margin-top: -17px;
+      opacity: 0;
+      transition: margin 0.5s cubic-bezier(0, 0, 0.09, 0.87), opacity 0.5s cubic-bezier(0, 0, 0.09, 0.87); }
+    .container .reset.done input, .container .reset.done .button, .container .reset.error input, .container .reset.error .button {
+      pointer-events: none; }
+    .container .reset.done .reset-form, .container .reset.error .reset-form {
+      opacity: 0.2;
+      pointer-events: none; }
+    .container .reset.done.error .notice-error, .container .reset.error.error .notice-error {
+      margin-top: 63px;
+      margin-bottom: 10px;
+      opacity: 1; }
+    .container .reset.done.done .notice-ok, .container .reset.error.done .notice-ok {
+      margin-top: 63px;
+      margin-bottom: 10px;
+      opacity: 1; }
+    .container .reset.loading .reset-form input, .container .reset.loading .reset-form .button {
+      pointer-events: none;
+      cursor: default; }
+    .container .reset.loading .reset-form .button {
+      opacity: 0;
+      transform: translateY(80px); }
+    .container .reset.loading .reset-form .loading-element {
+      opacity: 1;
+      transform: translateX(120px) translateY(0px); }
+  .container.throubles .img {
+    width: 0; }
+  .container.throubles > .form {
+    width: 100%;
+    opacity: 0;
+    transform: scale(0.4); }
+  .container.throubles .reset {
+    right: 0;
+    opacity: 1; }
+
+/*# sourceMappingURL=login.component.css.map */

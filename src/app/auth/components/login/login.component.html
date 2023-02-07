@@ -1,0 +1,70 @@
+<div class="container" id="contenorLogin">
+
+  <div class="img"></div>
+
+  <div class="form">
+
+    <h3 class="name">
+      <img class="logo" src="assets/img/logo.svg">
+      <p>Sistema de informacion y registro de conductores del servicio público de taxi del distrito de Santa Marta</p>
+    </h3>
+
+    <span [ngClass]="{'show': errorCredentials, 'error-message': true}"> 
+      Error en las credenciales verifique su cedula y contraseña e intetelo nuevamente
+    </span>
+
+    <form #loginForm="ngForm" ngNativeValidate (submit)="onLogin()">
+
+      <input  placeholder="Usuario" [(ngModel)]="login.cedula" autocapitalize="on"
+              name="cedula" #cedula="ngModel" required type="text">
+
+      <input  placeholder="Contraseña" [(ngModel)]="login.password" autocapitalize="off"
+              name="password" #password="ngModel" required type="password">
+      
+      <div class="button-container">
+        <div class="loading-element">
+          <div></div>
+        </div>
+        <button type="submit" class="button">
+          <span>Entrar</span>
+        </button>
+        <span class="help" (click)="resetpassword()">Problemas para iniciar sesión?</span>
+      </div>
+
+    </form>
+
+    <a class="innlab" target="_blank" href="http://corporacioninnlab.com">
+      <span>by Innlab</span>
+      <img class="icon" src="assets/img/innlab.svg"/>
+    </a>
+
+  </div>
+
+
+  <div class="reset" id="contenedorResetEmail">
+    <div class="back">
+      <svg x="0px" y="0px" viewBox="0 0 40 40" xml:space="preserve">
+        <g>
+          <path d="M17.6,24.5c-0.1,0-0.3,0-0.4-0.1l-3.3-3.3c-0.6-0.6-0.6-1.5,0-2.1l3.3-3.3c0.2-0.2,0.5-0.2,0.7,0
+            s0.2,0.5,0,0.7l-3.3,3.3c-0.2,0.2-0.2,0.5,0,0.7l3.3,3.3c0.2,0.2,0.2,0.5,0,0.7C17.8,24.5,17.7,24.5,17.6,24.5z"/>
+        </g>
+        <g>
+          <path d="M26.6,20.5h-12c-0.3,0-0.5-0.2-0.5-0.5s0.2-0.5,0.5-0.5h12c0.3,0,0.5,0.2,0.5,0.5S26.8,20.5,26.6,20.5z"/>
+        </g>
+      </svg>
+      <span class="text" (click)="loginback()">Iniciar sesion</span>
+    </div>
+    <span class="notice notice-ok">Ok hemos enviado a tu correo un enlace para que restaures tu contraseña.</span>
+    <span class="notice notice-error">Error este correo no existe.</span>
+    <form class="reset-form" ngNativeValidate (submit)="sendMail($event)">
+      <input type="email" name="email" placeholder="Escribe tu correo" required>
+      <div class="loading-element">
+        <div></div>
+      </div>
+      <button type="submit" class="button">
+        <span class="c-w">Restaurar contraseña</span>
+      </button>
+    </form>
+  </div>
+  
+</div>

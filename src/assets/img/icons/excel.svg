@@ -1,0 +1,50 @@
+<svg width="12" height="12" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>ex</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-531 -950)">
+<g id="ex">
+<g id="Vector">
+<use xlink:href="#path0_fill" transform="translate(537.333 951.333)" fill="#4CAF50"/>
+</g>
+<g id="Group">
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(539.667 953)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(539.667 956.333)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(539.667 958)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path1_fill" transform="translate(539.667 954.667)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path2_fill" transform="translate(537.333 953)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path2_fill" transform="translate(537.333 956.333)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path2_fill" transform="translate(537.333 958)" fill="#FFFFFF"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path2_fill" transform="translate(537.333 954.667)" fill="#FFFFFF"/>
+</g>
+</g>
+<g id="Vector">
+<use xlink:href="#path3_fill" transform="translate(531 950)" fill="#2E7D32"/>
+</g>
+<g id="Vector">
+<use xlink:href="#path4_fill" transform="translate(532.298 953.667)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 5.33333 0L 0 0L 0 9.33333L 5.33333 9.33333C 5.51767 9.33333 5.66667 9.18433 5.66667 9L 5.66667 0.333333C 5.66667 0.149 5.51767 0 5.33333 0Z"/>
+<path id="path1_fill" d="M 2.33333 0L 0 0L 0 1L 2.33333 1L 2.33333 0Z"/>
+<path id="path2_fill" d="M 1.66667 0L 0 0L 0 1L 1.66667 1L 1.66667 0Z"/>
+<path id="path3_fill" d="M 7 12L 0 10.6667L 0 1.33333L 7 0L 7 12Z"/>
+<path id="path4_fill" d="M 3.078 4.66667L 2.27433 3.14633C 2.24367 3.08933 2.21233 2.98533 2.17967 2.83367L 2.16733 2.83367C 2.152 2.90533 2.116 3.014 2.05933 3.16L 1.25233 4.66667L 1.52588e-07 4.66667L 1.48733 2.333L 0.126333 0L 1.40533 0L 2.07233 1.39867C 2.12433 1.509 2.171 1.64033 2.21233 1.79167L 2.22567 1.79167C 2.25167 1.70133 2.30033 1.565 2.372 1.385L 3.114 0L 4.28567 0L 2.886 2.313L 4.32467 4.666L 3.078 4.666L 3.078 4.66667Z"/>
+</defs>
+</svg>

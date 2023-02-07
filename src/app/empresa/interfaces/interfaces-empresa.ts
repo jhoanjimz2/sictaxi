@@ -1,0 +1,1 @@
+export { Rutas } from './rutas.interface';
