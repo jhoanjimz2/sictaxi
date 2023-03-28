@@ -1,0 +1,53 @@
+<div class="contenedor">
+
+    <div class="row">
+        <div class="col">
+            <div class="card-header sombra">
+                <label class="titulo">Datos del usuario</label>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-20">
+        <div class="col">
+            <div class="card-formulario sombra">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="subtitulo">Cédula de ciudadanía</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Nombres</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Apellidos</label>
+                        <input type="text" class="input">
+                    </div>
+                </div>
+                <div class="row mt-20">
+                    <div class="col-4">
+                        <label class="subtitulo">Dirección</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Teléfono/celular</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">E-mail</label>
+                        <input type="text" class="input">
+                    </div>
+                </div>
+                <div class="row mt-20">
+                    <div class="content-buttons">
+                        <button class="sombra bg-b"><img [src]="'assets/guardar.svg'">Guardar todo</button>
+                        <div class="separador"></div>
+                        <button class="sombra bg-y" (click)="cambiarPassword()"><img [src]="'assets/llave.svg'">Cambiar contraseña</button>
+                        <div class="separador"></div>
+                        <button class="sombra bg-r" [routerLink]="'/secretaria/buscar-conductores'">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

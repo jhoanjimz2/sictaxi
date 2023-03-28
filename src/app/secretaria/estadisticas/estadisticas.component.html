@@ -1,0 +1,122 @@
+<div class="contenedor-70">
+    <div class="grid">
+        <div class="row"><label class="title">Estadísticas generales</label></div>
+        <div class="row mt-10">
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Empresas autorizadas'" 
+                    [data]="dataCards.empresasAutorizadas" 
+                    [route]="'/secretaria/empresas-autorizadas'"
+                />
+            </div>
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Taxis registrados'" 
+                    [data]="dataCards.taxisRegistrados"
+                    [route]="'/secretaria/taxis-registrados'"
+                />
+            </div>
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Asociaciones'" 
+                    [data]="dataCards.asociaciones"
+                    [route]="'/secretaria/asociaciones'"
+                />
+            </div>
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Taxistas registrados'" 
+                    [data]="dataCards.taxistasRegistrados"
+                    [route]="'/secretaria/taxistas-registrados'"
+                />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <div class="row mt-20">
+                    <div class="col">
+                        <app-card-simple 
+                            [titulo]="'Taxistas con licencia vencida'" 
+                            [data]="dataCards.taxisConLicenciaVencida"
+                            [route]="'/secretaria/taxistas-licencia-vencida'"
+                        />
+                    </div>
+                </div>
+                <div class="row mt-20">
+                    <div class="col">
+                        <app-card-simple 
+                            [titulo]="'Taxistas sin refrendar tarjeta'" 
+                            [data]="dataCards.taxistasSinRefrendar"
+                            [route]="'/secretaria/taxistas-sin-refrendar'"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row mt-20">
+                    <div class="col">
+                        <app-card-grafica-modelos/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-20">
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Taxis con SOAT vencido'" 
+                    [data]="dataCards.taxisConSoatVencido"
+                    [route]="'/secretaria/taxis-soat-vencido'"
+                />
+            </div>
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Alertas de vencimiento de documentos'" 
+                    [data]="dataCards.alertasDeVencimientos"
+                    [route]="'/secretaria/alertas-vencimiento'"
+                />
+            </div>
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Taxis con tarjeta de operación vigente'" 
+                    [data]="dataCards.taxisConTarjetaDeOperacionVigente"
+                    [route]="'/secretaria/taxis-tarjeta-vigente'"
+                />
+            </div>
+            <div class="col">
+                <app-card-simple 
+                    [titulo]="'Matriculas canceladas'" 
+                    [data]="dataCards.vehiculosChatarrizados"
+                    [route]="'/secretaria/matriculas-canceladas'"
+                />
+            </div>
+        </div>
+        <div class="row mt-20">
+            <div class="col">
+                <app-card-grafica-educacion/>
+            </div>
+            <div class="col">
+                <app-card-grafica-estrato/>
+            </div>
+        </div>
+        <div class="row mt-50">
+            <div class="col">
+                <app-card-reporte-calificaciones/>
+            </div>
+        </div>
+        <div class="row mt-50">
+            <div class="col">
+                <app-card-grafica-calificaciones/>
+            </div>
+        </div>
+        <div class="row mt-50">
+            <div class="col">
+                <app-card-grafica-comentarios-neg/>
+            </div>
+        </div>
+        <div class="row mt-50">
+            <div class="col">
+                <app-card-grafica-comentarios-pos/>
+            </div>
+        </div>
+    </div>
+</div>

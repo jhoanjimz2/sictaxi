@@ -1,0 +1,45 @@
+<div class="contenedor">
+    <div class="row">
+        <div class="col-6">
+            <label class="titulo">Taxistas con licencia vencida</label>
+        </div>
+        <div class="col-6 flex-end">
+            <app-export-excel/>
+        </div>
+    </div>
+    <div class="row mt-20 pb-80">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="ptlr">Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Cédula</th>
+                        <th>Licencia de conducción</th>
+                        <th>Fecha de vencimiento</th>
+                        <th>Categoría Pase</th>
+                        <th class="ptrr">Razón social</th>
+                    </tr>
+                </thead>
+                <div class="h-10"></div>
+                <tbody class="bw">
+                  <tr *ngFor="let taxi of [0,1,2,3,4,5,6,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" (click)="datosConductor('1')">
+                    <td>David Eduardo</td>
+                    <td>Henriquez Ortiz</td>
+                    <td>1.083.023.962</td>
+                    <td>1209091838</td>
+                    <td>09/03/2023</td>
+                    <td>C1</td>
+                    <td>TAXIS SUPER EJECUTIVOS S.A.S.</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <div class="footer-paginacion ">
+        <app-paginacion 
+            [cantidad]="40"
+            (paginar)="pagina($event)">
+        </app-paginacion>
+    </div>
+</div>

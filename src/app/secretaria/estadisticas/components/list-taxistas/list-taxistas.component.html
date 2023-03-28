@@ -1,0 +1,9 @@
+<div class="listado">
+    <div class="item d-flex ordenar" *ngFor="let taxista of taxistas | taxistasEasy : search">
+        <img [src]="taxista.img| imagenes" (click)="datosConductor(taxista.idVinculacion)">
+        <label class="name" (click)="datosConductor(taxista.idVinculacion)">{{taxista.name}} {{taxista.surname}}</label>
+        <label class="guion" (click)="datosConductor(taxista.idVinculacion)">-</label>
+        <label class="placa" (click)="datosConductor(taxista.idVinculacion)">PLACA: {{taxista.placa}}</label>
+        <div class="cant" (click)="quejasTramitadas(taxista.idVinculacion)">{{taxista.cantidad}}</div>
+    </div>
+</div>

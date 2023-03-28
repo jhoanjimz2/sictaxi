@@ -1,0 +1,8 @@
+<div class="content-bar row">
+    <div class="col">{{titulo}}</div>
+    <div class="col-5">
+        <button [ngClass]="{'b-select': type == 1}" (click)="type = 1">Hoy</button>
+        <button [ngClass]="{'b-select': type == 2}" (click)="type = 2">Semana</button>
+        <button [ngClass]="{'b-select': type == 3}" (click)="type = 3">Mes</button>
+    </div>
+</div>

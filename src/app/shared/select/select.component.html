@@ -1,0 +1,10 @@
+<mat-form-field appearance="fill">
+    <mat-select multiple [placeholder]="placeholder" (selectionChange)="debounce($event)">
+        <mat-option 
+            class="opcionSelect" 
+            *ngFor="let comentario of comentarios" 
+            [value]="comentario.id">
+            {{comentario.name}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>  

@@ -1,0 +1,74 @@
+<div class="contenedor">
+    <div class="row">
+        <div class="col">
+            <label class="titulo">Crear Usuario</label>
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="col-6">
+            <label class="subtitulo">Nombres</label>
+            <input type="text" class="input">
+        </div>
+        <div class="col-6">
+            <label class="subtitulo">Apellidos</label>
+            <input type="text" class="input">
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="col-6">
+            <label class="subtitulo">Cédula de ciudadania</label>
+            <input type="text" class="input">
+        </div>
+        <div class="col-6">
+            <label class="subtitulo">Dirección</label>
+            <input type="text" class="input">
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="col-6">
+            <label class="subtitulo">Teléfono/celular</label>
+            <input type="text" class="input">
+        </div>
+        <div class="col-6">
+            <label class="subtitulo">E-mail</label>
+            <input type="text" class="input">
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="col-6">
+            <label class="subtitulo">Nueva contraseña</label>
+            <input type="text" class="input">
+        </div>
+        <div class="col-6">
+            <label class="subtitulo">Confirme la nueva contraseña</label>
+            <input type="text" class="input">
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="col-6">
+            <label class="subtitulo">Rol</label>
+            <select type="text" class="input">
+                <option [value]="">Select option</option>
+                <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+            </select>
+        </div>
+        <div class="col-6">
+            <label class="subtitulo">Empresa</label>
+            <select value="" class="input">
+                <option [value]="">Select option</option>
+                <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-30">
+        <div class="col-8">
+            <label class="advertencia">Solicitar cambio de contraseña al iniciar sesión</label>
+            <mat-slide-toggle></mat-slide-toggle>
+        </div>
+        <div class="col-4 flex-end">
+            <button class="b-b"><img [src]="'assets/guardar.svg'">Guardar</button> 
+            <div class="w-20"></div> 
+            <button class="b-w" mat-dialog-close>Cancelar</button>
+        </div>
+    </div>
+</div>

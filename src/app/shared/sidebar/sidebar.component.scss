@@ -1,0 +1,121 @@
+aside {
+    width: 253px;
+    height: 100vh;
+    background-color: white;
+    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+header {
+    width: 100%;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px;
+    position: relative;
+}
+aside header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: white;
+    background-size: cover;
+    transition: all 0.5s cubic-bezier(0, 0, 0.09, 0.87);
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.09); 
+}
+aside header .arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  bottom: 20px;
+  transition: all 0.5s cubic-bezier(0, 0, 0.09, 0.87);
+  z-index: 3;
+  fill: #293642; 
+}
+aside header button {
+    opacity: 0;
+    cursor: pointer;
+    transform: translateY(80px);
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    transition: all 0.5s cubic-bezier(0, 0, 0.09, 0.87);
+    position: relative;
+    z-index: 4;
+    color: #293642;
+    font-size: 16px; 
+}
+aside header .name {
+    font-weight: 400;
+    color: #293642;
+    margin: 0;
+    transition: all 0.5s cubic-bezier(0, 0, 0.09, 0.87);
+    margin-top: 15px; 
+    font-size: 16px; 
+}
+aside header:hover button {
+    opacity: 1;
+    transform: translateY(0px); 
+}
+aside header:hover .arrow {
+    transform: rotateZ(180deg) translateY(-20px) scale(0); }
+aside header:hover img {
+    opacity: 0.4;
+    transform: scale(0.8); 
+}
+aside header:hover .name {
+    opacity: 0;
+    transform: scale(0.3); 
+}
+.nav {
+    width: 100%;
+}
+.item-sidebar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 3.5px 10px;
+    padding-left: 20px;
+    margin-top: 4px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 100%;
+    img { width: 18px; margin-right: 20px;}
+    span {
+        font-size: 14px;
+        font-weight: 500;
+        color: black;
+    }
+}
+.item-sidebar:hover {
+    transform: translateX(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.15);
+}
+.active-nuevo {
+    background-color: #FFF25C;
+}
+aside #footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .alcaldia {
+        margin-top: 60px;
+        width: 40%;
+    }
+    .innlab {
+        margin-top: 20px;
+        width: 35%;
+    }
+}

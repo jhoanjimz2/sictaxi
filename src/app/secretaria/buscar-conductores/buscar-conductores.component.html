@@ -1,0 +1,69 @@
+<div class="contenedor">
+    <div class="row mt-20">
+        <app-barra-busqueda [placeholder]="'Buscar por placa o cédula'"/>
+    </div>
+    <div class="row mt-10">
+        <div class="col-6">
+            <label class="titulo">Conductores</label>
+        </div>
+        <div class="col-6 flex-end">
+            <app-export-excel/>
+        </div>
+    </div>
+    <div class="row pb-80">
+        <div class="col-12" *ngFor="let taxista of [1,1,1]">
+            <div class="card-taxista">
+                <div class="img">
+                    <img [src]="'' | imagenes" (click)="datosConductor('1')">
+                </div>
+                <div class="textos">
+                    <div class="linea-uno">Jader Junior Piña Sanguino</div>
+                    <div class="linea-dos">
+                        <div class="textos-container w1">
+                            <label>Cédula: <span>1007682577</span></label><br>
+                            <label>Licencia: <span>1007682577 - vence el 15-07-2025</span></label><br>
+                            <label>Tarjeta de operación: <span>4067984</span></label><br>
+                            <label>Dirección: <span>Cll 29 F Cr 21 Casa C 3 11 Villa Del Carmen</span></label><br>
+                            <label>Teléfono: <span>302 220 1610</span></label><br>
+                            <label>Categoría pase: <span>C1</span></label><br>
+                            <label>Tipo de sangre: <span>B - RH: Positivo</span></label><br>
+                            <label>EPS: <span>CAJACOPI</span></label><br>
+                            <label>ARL: <span>No registra</span></label><br>
+                            <label>AFP: <span>No registra</span></label>
+                        </div>
+                        <div class="separador"></div>
+                        <div class="textos-container w2">
+                            <label>Fecha de nacimiento: <span>06-02-2003</span></label><br>
+                            <label>Fecha de tarjeta: <span>21-06-2022</span></label><br>
+                            <label>Número RCC: <span>2000264175</span></label><br>
+                            <label>Número RCE: <span>2000264175</span></label><br>
+                            <label>SOAT: <span>14289402360150</span></label><br>
+                            <label>Número de tecnicomecánica: <span>161815697</span></label><br>
+                            <label>Propietario: <span>Hector Fabio Castro Cortes</span></label><br>
+                            <label>Cédula del propietario: <span>10014313</span></label><br>
+                            <label>Télefono del propietario: <span>No tiene</span></label><br>
+                            <label>Dirección del propietario: <span>No tiene</span></label>
+                        </div>
+                        <div class="separador"></div>
+                        <div class="textos-container">
+                            <img [src]="'assets/taxi.svg' | imagenes">
+                        </div>
+                        <div class="separador"></div>
+                        <div class="textos-container w3">
+                            <label>HYUNDAI Modelo: <span>2012</span></label><br>
+                            <label>Placa: <span>UQS544</span></label><br>
+                            <label>Número de motor: <span>G4HGBM406036</span></label><br>
+                            <label>Número de chasis: <span>MALABS1HACM731945</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-paginacion ">
+        <app-paginacion 
+            [cantidad]="40"
+            (paginar)="pagina($event)">
+        </app-paginacion>
+    </div>
+</div>

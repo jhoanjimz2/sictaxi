@@ -1,0 +1,42 @@
+<div>
+
+    <div class="row">
+        <div class="col-6 flex-end"> 
+            <app-select 
+                [placeholder]="'Tipo de comentario negativo'" 
+                [comentarios]="comentariosN"
+                (select)="selectComent($event)"
+            />                
+        </div>
+        <div class="col-6 flex-start">
+            <app-datetime
+                (select)="selectDate($event)"
+            />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col flex-fin">
+            <div class="label">Tipo de gráfica</div>
+            <div class="d-flex-center">
+                <div class="d-flex-center lineas" (click)="typeGrafica(1)" [ngClass]="{'s': typeGrafic == 1}">
+                    <i class="bi bi-graph-up"></i>
+                </div>
+                <div class="d-flex-center barras" (click)="typeGrafica(2)" [ngClass]="{'s': typeGrafic == 2}">
+                    <i class="bi bi-bar-chart-line-fill"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mtb-5">
+        <div class="col"><label class="title">Reporte de comentarios negativos</label></div>
+        <div class="col flex-end"><button class="export">Exportar a base de datos</button></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card-grafic">
+                <canvas  id="ChartComentariosN">{{ chart }}</canvas>
+            </div>
+        </div>
+    </div>
+
+</div>

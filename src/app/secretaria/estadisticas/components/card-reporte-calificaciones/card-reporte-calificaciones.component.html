@@ -1,0 +1,61 @@
+<div>
+    <div class="row">
+        <div class="col">
+            <app-barra-busqueda [placeholder]="'Buscar placa'" (searchEvent)="buscando($event)"/>
+        </div>
+    </div>
+    <div class="row mtb-10">
+        <div class="col-4 flex-center">
+            <app-select 
+                [placeholder]="'Tipo de comentario negativo'" 
+                [comentarios]="comentariosN"
+                (select)="selectComent($event)"
+            />            
+        </div>
+        <div class="col-4 flex-center">
+            <app-select 
+                [placeholder]="'Tipo de comentario positivo'" 
+                [comentarios]="comentariosP"
+                (select)="selectComent($event)"
+            />             
+        </div>
+        <div class="col-4 flex-center">
+            <app-datetime
+                (select)="selectDate($event)"
+            />
+        </div>
+    </div>
+    <div class="row mtb-5">
+        <div class="col"><label class="title">Reporte de calificaciones</label></div>
+        <div class="col flex-end"><button class="export">Exportar a base de datos</button></div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card-quejas">
+                <div class="row">
+                    <div class="col-6">
+                        <app-bar-hoy-semana-mes [titulo]="'Taxistas con más quejas recurrentes'"/>
+                    </div>
+                    <div class="col-6">
+                        <app-bar-hoy-semana-mes [titulo]="'Taxistas con mejores calificaciones'"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <app-list-taxistas 
+                            [taxistas]="taxistasQuejas"
+                            [search]="buscar"
+                            [evento]="true"
+                        />
+                    </div>
+                    <div class="col-6">
+                        <app-list-taxistas 
+                            [taxistas]="taxistasBuenas"
+                            [search]="buscar"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

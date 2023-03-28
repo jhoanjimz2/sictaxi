@@ -1,0 +1,43 @@
+<div class="contenedor">
+    <div class="row">
+        <div class="col-6">
+            <label class="titulo">Taxis con tarjeta de operación vigente</label>
+        </div>
+        <div class="col-6 flex-end">
+            <app-export-excel/>
+        </div>
+    </div>
+    <div class="row mt-20 pb-80">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="ptlr">Rázon social</th>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Tarjeta de operación</th>
+                        <th class="ptrr">Fecha de vencimiento tarjeta de operación</th>
+                    </tr>
+                </thead>
+                <div class="h-10"></div>
+                <tbody class="bw">
+                  <tr *ngFor="let taxi of [0,1,2,3,4,5,6,7,8,9,10,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
+                    <td>TAXIS S.A.S.</td>
+                    <td>TZW 522</td>
+                    <td>2023</td>
+                    <td>KIA</td>
+                    <td>12090290290192</td>
+                    <td>07-02-2023</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    <div class="footer-paginacion ">
+        <app-paginacion 
+            [cantidad]="40"
+            (paginar)="pagina($event)">
+        </app-paginacion>
+    </div>
+</div>

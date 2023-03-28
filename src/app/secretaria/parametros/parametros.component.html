@@ -1,0 +1,107 @@
+<div class="contenedor">
+    <div class="row">
+        <div class="col">
+            <label class="titulo">Parámetros</label>
+        </div>
+    </div>
+    <div class="row mt-20">
+        <div class="col">
+            <div class="card-parametros sombra">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="subtitulo">Máximo número de usuarios para empresas</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Mensaje de bloqueo de inicio de sesión</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Bloquear inicio de sesión a las empresas</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mt-20">
+                    <div class="col-4">
+                        <label class="subtitulo">EPS</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">ARL</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">AFP</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                </div>
+                <div class="row mt-20">
+                    <div class="col-4">
+                        <label class="subtitulo">Aseguradora</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Marca</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Calificaciones</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                </div>
+                <div class="row mt-20">
+                    <div class="col-4">
+                        <label class="subtitulo">CONDUCTORES X Vehículo</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">VEHÍCULOS X Conductor</label>
+                        <select type="text" class="input">
+                            <option [value]=""></option>
+                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
+                        </select>
+                        <app-edit-add-delete/>
+                    </div>
+                </div>
+                <div class="row mt-40">
+                    <div class="content-buttons">
+                        <button class="sombra bg-b"><img [src]="'assets/guardar.svg'">Guardar todo</button>
+                        <div class="separador"></div>
+                        <button class="sombra bg-r" [routerLink]="'/secretaria/buscar-conductores'">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
