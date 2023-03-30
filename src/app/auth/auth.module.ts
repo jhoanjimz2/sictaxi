@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EmpresaRoutingModule } from './empresa-routing.module';
+import { AuthRoutingModule } from './auth-routing.module';
 import { IndexComponent } from './index/index.component';
 
 
@@ -11,7 +11,7 @@ import { IndexComponent } from './index/index.component';
   ],
   imports: [
     CommonModule,
-    EmpresaRoutingModule
+    AuthRoutingModule
   ]
 })
-export class EmpresaModule { }
+export class AuthModule { }

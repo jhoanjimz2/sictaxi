@@ -1,6 +1,4 @@
 import { 
-  Grafica, 
-  Cards, 
   Comentarios, 
   TaxistaEasy, 
   QuejaSiONoTramitada, 
@@ -10,65 +8,6 @@ import {
   Taxista
 } from "src/app/interfaces";
 
-export const dataCards: Cards = {
-  empresasAutorizadas:                12,
-  taxisRegistrados:                   4014,
-  asociaciones:                       2,  
-  taxistasRegistrados:                17370,
-  taxisConLicenciaVencida:            10433,
-  taxistasSinRefrendar:               30005, 
-  taxisConSoatVencido:                1875,
-  alertasDeVencimientos:              19276,
-  taxisConTarjetaDeOperacionVigente:  3050,
-  vehiculosChatarrizados:             150
-}
-export const dataGrafica: Grafica[] = [
-  { "name": "1990", "value": 12, color: '#8DD7F7' },
-  { "name": "1991", "value": 15, color: '#8DD7F7' },
-  { "name": "1992", "value": 20, color: '#8DD7F7' },
-  { "name": "1993", "value": 25, color: '#8DD7F7' },
-  { "name": "1994", "value": 30, color: '#8DD7F7' },
-  { "name": "1995", "value": 35, color: '#8DD7F7' },
-  { "name": "1996", "value": 40, color: '#8DD7F7' },
-  { "name": "1997", "value": 45, color: '#8DD7F7' },
-  { "name": "1998", "value": 40, color: '#8DD7F7' },
-  { "name": "1999", "value": 35, color: '#8DD7F7' },
-  { "name": "2000", "value": 30, color: '#8DD7F7' },
-  { "name": "2001", "value": 25, color: '#8DD7F7' },
-  { "name": "2002", "value": 28, color: '#8DD7F7' },
-  { "name": "2003", "value": 43, color: '#8DD7F7' },
-  { "name": "2004", "value": 35, color: '#8DD7F7' },
-  { "name": "2005", "value": 15, color: '#8DD7F7' },
-  { "name": "2006", "value": 85, color: '#8DD7F7' },
-  { "name": "2007", "value": 25, color: '#8DD7F7' },
-  { "name": "2008", "value": 15, color: '#8DD7F7' },
-  { "name": "2009", "value": 5,  color: '#8DD7F7' },
-  { "name": "2010", "value": 5,  color: '#8DD7F7' },
-  { "name": "2011", "value": 65, color: '#8DD7F7' },
-  { "name": "2012", "value": 47, color: '#8DD7F7' },
-  { "name": "2013", "value": 40, color: '#8DD7F7' },
-  { "name": "2014", "value": 49, color: '#8DD7F7' },
-  { "name": "2015", "value": 23, color: '#8DD7F7' },
-  { "name": "2016", "value": 31, color: '#8DD7F7' }
-];
-export const dataGrafica2: Grafica[]  = [
-  { name: 'Null',         value: 100, color: '#3f61c3' },
-  { name: 'Ninguno',      value: 10,  color: '#2d4388' },
-  { name: 'Bachiller',    value: 20,  color: '#2f8cd9' },
-  { name: 'Técnico',      value: 30,  color: '#349af2' },
-  { name: 'Tecnólogo',    value: 40,  color: '#6fc2f9' },
-  { name: 'Profesional',  value: 50,  color: '#9fd7fa' },
-  { name: 'Postgrado',    value: 60,  color: '#cfeffc' }
-]
-export const dataGrafica3: Grafica[]  = [
-  { name: 'Estrato 1',    value: 100, color: '#3f61c3' },
-  { name: 'Estrato 2',    value: 10,  color: '#2d4388' },
-  { name: 'Estrato 3',    value: 20,  color: '#2f8cd9' },
-  { name: 'Estrato 4',    value: 30,  color: '#349af2' },
-  { name: 'Estrato 5',    value: 40,  color: '#6fc2f9' },
-  { name: 'Estrato 6',    value: 50,  color: '#9fd7fa' },
-  { name: 'Sin Estrato',  value: 60,  color: '#cfeffc' }
-]
 export const dataComentarioN: Comentarios[] = [
   { name:'Comentario Negativo 1', id: '1' },
   { name:'Comentario Negativo 2', id: '2' },

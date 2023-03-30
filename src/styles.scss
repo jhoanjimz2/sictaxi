@@ -28,6 +28,8 @@ $sictaxi-theme: mat.define-light-theme((
   )
 ));
 
+$curve: cubic-bezier(0,0,0.09,0.87);
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
@@ -140,19 +142,31 @@ body {
   padding-bottom: 80px;
 }
 .sombra {
-  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 17px rgba(0, 0, 0, 0.15);
 }
 
 .mat-mdc-slide-toggle.mat-accent {
-  --mdc-switch-selected-focus-state-layer-color: #8DD7F7;
-  --mdc-switch-selected-handle-color: #8DD7F7;
-  --mdc-switch-selected-hover-state-layer-color: #8DD7F7;
-  --mdc-switch-selected-pressed-state-layer-color: #8DD7F7;
-  --mdc-switch-selected-focus-handle-color: #8DD7F780;
-  --mdc-switch-selected-hover-handle-color: #8DD7F780;
-  --mdc-switch-selected-pressed-handle-color: #8DD7F780;
-  --mdc-switch-selected-focus-track-color: #8DD7F790;
-  --mdc-switch-selected-hover-track-color: #8DD7F790;
-  --mdc-switch-selected-pressed-track-color: #8DD7F790;
-  --mdc-switch-selected-track-color: #8DD7F790;
+  --mdc-switch-selected-focus-state-layer-color: #FFF25C;
+  --mdc-switch-selected-handle-color: #FFF25C;
+  --mdc-switch-selected-hover-state-layer-color: #FFF25C;
+  --mdc-switch-selected-pressed-state-layer-color: #FFF25C;
+  --mdc-switch-selected-focus-handle-color: #FFF25C;
+  --mdc-switch-selected-hover-handle-color: #FFF25C;
+  --mdc-switch-selected-pressed-handle-color: #FFF25C;
+  --mdc-switch-selected-focus-track-color: #FFF25C;
+  --mdc-switch-selected-hover-track-color: #FFF25C;
+  --mdc-switch-selected-pressed-track-color: #FFF25C;
+  --mdc-switch-selected-track-color: #FFF25C;
+}
+
+.completo {
+  width: 100%;
+  height: 100vh;
+}
+.content-index-roles {
+  width: calc(100% - 253px);
+  overflow-y: auto;
+  position: relative;
+  top: 0;
+  left: 253px;
 }

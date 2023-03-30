@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { dataGrafica3 } from 'src/assets/data/estadisticas';
+import { Component } from '@angular/core';
 import { Grafica } from '../../../../interfaces/estadisticas';
+import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -8,16 +8,21 @@ import Chart from 'chart.js/auto';
   templateUrl: './card-grafica-estrato.component.html',
   styleUrls: ['./card-grafica-estrato.component.scss']
 })
-export class CardGraficaEstratoComponent implements OnInit {
+export class CardGraficaEstratoComponent {
   chart: any;
-  dataGrafica3: Grafica[] = dataGrafica3;
-  ngOnInit(): void {
-    let data: any = dataGrafica3.map(item => { return item.value;});
-    let backgroundColor: any = dataGrafica3.map(item => { return item.color;});
-    let labels: any = dataGrafica3.map(item => { return item.name;});
-    this.createChart(data, backgroundColor, labels);
+  data: Grafica[] = [];
+  constructor( private eS: EstadisticasService) {
+    eS.getNivelEstrato().subscribe({
+      next: (data: Grafica[]) => {
+        this.data = data;
+        this.createChart(data);
+      }
+    });
   }
-  createChart(data: [], backgroundColor: [], labels: []){
+  createChart(_data: Grafica[]){
+    let data: any = _data.map(item => { return item.value;});
+    let backgroundColor: any = _data.map(item => { return item.color;});
+    let labels: any = _data.map(item => { return item.name;});
     this.chart = new Chart("ChartEstrato", {
       type: 'doughnut',
       data: { datasets: [ { data, backgroundColor ,hoverOffset: 4 } ], labels },
@@ -31,7 +36,7 @@ export class CardGraficaEstratoComponent implements OnInit {
             callbacks: {
               label: (context: any): string => {
                 const total = context.dataset.data.reduce((a:number, b:number) => a + b, 0);
-                const tooltipPercentage = Math.round((context.formattedValue / total) * 100);
+                const tooltipPercentage = Math.round((context.formattedValue.replace(/\D/g, '') / total) * 100);
                 return context.label + ': ' + context.formattedValue + ' (' + tooltipPercentage + '%)';
               }
             } 

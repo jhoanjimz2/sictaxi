@@ -94,7 +94,16 @@ button {
     justify-content: flex-start;
     align-items: center;
     .check {
-        background: #FFF25C !important;
+        background: #F30F28 !important;
+        border: 2px solid rgba(128, 128, 128, 0.356);
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 17px rgba(0, 0, 0, 0.15);
+        margin-right: 10px;
+    }
+    .checkTramitado {
+        background: #00000060 !important;
         border: 2px solid rgba(128, 128, 128, 0.356);
         width: 10px;
         height: 10px;

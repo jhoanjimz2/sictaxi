@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Cards } from 'src/app/interfaces';
-import { dataCards } from 'src/assets/data/estadisticas';
+import { EstadisticasService } from '../../services/estadisticas.service';
 
 @Component({
   selector: 'app-estadisticas',
@@ -8,5 +8,14 @@ import { dataCards } from 'src/assets/data/estadisticas';
   styleUrls: ['./estadisticas.component.scss']
 })
 export class EstadisticasComponent {
-  dataCards: Cards = dataCards;
+  dataCards: Cards = new Cards();
+
+  constructor(private eS: EstadisticasService) {
+    eS.getCards().subscribe({
+      next: (data: Cards) => {
+        this.dataCards = data;
+      }
+    })
+  }
+
 }

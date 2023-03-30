@@ -1,4 +1,4 @@
-export interface Cards {
+export class Cards {
     empresasAutorizadas:               number;
     taxisRegistrados:                  number;
     asociaciones:                      number;
@@ -6,15 +6,34 @@ export interface Cards {
     taxisConLicenciaVencida:           number;
     taxistasSinRefrendar:              number;
     taxisConSoatVencido:               number;
-    alertasDeVencimientos:             number;
+    alertasDeVencimiento:              number;
     taxisConTarjetaDeOperacionVigente: number;
-    vehiculosChatarrizados:            number;
+    vehiculoChatarrizados:             number;
+    constructor() {
+        this.empresasAutorizadas               = 0;
+        this.taxisRegistrados                  = 0;
+        this.asociaciones                      = 0;
+        this.taxistasRegistrados               = 0;
+        this.taxisConLicenciaVencida           = 0;
+        this.taxistasSinRefrendar              = 0;
+        this.taxisConSoatVencido               = 0;
+        this.alertasDeVencimiento              = 0;
+        this.taxisConTarjetaDeOperacionVigente = 0;
+        this.vehiculoChatarrizados             = 0;
+    }
 }
-export interface Grafica {
+export class Grafica {
     name:  string;
     value: number;
     color: string;
+    constructor() {
+        this.value = 0;
+        this.name  = '';
+        this.color = '';
+    }
 }
+
+
 export interface Quejas {
     name:     string;
     id:       string;

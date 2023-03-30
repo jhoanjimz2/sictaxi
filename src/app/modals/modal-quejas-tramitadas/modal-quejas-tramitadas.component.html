@@ -31,7 +31,7 @@
 
             <div class="card-quejas" [ngClass]="{'list': !estado}" *ngFor="let queja of quejasSiTramitadas">
 
-                <div class="comentarios" *ngFor="let comentario of queja.comentarios"><div class="check"></div><label>{{comentario}}</label></div>
+                <div class="comentarios" *ngFor="let comentario of queja.comentarios"><div class="checkTramitado"></div><label>{{comentario}}</label></div>
                 <div class="info-usuario">
                     <label>Email: {{queja.email}}</label>
                     <label>Nombre: {{queja.nombre}}</label>
