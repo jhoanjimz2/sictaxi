@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Chart from 'chart.js/auto';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
-import { Grafica } from '../../../../interfaces/estadisticas';
+import { Grafica } from '../../../../interfaces';
 
 @Component({
   selector: 'app-card-grafica-educacion',

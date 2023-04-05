@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,14 @@ export class LoadingService {
   }
   hide() {
     this.loading = false;
+  }
+
+  error(message: string) {
+    Swal.fire('Error', message, 'error');
+  }
+
+  exito(message: string) {
+    Swal.fire('Exito', message, 'success');
   }
 
 }

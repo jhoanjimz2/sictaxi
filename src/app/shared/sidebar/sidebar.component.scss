@@ -1,9 +1,12 @@
+.bb {
+    background-color: #8DD7F7 !important;
+}
 aside {
     width: 253px;
     height: 100vh;
-    background-color: white;
     position: relative;
     position: fixed;
+    background-color: white;
     top: 0;
     left: 0;
     padding: 0px 20px;
@@ -103,7 +106,10 @@ aside header:hover .name {
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.15);
 }
 .active-nuevo {
-    background-color: #FFF25C;
+    background-color: #FFF25C !important;
+}
+.active-nuevo2 {
+    background-color: white !important;
 }
 aside #footer {
     display: flex;

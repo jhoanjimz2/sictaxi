@@ -9,9 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'sictaxi';
   constructor(private router: Router) {
-    localStorage.setItem('token', 'true');
-    localStorage.setItem('role', 'secretaria');
-    if (localStorage.getItem('role') == 'empresa') this.router.navigateByUrl('/empresa');
-    else this.router.navigateByUrl('/secretaria');
+    if (localStorage.getItem('role') == 'Secretaria') this.router.navigateByUrl('/secretaria');
+    else this.router.navigateByUrl('/empresa');
   }
 }

@@ -16,12 +16,21 @@ export class AuthService extends ConexionService {
     return of(false);
   }
   vaidarEmpre(): Observable<boolean> {
-    if( localStorage.getItem('role') == 'empresa' ) return of(true); 
+    if( localStorage.getItem('role') == 'Empresa' ) return of(true); 
     return of(false);
   }
   validarSecre(): Observable<boolean> {
-    if( localStorage.getItem('role') == 'secretaria' ) return of(true); 
+    if( localStorage.getItem('role') == 'Secretaria' ) return of(true); 
     return of(false);
+  }
+
+  login(cedula = 'SECRE1', password = 'Jazmin.02') {
+    let params = { ciudad: 'SantaMarta' };
+    let data = { cedula, password };
+    return this.post('/login', data, params);
+  }
+  logout() {
+    return this.getAuth('/logout');
   }
 
 }

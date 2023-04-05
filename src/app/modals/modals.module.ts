@@ -14,6 +14,7 @@ import { ModalCrearAsociacionComponent } from './modal-crear-asociacion/modal-cr
 import { ModalCrearUsuarioComponent } from './modal-crear-usuario/modal-crear-usuario.component';
 import { ModalEliminarUsuarioComponent } from './modal-eliminar-usuario/modal-eliminar-usuario.component';
 import { ModalCambiarPasswordComponent } from './modal-cambiar-password/modal-cambiar-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -35,7 +36,8 @@ import { ModalCambiarPasswordComponent } from './modal-cambiar-password/modal-ca
     CommonModule,
     MaterialModule,
     PipesModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ModalsModule { }

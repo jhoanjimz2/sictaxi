@@ -1,20 +1,21 @@
-<aside>
+<aside [ngClass]="{ 'bb': user.rol == 'Empresa'}">
     <header>
         <div><img [src]="'assets/sidebar/company.svg'"></div>
-        <h4 class="name">Movilidad</h4>
+        <h4 class="name">{{user.rol}}</h4>
         <svg _ngcontent-c2="" xml:space="preserve" class="arrow" viewBox="0 0 40 40">
             <path _ngcontent-c2="" d="M20,23.7c-0.7,0-1.3-0.3-1.8-0.7l-4.6-4.6c-0.2-0.2-0.2-0.5,0-0.7s0.5-0.2,0.7,0l4.6,4.6
             c0.6,0.6,1.5,0.6,2.1,0l4.6-4.6c0.2-0.2,0.5-0.2,0.7,0s0.2,0.5,0,0.7l-4.6,4.6C21.3,23.4,20.7,23.7,20,23.7z"></path>
         </svg>
         
-        <button class="logout">Cerrar sesión</button>
+        <button class="logout" (click)="logout()">Cerrar sesión</button>
     </header>
     <div class="nav">
         <a 
+            [ngClass]="{ 'bb': user.rol == 'Empresa'}"
             class="item-sidebar" 
             *ngFor="let item of items"
             [routerLink]="item.route" 
-            routerLinkActive="active-nuevo"
+            [routerLinkActive]="(user.rol == 'Empresa') ? 'active-nuevo2' : 'active-nuevo'"
         >
             <img [src]="'assets/sidebar/'+item.icon">&nbsp;
             <span>{{item.name}}</span>

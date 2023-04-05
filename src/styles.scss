@@ -41,6 +41,9 @@ $curve: cubic-bezier(0,0,0.09,0.87);
     font-family: 'montserrat';
     src: url('/assets/font/Montserrat-Regular.ttf');
 }
+.ng-invalid.ng-touched:not(form) {
+  border: 1px solid #f61a16 !important;
+}
 body {
   background-color: #EFEFEF;
   font-family: 'montserrat';

@@ -10,6 +10,7 @@
   justify-content: center;
   flex-direction: column;
   z-index: 9999; 
+  opacity: 0.6;
 }
 .main-loader .loading-element {
   width: 130px;

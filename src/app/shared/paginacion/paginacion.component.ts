@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PaginacionComponent {
   @Output() paginar: EventEmitter<any> = new EventEmitter();
-  @Input() cantidad!: number;
+  @Input() cantidad: number = 0;
   focus = 1;
   anterior() {
     if (this.focus == 1) return;

@@ -4,7 +4,7 @@
             <label class="titulo">Taxis registrados</label>
         </div>
         <div class="col-6 flex-end">
-            <app-export-excel/>
+            <app-export-excel (export)="exportar()"/>
         </div>
     </div>
     <div class="row mt-20 pb-80">
@@ -22,13 +22,13 @@
                 </thead>
                 <div class="h-10"></div>
                 <tbody class="bw">
-                  <tr *ngFor="let taxi of [0,1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
-                    <td>TAXIS S.A.S.</td>
-                    <td>TZW 522</td>
-                    <td>2023</td>
-                    <td>KIA</td>
-                    <td>Jairo Rafael Pimienta Lineros</td>
-                    <td>12090290920</td>
+                  <tr *ngFor="let taxi of taxis">
+                    <td>{{taxi.nombreEmpresa}}</td>
+                    <td>{{taxi.placa}}</td>
+                    <td>{{taxi.modelo}}</td>
+                    <td>{{taxi.marca}}</td>
+                    <td>{{taxi.nombrePropietario}}</td>
+                    <td>{{taxi.cedulaPropietario}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -36,7 +36,8 @@
     </div>
     <div class="footer-paginacion ">
         <app-paginacion 
-            [cantidad]="40"
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { RespTaxisSoatVencido, TaxiSoatVencido } from 'src/app/interfaces/taxis-soat-vencido';
+import { DownloadService } from 'src/app/services/download.service';
+import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
@@ -8,16 +11,40 @@ import { LoadingService } from 'src/app/services/loading.service';
 })
 export class TaxisSoatVencidoComponent {
 
+  taxis!: TaxiSoatVencido[];
+  totalPages: number = 0;
+
   constructor( 
-    private loading: LoadingService
-  ) {}
+    private loading: LoadingService,
+    private eS: EstadisticasService,
+    private download: DownloadService
+  ) {
+    this.pagina({pagina: 1});
+  }
 
   pagina({pagina}: any) {
     this.loading.show();
-    console.log(pagina)
-    setTimeout(() => {
-      this.loading.hide();
-    }, 500)
+    this.eS.getTaxisSoatVencido(pagina).subscribe({
+      next: (data: RespTaxisSoatVencido) => {
+        this.totalPages = data.pages;
+        this.taxis = data.data;
+        this.loading.hide();
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    });
+  }
+  exportar() {
+    this.loading.show();
+    this.eS.getExcelTaxiSoatVencidoExcel().subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Taxis Soat Vencido');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
 
 }

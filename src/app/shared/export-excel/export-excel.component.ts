@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-export-excel',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./export-excel.component.scss']
 })
 export class ExportExcelComponent {
+  @Output() export: EventEmitter<any> = new EventEmitter();
+
+  exportar() {
+    this.export.emit();
+  }
 
 }

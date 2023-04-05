@@ -4,25 +4,25 @@
             <label class="title">Empresas</label>
         </div>
         <div class="col-6 flex-end">
-            <button class="opc" (click)="editar('1')"> Nueva empresa <img [src]="'assets/empresa.svg' | imagenes"></button>
-            <app-export-excel/>
+            <button class="opc" (click)="crear()"> Nueva empresa <img [src]="'assets/empresa.svg' | imagenes"></button>
+            <app-export-excel (export)="exportar()"/>
         </div>
     </div>
     <div class="row pb-80">
-        <div class="col-6 mt-20" *ngFor="let empresa of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; let i = index">
+        <div class="col-6 mt-20" *ngFor="let empresa of empresas; let i = index">
             <div class="card-empresa">
                 <div class="imagen">
-                    <img [src]="'' | imagenes">
+                    <img [src]="'https://api.sictaxi.gov.co/'+empresa.logo | imagenes">
                 </div>
                 <div class="text">
-                    <label class="titulo">Empresa de mobilidad de Jhoan {{i}}</label>
-                    <label class="incisos">NIT      : <span>8878478784787484</span></label>
-                    <label class="incisos">Direccion: <span>Manzana L Casa 6 Apto 301</span></label>
-                    <label class="incisos">Telefono : <span>3052766362</span></label>
-                    <label class="incisos">email    : <span>jhoanjimz2@gmail.com</span></label>
+                    <label class="titulo">{{ empresa.nombreEmpresa }}</label>
+                    <label class="incisos">NIT      : <span>{{empresa.nit}}</span></label>
+                    <label class="incisos">Direccion: <span>{{empresa.direccion}}</span></label>
+                    <label class="incisos">Telefono : <span>{{empresa.telefono}}</span></label>
+                    <label class="incisos">email    : <span>{{empresa.email}}</span></label>
                 </div>
                 <div class="botones">
-                    <button class="b1" (click)="editar('1')">Editar <img [src]="'assets/editar.svg' | imagenes"></button>
+                    <button class="b1" (click)="editar(empresa)">Editar <img [src]="'assets/editar.svg' | imagenes"></button>
                     <div></div>
                     <button class="b2" (click)="eliminar('1')">Eliminar <img [src]="'assets/eliminar.svg' | imagenes"></button>
                 </div>
@@ -30,8 +30,9 @@
         </div>
     </div>
     <div class="footer-paginacion ">
-        <app-paginacion 
-            [cantidad]="40"
+        <app-paginacion
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

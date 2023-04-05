@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Grafica } from '../../../../interfaces/estadisticas';
+import { Grafica } from '../../../../interfaces';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import Chart from 'chart.js/auto';
 

@@ -17,18 +17,20 @@
                         <th>Modelo</th>
                         <th>Marca</th>
                         <th>Nombre propietario</th>
-                        <th class="ptrr">Cédula propietario</th>
+                        <th>Cédula propietario</th>
+                        <th class="ptrr">Fecha de cancelación</th>
                     </tr>
                 </thead>
                 <div class="h-10"></div>
                 <tbody class="bw">
-                  <tr *ngFor="let taxi of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
+                  <tr *ngFor="let taxi of taxis">
                     <td>TAXIS S.A.S.</td>
                     <td>TZW 522</td>
                     <td>2023</td>
                     <td>KIA</td>
                     <td>Jairo Rafael Pimienta Lineros</td>
                     <td>12090290920</td>
+                    <td>20/10/2022</td>
                   </tr>
                 </tbody>
               </table>
@@ -36,7 +38,8 @@
     </div>
     <div class="footer-paginacion ">
         <app-paginacion 
-            [cantidad]="40"
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>
