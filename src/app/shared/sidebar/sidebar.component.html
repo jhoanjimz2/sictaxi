@@ -24,7 +24,8 @@
 
     <div id="footer">
         <img [src]="'assets/sidebar/alcaldia-logo.png'" class="alcaldia">
-        <img [src]="'assets/sidebar/innlab-logo.png'" class="innlab">
+        <img [src]="'assets/sidebar/innlab-logo.png'" class="innlab" *ngIf="user.rol == 'Secretaria'">
+        <img [src]="'assets/sidebar/innlab-logo-negro.png'" class="innlab" *ngIf="user.rol == 'Empresa'">
     </div>
 
 

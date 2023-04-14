@@ -24,13 +24,13 @@
                 <div class="h-10"></div>
                 <tbody class="bw">
                   <tr *ngFor="let taxi of taxis">
-                    <td>TAXIS S.A.S.</td>
-                    <td>TZW 522</td>
-                    <td>2023</td>
-                    <td>KIA</td>
-                    <td>Jairo Rafael Pimienta Lineros</td>
-                    <td>12090290920</td>
-                    <td>20/10/2022</td>
+                    <td>{{taxi.nombreEmpresa}}</td>
+                    <td>{{taxi.placa}}</td>
+                    <td>{{taxi.modelo}}</td>
+                    <td>{{taxi.marca}}</td>
+                    <td>{{taxi.nombrePropietario}}</td>
+                    <td>{{taxi.cedulaPropietario}}</td>
+                    <td>{{taxi.fechaCancelacion | date: 'dd/MM/YYYY'}}</td>
                   </tr>
                 </tbody>
               </table>

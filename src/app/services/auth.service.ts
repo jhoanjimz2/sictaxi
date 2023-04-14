@@ -24,13 +24,18 @@ export class AuthService extends ConexionService {
     return of(false);
   }
 
-  login(cedula = 'SECRE1', password = 'Jazmin.02') {
+  login(cedula: string, password: string) {
     let params = { ciudad: 'SantaMarta' };
     let data = { cedula, password };
     return this.post('/login', data, params);
   }
   logout() {
     return this.getAuth('/logout');
+  }
+  reset(email: string) {
+    let data = { email };
+    let params = { ciudad: 'SantaMarta' };
+    return this.post('/emailresetpass', data, params);
   }
 
 }

@@ -14,7 +14,7 @@ export class EstadisticasComponent {
   constructor(
     private loading: LoadingService,
     private eS: EstadisticasService) {
-    loading.show();
+    if(!loading.loading) loading.show();
     eS.getCards().subscribe({
       next: (data: Cards) => {
         this.dataCards = data;

@@ -40,7 +40,7 @@
     }
 }
 .texts {
-    width: calc(50% - 45px);
+    width: calc(50% - 145px);
     line-height: 1;
     label {
         font-size: 12px;
@@ -50,4 +50,34 @@
             color: #00000070;
         }
     }
+}
+.boton {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .cancelarMatricula {
+        width: 160px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-radius: 25px;
+        background-color: white;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+        img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        div {
+            line-height: 1;
+            font-size: 12px;
+        }
+    }
+}
+.cancelarMatricula:hover {
+    transform: translateY(-3px);
+    background-color: #FFF25C !important
 }
