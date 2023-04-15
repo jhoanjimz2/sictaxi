@@ -44,5 +44,14 @@ export class ConexionService {
       })
     );
   }
+  postAuth(ruta: string, data?: any ,fromObject?: any) {
+    let params = new HttpParams({ fromObject });
+    let headers = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
+    return this.http.post(this.api + ruta, data, { headers, params }).pipe(
+      map((data: any) => { 
+        return data; 
+      })
+    );
+  }
 
 }

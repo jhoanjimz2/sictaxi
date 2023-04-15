@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ModalPerfilTaxistaComponent } from './modal-perfil-taxista/modal-perfil-taxista.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { MaterialModule } from '../material/material.module';
-import { ModalFichaVinculacionComponent } from './modal-ficha-vinculacion/modal-ficha-vinculacion.component';
 import { ModalQuejasTramitadasComponent } from './modal-quejas-tramitadas/modal-quejas-tramitadas.component';
 import { ModalEliminarEmpresaComponent } from './modal-eliminar-empresa/modal-eliminar-empresa.component';
 import { ModalEliminarAsociacionComponent } from './modal-eliminar-asociacion/modal-eliminar-asociacion.component';
@@ -22,7 +21,6 @@ import { ModalEliminarMatriculaComponent } from './modal-eliminar-matricula/moda
 @NgModule({
   declarations: [
     ModalPerfilTaxistaComponent,
-    ModalFichaVinculacionComponent,
     ModalQuejasTramitadasComponent,
     ModalCrearEmpresaComponent,
     ModalEliminarEmpresaComponent,

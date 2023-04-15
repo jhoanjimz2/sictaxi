@@ -10,5 +10,5 @@ export interface TaxiChatarrizado {
     marca:             string;
     nombrePropietario: string;
     cedulaPropietario: string;
-    fechaCancelacion : string;
+    fechaChatarrizado: string;
 }

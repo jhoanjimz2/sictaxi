@@ -4,7 +4,7 @@
             <label class="title">Empresas</label>
         </div>
         <div class="col-6 flex-end">
-            <button class="opc" (click)="crear()"> Nueva empresa <img [src]="'assets/empresa.svg' | imagenes"></button>
+            <button class="opc" (click)="editar(null)"> Nueva empresa <img [src]="'assets/empresa.svg' | imagenes"></button>
             <app-export-excel (export)="exportar()"/>
         </div>
     </div>
@@ -12,7 +12,7 @@
         <div class="col-6 mt-20" *ngFor="let empresa of empresas; let i = index">
             <div class="card-empresa">
                 <div class="imagen">
-                    <img [src]="'https://api.sictaxi.gov.co/'+empresa.logo | imagenes">
+                    <img [src]="empresa.logo | imagenes">
                 </div>
                 <div class="text">
                     <label class="titulo">{{ empresa.nombreEmpresa }}</label>
@@ -22,9 +22,9 @@
                     <label class="incisos">email    : <span>{{empresa.email}}</span></label>
                 </div>
                 <div class="botones">
-                    <button class="b1" (click)="editar(empresa)">Editar <img [src]="'assets/editar.svg' | imagenes"></button>
+                    <button class="b1" (click)="editar(empresa.id)">Editar <img [src]="'assets/editar.svg' | imagenes"></button>
                     <div></div>
-                    <button class="b2" (click)="eliminar('1')">Eliminar <img [src]="'assets/eliminar.svg' | imagenes"></button>
+                    <button class="b2" (click)="eliminar(empresa.id)">Eliminar <img [src]="'assets/eliminar.svg' | imagenes"></button>
                 </div>
             </div>
         </div>

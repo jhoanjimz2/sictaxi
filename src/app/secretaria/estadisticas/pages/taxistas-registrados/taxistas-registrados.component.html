@@ -4,7 +4,7 @@
             <label class="titulo">Taxistas registrados</label>
         </div>
         <div class="col-6 flex-end">
-            <app-export-excel/>
+            <app-export-excel (export)="exportar()"/>
         </div>
     </div>
     <div class="row mt-20 pb-80">
@@ -23,22 +23,23 @@
                 </thead>
                 <div class="h-10"></div>
                 <tbody class="bw">
-                  <tr *ngFor="let taxi of [0,1,2,3,4,5,6,7,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]" (click)="datosConductor('1')">
-                    <td>David Eduardo</td>
-                    <td>Henriquez Ortiz</td>
-                    <td>1.083.023.962</td>
-                    <td>1209091838</td>
-                    <td>Manzana L Casa 6 Apto 301</td>
-                    <td>C1</td>
-                    <td>TAXIS SUPER EJECUTIVOS S.A.S.</td>
+                  <tr *ngFor="let taxista of taxistas" (click)="datosConductor(taxista.idConductor)">
+                    <td>{{taxista.nombres}}</td>
+                    <td>{{taxista.apellidos}}</td>
+                    <td>{{taxista.cedula}}</td>
+                    <td>{{taxista.licenciaConduccion}}</td>
+                    <td>--</td>
+                    <td>{{taxista.categoriaPase}}</td>
+                    <td>{{taxista.nombreEmpresa}}</td>
                   </tr>
                 </tbody>
               </table>
         </div>
     </div>
     <div class="footer-paginacion ">
-        <app-paginacion 
-            [cantidad]="40"
+        <app-paginacion
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

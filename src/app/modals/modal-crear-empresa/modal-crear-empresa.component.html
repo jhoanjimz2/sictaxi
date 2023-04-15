@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col">
                 <label class="titulo">
-                    {{ !!data ? 'Editar Empresa' : 'Crear empresa' }}
+                    {{ !!data.id ? 'Editar Empresa' : 'Crear empresa' }}
                 </label>
             </div>
         </div>
@@ -39,7 +39,7 @@
         </div>
         <div class="row mt-30">
             <div class="col flex-end">
-                <button class="b-b" type="submit"><img [src]="'assets/guardar.svg'">Guardar</button> 
+                <button class="b-b" [disabled]="!form.valid" type="submit"><img [src]="'assets/guardar.svg'">Guardar</button> 
                 <div class="w-20"></div> 
                 <button class="b-w" mat-dialog-close type="button">Cancelar</button>
             </div>

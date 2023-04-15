@@ -13,10 +13,9 @@ import { DownloadService } from 'src/app/services/download.service';
   styleUrls: ['./empresas-autorizadas.component.scss']
 })
 export class EmpresasAutorizadasComponent {
-
   empresas!: EmpresaAutorizada[];
   totalPages: number = 0;
-
+  paginaActual: number = 0;
   constructor( 
     private loading: LoadingService,
     public dialog: MatDialog,
@@ -25,9 +24,9 @@ export class EmpresasAutorizadasComponent {
   ) {
     this.pagina({ pagina: 1 });
   }
-
-  pagina({pagina}: any) {
-    this.loading.show();
+  pagina({pagina}: any, bandera = true) {
+    this.paginaActual = pagina;
+    if (bandera) this.loading.show();
     this.eS.getEmpresasAutorizadas(pagina).subscribe({
       next: (data: RespEmpresasAutorizadas) => {
         this.totalPages = data.pages;
@@ -39,7 +38,6 @@ export class EmpresasAutorizadasComponent {
       }
     })
   }
-
   exportar() {
     this.loading.show();
     this.eS.getExcelEmpresasAutorizadas().subscribe({
@@ -51,28 +49,24 @@ export class EmpresasAutorizadasComponent {
       }
     })
   }
-
-  crear() {
+  editar(id: number | null) {
     const dialogRef = this.dialog.open(ModalCrearEmpresaComponent, {
+      data: { id },
       height: '378.5px',
       width: '800px',
     });
-    dialogRef.afterClosed().subscribe(result => {});
-  }
-  editar(empresa: EmpresaAutorizada) {
-    const dialogRef = this.dialog.open(ModalCrearEmpresaComponent, {
-      data: { empresa },
-      height: '378.5px',
-      width: '800px',
+    dialogRef.afterClosed().subscribe(result => {
+      this.pagina({ pagina: this.paginaActual }, false);
     });
-    dialogRef.afterClosed().subscribe(result => {});
   }
-  eliminar(idEmpresa: string) {
+  eliminar(id: number) {
     const dialogRef = this.dialog.open(ModalEliminarEmpresaComponent, {
-      data: { idEmpresa },
+      data: { id },
       height: '150px',
       width: '800px',
     });
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      this.pagina({ pagina: this.paginaActual }, false);
+    });
   }
 }

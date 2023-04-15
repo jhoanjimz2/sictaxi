@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { RespTaxisChatarrizados, TaxiChatarrizado } from 'src/app/interfaces';
 import { DownloadService } from 'src/app/services/download.service';
@@ -17,7 +18,8 @@ export class MatriculasCanceladasComponent {
   constructor( 
     private loading: LoadingService,
     private eS: EstadisticasService,
-    private download: DownloadService
+    private download: DownloadService,
+    private location: Location
   ) {
     this.pagina({pagina: 1});
   }
@@ -29,6 +31,10 @@ export class MatriculasCanceladasComponent {
         this.totalPages = data.pages;
         this.taxis = data.data;
         this.loading.hide();
+        if ( data.data.length < 1 ) {
+          this.location.back();
+          this.loading.error('Sin matriculas canceladas')
+        }
       }, error: (error: any) => {
         this.loading.hide();
         this.loading.error(error.error.message);

@@ -1,10 +1,13 @@
 import {Component, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Taxista } from 'src/app/interfaces';
-import { perfilTaxista } from 'src/assets/data/estadisticas';
+import { RespFichaVinculacion } from 'src/app/interfaces';
+import { EstadisticasService } from 'src/app/services/estadisticas.service';
+import { LoadingService } from 'src/app/services/loading.service';
+
 
 export interface DialogData {
-  idVinculacion: string;
+  idConductor: number;
+  completo: boolean;
 }
 
 
@@ -15,12 +18,28 @@ export interface DialogData {
   styleUrls: ['./modal-perfil-taxista.component.scss']
 })
 export class ModalPerfilTaxistaComponent {
-  taxista: Taxista = perfilTaxista;
+  taxista: RespFichaVinculacion = {} as RespFichaVinculacion;
   constructor(
-    dialogRef: MatDialogRef<ModalPerfilTaxistaComponent>,
-    @Inject(MAT_DIALOG_DATA) data: DialogData,
+    private dialogRef: MatDialogRef<ModalPerfilTaxistaComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private eS: EstadisticasService,
+    private loading: LoadingService,
   ) {
-    console.log(data.idVinculacion);
+    this.cargarData();
+  }
+  cargarData() {
+    this.loading.show();
+    this.eS.getPerfilConductor(this.data.idConductor).subscribe({
+      next: (data: RespFichaVinculacion) => {
+        this.loading.hide();
+        this.taxista = data;
+      },
+      error: (error: any) => {
+        this.loading.hide();
+        this.loading.error('Error al cargar los datos del conductor');
+        this.dialogRef.close();
+      }
+    })
   }
 
 

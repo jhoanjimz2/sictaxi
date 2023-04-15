@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Comentarios } from 'src/app/interfaces';
-import { ModalFichaVinculacionComponent } from 'src/app/modals/modal-ficha-vinculacion/modal-ficha-vinculacion.component';
 import { ModalQuejasTramitadasComponent } from 'src/app/modals/modal-quejas-tramitadas/modal-quejas-tramitadas.component';
 import { LoadingService } from 'src/app/services/loading.service';
 import { dataComentarioN } from 'src/assets/data/estadisticas';
 import { ModalBloquearConductorComponent } from '../../modals/modal-bloquear-conductor/modal-bloquear-conductor.component';
+import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
 
 @Component({
   selector: 'app-quejas',
@@ -48,9 +48,9 @@ export class QuejasComponent {
     });
     dialogRef.afterClosed().subscribe(result => {});
   }
-  datosConductor(idConductor: string) {
-    const dialogRef = this.dialog.open(ModalFichaVinculacionComponent, {
-      data: { idConductor },
+  datosConductor(idConductor: number) {
+    const dialogRef = this.dialog.open(ModalPerfilTaxistaComponent, {
+      data: { idConductor, completo: true },
       height: '90%',
       width: '1000px',
     });
