@@ -8,6 +8,7 @@ import { map } from "rxjs/operators";
 export class ConexionService {
 
   api: string = 'https://api.sictaxi.gov.co/api';
+  apipdf: string = 'https://apiqa.sictaxi.gov.co/api'
 
   constructor(private http: HttpClient) {}
 
@@ -48,6 +49,15 @@ export class ConexionService {
     let params = new HttpParams({ fromObject });
     let headers = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
     return this.http.post(this.api + ruta, data, { headers, params }).pipe(
+      map((data: any) => { 
+        return data; 
+      })
+    );
+  }
+  postAuthPDF(ruta: string, data?: any, fromObject?: any) {
+    let params = new HttpParams({ fromObject });
+    let headers = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
+    return this.http.post(this.apipdf + ruta, data, { headers, params }).pipe(
       map((data: any) => { 
         return data; 
       })

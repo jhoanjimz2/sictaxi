@@ -384,7 +384,7 @@
     </div>
     
     <div class="row ptb-30">
-        <div class="col-6 align-end"><button class="btn-imprimir"><img [src]="'assets/imprimir.svg' | imagenes">Imprimir</button></div>
+        <div class="col-6 align-end"><button class="btn-imprimir"(click)="descargar()"><img [src]="'assets/imprimir.svg' | imagenes">Imprimir</button></div>
         <div class="col-6 align-ini"><button class="btn-cerrar" mat-dialog-close>Cerrar</button></div>
     </div>
 </div>

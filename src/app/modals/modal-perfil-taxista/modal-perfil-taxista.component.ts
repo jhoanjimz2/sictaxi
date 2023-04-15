@@ -41,6 +41,26 @@ export class ModalPerfilTaxistaComponent {
       }
     })
   }
+  descargar() {
+    this.loading.show();
+    this.eS.descargarPdfProfile(this.data.idConductor).subscribe({
+      next: (data: any) => {
+        this.loading.exito('PDF generado correctamente');
+        this.loading.hide();
+        var a = document.createElement("a");
+        a.href = data.file;
+        a.download = data.name;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      },
+      error: (error: any) => {
+        this.loading.hide();
+        this.loading.error('Error al descargar PDF');
+        this.dialogRef.close();
+      }
+    })
+  }
 
 
 }

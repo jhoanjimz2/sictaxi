@@ -10,6 +10,7 @@ export interface TaxistaRegistrado {
     apellidos:                string;
     cedula:                   string;
     licenciaConduccion:       string;
+    direccion:                string;
     categoriaPase:            string;
     nombreEmpresa:            string;
     fechaUltimaRefrendaccion: Date;

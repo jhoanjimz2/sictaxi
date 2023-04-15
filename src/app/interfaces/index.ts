@@ -12,3 +12,4 @@ export * from './taxistas-registrados';
 export * from './taxistas-sin-licencia';
 export * from './taxistas-sin-refrendar';
 export * from './vinculaciones';
+export * from './parametros';

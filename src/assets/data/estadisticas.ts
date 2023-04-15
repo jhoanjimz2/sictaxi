@@ -2,10 +2,8 @@ import {
   Comentarios, 
   TaxistaEasy, 
   QuejaSiONoTramitada, 
-  PerfilDeVinculacion,
   GraficaComentarios,
   GraficaCalificaciones,
-  Taxista
 } from "src/app/interfaces";
 
 export const dataComentarioN: Comentarios[] = [
@@ -66,122 +64,6 @@ export const quejasSiTramitadas: QuejaSiONoTramitada[] = [
   { email: 'jhoanjimz2@gmail.com', nombre: 'Jhoan Alexander Jimenez Teran', telefono: '3052766362', fecha: '2022-06-03 21:23:45', comentarios: ['Comentario 1','Comentario 2', 'Comentario 3'] },
   { email: 'jhoanjimz2@gmail.com', nombre: 'Jhoan Alexander Jimenez Teran', telefono: '3052766362', fecha: '2022-06-03 21:23:45', comentarios: ['Comentario 1','Comentario 2', 'Comentario 3'] }
 ]
-
-export const perfilVinculacion: PerfilDeVinculacion = {
-  datosDelConductor: {
-    img                : "",
-    nombres            : "Javier Enrique",
-    apellidos          : "Lopez Cantillo",
-    licencia           : { value: "19562782", fechaVencimiento: new Date('26-11-2023') },
-    fechaDeNacimiento  : new Date('12-12-1981'),
-    categoriaDeLicencia: "C1",
-    EPS                : "MUTUAL SER",
-    ARL                : "No Registra",
-    fondoDePension     : "No Registra",
-    sexo               : "Masculino",
-    estadoCivil        : "Unión Libre",
-    direccion          : "Urb. Nuevo Horizonte Mz 12 Casa 8",
-    telefono           : "3176878261",
-    email              : "email@ejemplo.com",
-    grupoSanguineo     : "O",
-    RH                 : "Positivo"
-  },
-  informacionComplementaria: {
-    parentescoJefeHogar     : "Jefe De Hogar",
-    numeroDeHijos           : "2",
-    personasACargo          : "3",
-    estudiaActualmente      : "Si",
-    nivelEducativo          : "Bachiller",
-    tipoDeDiscapacidad      : "No Posee",
-    taxistaOcasional        : "No",
-    tiempoComoConductor     : "Meses",
-    realizaOtraLabor        : "No",
-    tiempoOtraLabor         : "0 Meses",
-    ingresosComoConductor   : "500.001-1.000.000",
-    ingresosOtraLabor       : "0-500.000",
-    estratoSocioeconomico   : "3",
-    tipoDeVivienda          : "Arrendada",
-    accesoAEnergia          : "Si",
-    accesoAAgua             : "Si",
-    accesoAGas              : "Si",
-    accesoAAlcantarillado   : "Si",
-    accesoARecoleccionBasura: "Si"
-  },
-  datosDeLaEmpresa: {
-    img            : "",
-    nombre         : "TAXIS SUPER EJECUTIVOS S.A.",
-    nit            : "800246789-0",
-    direccion      : "Cra 16 No. 22-12",
-    lineaDeAtencion: "4207621",
-    email          : "Taxissuperejecutivos@Gmail.Com"
-  },
-  datosDelVehiculo: {
-    placa                 : "TZU378",
-    numeroDeCenso         : "0626",
-    numeroDeMotor         : "G3LAEP036625",
-    numeroDeChasis        : "KNABE511AFT786266",
-    marca                 : "KIA",
-    modelo                : "2015",
-    cedulaDePropietario   : "85449582",
-    nombrePropietario     : "Guerra Ramirez Gustavo De Jesus",
-    direccionPropietario  : "No Registra",
-    telefonoPropietario   : "No Registra",
-    asociacion            : { value: "No Registra", tarjetaDeOperacion: "4069777"     , vence: new Date('26-01-2024') },
-    soat                  : { value: "83681610"   , aseguradora: "Mundial De Seguros" , vence: new Date('07-07-2023') },
-    tecnicoMecanica       : { value: "160675455"  , vence: new Date('04-08-2023') },
-    seguroContractual     : { value: "1161999"    , vence: new Date('01-10-2023') },
-    seguroExtracontractual: { value: "1161998"    , vence: new Date('01-10-2023') }
-  }
-}
-export const perfilTaxista: Taxista = {
-  datosDelConductor: {
-    img                : "",
-    nombres            : "Javier Enrique",
-    apellidos          : "Lopez Cantillo",
-    licencia           : { value: "19562782", fechaVencimiento: new Date('26-11-2023') },
-    fechaDeNacimiento  : new Date('12-12-1981'),
-    categoriaDeLicencia: "C1",
-    EPS                : "MUTUAL SER",
-    ARL                : "No Registra",
-    fondoDePension     : "No Registra",
-    sexo               : "Masculino",
-    estadoCivil        : "Unión Libre",
-    direccion          : "Urb. Nuevo Horizonte Mz 12 Casa 8",
-    telefono           : "3176878261",
-    email              : "email@ejemplo.com",
-    grupoSanguineo     : "O",
-    RH                 : "Positivo"
-  },
-  informacionComplementaria: {
-    parentescoJefeHogar     : "Jefe De Hogar",
-    numeroDeHijos           : "2",
-    personasACargo          : "3",
-    estudiaActualmente      : "Si",
-    nivelEducativo          : "Bachiller",
-    tipoDeDiscapacidad      : "No Posee",
-    taxistaOcasional        : "No",
-    tiempoComoConductor     : "Meses",
-    realizaOtraLabor        : "No",
-    tiempoOtraLabor         : "0 Meses",
-    ingresosComoConductor   : "500.001-1.000.000",
-    ingresosOtraLabor       : "0-500.000",
-    estratoSocioeconomico   : "3",
-    tipoDeVivienda          : "Arrendada",
-    accesoAEnergia          : "Si",
-    accesoAAgua             : "Si",
-    accesoAGas              : "Si",
-    accesoAAlcantarillado   : "Si",
-    accesoARecoleccionBasura: "Si"
-  },
-  datosDeLaEmpresa: {
-    img            : "",
-    nombre         : "TAXIS SUPER EJECUTIVOS S.A.",
-    nit            : "800246789-0",
-    direccion      : "Cra 16 No. 22-12",
-    lineaDeAtencion: "4207621",
-    email          : "Taxissuperejecutivos@Gmail.Com"
-  }
-}
 export const dataGraficaComentariosNeg: GraficaComentarios = { 
   labels: ["20/03/2023", "21/03/2023", "22/03/2023", "23/03/2023", "24/03/2023", "25/03/2023", "26/03/2023"],
   datasets: [

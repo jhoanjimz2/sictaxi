@@ -1,5 +1,5 @@
 <div class="contenedor">
-    <img [src]="'assets/editar2.svg'">
-    <img [src]="'assets/mas.svg'">
-    <img [src]="'assets/menos.svg'">
+    <img [src]="'assets/editar2.svg'" (click)="editar(action, id)">
+    <img [src]="'assets/mas.svg'" (click)="editar(action, null)">
+    <img [src]="'assets/menos.svg'" (click)="eliminar(action, id)">
 </div>

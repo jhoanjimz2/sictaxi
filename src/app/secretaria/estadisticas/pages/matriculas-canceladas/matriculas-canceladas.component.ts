@@ -33,7 +33,7 @@ export class MatriculasCanceladasComponent {
         this.loading.hide();
         if ( data.data.length < 1 ) {
           this.location.back();
-          this.loading.error('Sin matriculas canceladas')
+          this.loading.info('Sin matriculas canceladas')
         }
       }, error: (error: any) => {
         this.loading.hide();

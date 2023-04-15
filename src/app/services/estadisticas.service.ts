@@ -144,6 +144,10 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta' };
     return this.postAuth('/searchVehiculoConductorByVinculacion', { idConductor } ,params)
   }
+  descargarPdfProfile(idConductor: number) {
+    let params = { ciudad: 'SantaMarta' };
+    return this.postAuthPDF('/fichaConductorPDF', { idConductor } ,params)
+  }
   //TAXISTAS REGISTRADOS
 
 

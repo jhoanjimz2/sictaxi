@@ -15,6 +15,8 @@ import { ModalEliminarUsuarioComponent } from './modal-eliminar-usuario/modal-el
 import { ModalCambiarPasswordComponent } from './modal-cambiar-password/modal-cambiar-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalEliminarMatriculaComponent } from './modal-eliminar-matricula/modal-eliminar-matricula.component';
+import { ModalCrearParametroComponent } from './modal-crear-parametro/modal-crear-parametro.component';
+import { ModalEliminarParametroComponent } from './modal-eliminar-parametro/modal-eliminar-parametro.component';
 
 
 
@@ -31,6 +33,8 @@ import { ModalEliminarMatriculaComponent } from './modal-eliminar-matricula/moda
     ModalEliminarUsuarioComponent,
     ModalCambiarPasswordComponent,
     ModalEliminarMatriculaComponent,
+    ModalCrearParametroComponent,
+    ModalEliminarParametroComponent,
   ],
   imports: [
     CommonModule,

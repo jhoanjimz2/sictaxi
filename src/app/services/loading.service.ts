@@ -21,9 +21,11 @@ export class LoadingService {
   error(message: string) {
     Swal.fire('Error', message, 'error');
   }
-
   exito(message: string) {
     Swal.fire('Exito', message, 'success');
+  }
+  info(message: string) {
+    Swal.fire('', message, 'info');
   }
 
 }
