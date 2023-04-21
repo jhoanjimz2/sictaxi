@@ -1,9 +1,15 @@
-<div class="listado">
+<div class="listado" *ngIf="!cargando && taxistas.length">
     <div class="item d-flex ordenar" *ngFor="let taxista of taxistas | taxistasEasy : search">
-        <img [src]="taxista.img| imagenes" (click)="datosConductor(1)">
-        <label class="name" (click)="datosConductor(1)">{{taxista.name}} {{taxista.surname}}</label>
-        <label class="guion" (click)="datosConductor(1)">-</label>
-        <label class="placa" (click)="datosConductor(1)">PLACA: {{taxista.placa}}</label>
-        <div class="cant" (click)="quejasTramitadas(1)">{{taxista.cantidad}}</div>
+        <img [src]="taxista.img| imagenes" (click)="datosConductor(taxista.idConductor)">
+        <label class="name" (click)="datosConductor(taxista.idConductor)">{{taxista.name}} {{taxista.surname}}</label>
+        <label class="guion" (click)="datosConductor(taxista.idConductor)">-</label>
+        <label class="placa" (click)="datosConductor(taxista.idConductor)">PLACA: {{taxista.placa}}</label>
+        <div class="cant" (click)="quejasTramitadas(taxista.idVinculacion)">{{taxista.cantidad}}</div>
     </div>
+</div>
+<div class="texto" *ngIf="!cargando && !taxistas.length">
+    <label>No hay conductores</label>
+</div>
+<div class="loading" *ngIf="cargando">
+    <mat-spinner></mat-spinner>
 </div>

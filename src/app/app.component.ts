@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ComentariosService } from './services/comentarios.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,15 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'sictaxi';
-  constructor(private router: Router) {
-    if (localStorage.getItem('role') == 'Secretaria') this.router.navigateByUrl('/secretaria');
-    else this.router.navigateByUrl('/empresa');
+  constructor(
+    private router: Router,
+    private cS: ComentariosService
+  ) {
+    this.cS.cargarComentarios();
+    if (localStorage.getItem('role') == 'Secretaria') {
+      this.router.navigateByUrl('/secretaria');
+    } else {
+      this.router.navigateByUrl('/empresa');
+    }
   }
 }

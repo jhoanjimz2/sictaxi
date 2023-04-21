@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { subDays } from 'date-fns';
 
 @Component({
   selector: 'app-datetime',
@@ -13,6 +14,7 @@ export class DatetimeComponent {
     end: new FormControl<Date | null>(null),
   });
   maxDate = new Date();
+  minDate = new Date(subDays(new Date(), 7))
   selectDate() {
     if ( !this.range.value.end || !this.range.value.start) return;
     this.select.emit(this.range.value)

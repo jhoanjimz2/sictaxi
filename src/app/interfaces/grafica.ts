@@ -1,10 +1,27 @@
-export class Grafica {
+export interface Grafica {
     name:  string;
     value: number;
     color: string;
-    constructor() {
-        this.value = 0;
-        this.name  = '';
-        this.color = '';
-    }
+}
+export interface ReqGrafComentarios {
+    fechaInicial: string;
+    fechaFinal  : string;
+    type        : string;
+    comentarios?: string[];
+}
+export interface RespGraficaComentarios {
+    comentario: string;
+    graph:      Graph[];
+}
+export interface Graph {
+    fecha:    Date;
+    cantidad: number;
+}
+export interface Graficas {
+    labels:   string[];
+    datasets: Comentario[];
+}
+export interface Comentario {
+    data:  number[];
+    label: string;
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 import Chart from 'chart.js/auto';
-import { Comentarios, GraficaCalificaciones } from 'src/app/interfaces';
+import { Graficas } from 'src/app/interfaces';
 import { dataGraficaCalificaciones } from 'src/assets/data/estadisticas';
 
 @Component({
@@ -11,7 +10,7 @@ import { dataGraficaCalificaciones } from 'src/assets/data/estadisticas';
 })
 export class CardGraficaCalificacionesComponent implements OnInit {
   typeGrafic: number = 1;
-  dataGraficaCalificaciones: GraficaCalificaciones = dataGraficaCalificaciones;
+  dataGraficaCalificaciones: Graficas = dataGraficaCalificaciones;
   chart: any;
   ngOnInit(): void {
     this.createChart([]);

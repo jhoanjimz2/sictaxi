@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Comentarios } from 'src/app/interfaces';
 import { ModalQuejasTramitadasComponent } from 'src/app/modals/modal-quejas-tramitadas/modal-quejas-tramitadas.component';
 import { LoadingService } from 'src/app/services/loading.service';
-import { dataComentarioN } from 'src/assets/data/estadisticas';
 import { ModalBloquearConductorComponent } from '../../modals/modal-bloquear-conductor/modal-bloquear-conductor.component';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
 
@@ -13,8 +11,6 @@ import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista
   styleUrls: ['./quejas.component.scss']
 })
 export class QuejasComponent {
-  
-  comentariosN:Comentarios[] = dataComentarioN;
 
   constructor( 
     private loading: LoadingService,

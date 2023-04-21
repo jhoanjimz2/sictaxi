@@ -26,7 +26,18 @@ export class CardGraficaModelosComponent {
     this.chart = new Chart("ChartModelo",  {
       type: 'bar',
       data: speedData,
-      options: { plugins: { legend: df }, scales: { y: { grid: df }, x: { grid: df } } }
+      options: { 
+        plugins: { legend: df }, 
+        scales: { 
+          y: { grid: df }, 
+          x: { 
+            grid: df, 
+            ticks: { 
+              maxRotation: 90
+            } 
+          } 
+        }
+      }
     });
   }
 

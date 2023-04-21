@@ -4,11 +4,7 @@
     </div>
     <div class="row mt-10">
         <div class="col-6 flex-end">
-            <app-select 
-                [placeholder]="'Tipo de comentario negativo'" 
-                [comentarios]="comentariosN"
-                (select)="selectComent($event)"
-            />  
+            <app-select-neg (select)="selectComent($event)"/>   
         </div>
         <div class="col-6 flex-start">
             <app-datetime

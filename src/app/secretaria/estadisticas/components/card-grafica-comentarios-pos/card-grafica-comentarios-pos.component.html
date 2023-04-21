@@ -2,11 +2,7 @@
 
     <div class="row">
         <div class="col-6 flex-end">
-            <app-select 
-                [placeholder]="'Tipo de comentario positivo'" 
-                [comentarios]="comentariosP"
-                (select)="selectComent($event)"
-            />               
+            <app-select-pos (select)="selectComent($event)"/>               
         </div>
         <div class="col-6 flex-start">
             <app-datetime

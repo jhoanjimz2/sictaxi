@@ -33,6 +33,8 @@ export class ModalPerfilTaxistaComponent {
       next: (data: RespFichaVinculacion) => {
         this.loading.hide();
         this.taxista = data;
+        var div = (<HTMLDivElement>document.getElementById("contenedor-scroll"));
+        div.scrollTo({ top: 0, behavior: "smooth"})
       },
       error: (error: any) => {
         this.loading.hide();

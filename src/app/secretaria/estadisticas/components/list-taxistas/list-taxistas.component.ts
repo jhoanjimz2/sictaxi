@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TaxistaEasy } from 'src/app/interfaces';
+import { ConductorConCalificacion } from 'src/app/interfaces';
 import { ModalQuejasTramitadasComponent } from '../../../../modals/modal-quejas-tramitadas/modal-quejas-tramitadas.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
@@ -11,14 +11,15 @@ import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista
   styleUrls: ['./list-taxistas.component.scss']
 })
 export class ListTaxistasComponent {
-  @Input() taxistas!: TaxistaEasy[];
+  @Input() taxistas!: ConductorConCalificacion[];
   @Input() search!: string;
   @Input() evento: boolean = false;
+  @Input() cargando: boolean = false;
   constructor( public dialog: MatDialog ) {}
   quejasTramitadas(idVinculacion: number) {
     if (!this.evento) return;
     const dialogRef = this.dialog.open(ModalQuejasTramitadasComponent, {
-      data: { idVinculacion: idVinculacion },
+      data: { idVinculacion },
       height: '450px',
       width: '600px',
     });

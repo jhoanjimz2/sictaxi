@@ -1,5 +1,4 @@
 export * from './item-sidebar';
-export * from './estadisticas';
 export * from './empresas-autorizadas';
 export * from './cards';
 export * from './grafica';
@@ -13,3 +12,6 @@ export * from './taxistas-sin-licencia';
 export * from './taxistas-sin-refrendar';
 export * from './vinculaciones';
 export * from './parametros';
+export * from './comentarios';
+export * from './taxistas-comentarios';
+export * from './quejas';

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConexionService } from './conexion.service';
 import { HttpClient } from "@angular/common/http";
-import { GuardarAsociacion, GuardarEmpresa } from '../interfaces';
+import { GuardarAsociacion, GuardarEmpresa, ReqEstadisticaConductores, ReqGrafComentarios } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,19 @@ export class EstadisticasService extends ConexionService {
   getNivelEstrato() {
     let params = { ciudad: 'SantaMarta' };
     return this.getAuth('/getGraphTaxistaEstrato', params);
+  }
+  getGraficaComentarios(data: ReqGrafComentarios) {
+    return this.post('/getGraphComentariosCalificaciones', data);
+  }
+  getConductoresConQuejas(data: ReqEstadisticaConductores) {
+    return this.post('/getEstadisticaConductoresConQuejas', data);
+  }
+  getConductoresBienCalificados(data: ReqEstadisticaConductores) {
+    return this.post('/getEstadisticaConductoresBienCalificados', data);
+  }
+  getDataQuejas(idVinculacion: number) {
+    let params = { idVinculacion };
+    return this.getAuth('/getDataQuejas', params);
   }
 
 
@@ -175,6 +188,5 @@ export class EstadisticasService extends ConexionService {
     return this.getAuthExcel('/exportConductoresSinRefrendarExcel', params)
   }
   //TAXISTAS SIN REFRENDAR
-
  
 }

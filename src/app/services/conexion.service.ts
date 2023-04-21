@@ -12,8 +12,9 @@ export class ConexionService {
 
   constructor(private http: HttpClient) {}
 
-  get(ruta: string) {
-    return this.http.get(this.api + ruta).pipe(
+  get(ruta: string, fromObject?: any) {
+    let params = new HttpParams({ fromObject });
+    return this.http.get(this.api + ruta, { params }).pipe(
       map((data: any) => { 
         return data; 
       })

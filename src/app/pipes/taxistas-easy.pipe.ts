@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { TaxistaEasy } from '../interfaces';
+import { ConductorConCalificacion } from '../interfaces';
 
 @Pipe({
   name: 'taxistasEasy'
 })
 export class TaxistasEasyPipe implements PipeTransform {
 
-  transform(taxistas: TaxistaEasy[], texto: string): TaxistaEasy[] {
+  transform(taxistas: ConductorConCalificacion[], texto: string): ConductorConCalificacion[] {
     if (texto.length === 0) {
       return taxistas;
     }

@@ -10,9 +10,10 @@ import { ExportExcelComponent } from './export-excel/export-excel.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { BarraBusquedaComponent } from './barra-busqueda/barra-busqueda.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SelectComponent } from './select/select.component';
 import { DatetimeComponent } from './datetime/datetime.component';
 import { EditAddDeleteComponent } from './edit-add-delete/edit-add-delete.component';
+import { SelectNegComponent } from './select-neg/select-neg.component';
+import { SelectPosComponent } from './select-pos/select-pos.component';
 
 
 
@@ -24,9 +25,10 @@ import { EditAddDeleteComponent } from './edit-add-delete/edit-add-delete.compon
     LoadingComponent,
     ExportExcelComponent,
     BarraBusquedaComponent,
-    SelectComponent,
     DatetimeComponent,
-    EditAddDeleteComponent
+    EditAddDeleteComponent,
+    SelectNegComponent,
+    SelectPosComponent
   ],
   exports: [
     SidebarComponent,
@@ -35,9 +37,10 @@ import { EditAddDeleteComponent } from './edit-add-delete/edit-add-delete.compon
     LoadingComponent,
     ExportExcelComponent,
     BarraBusquedaComponent,
-    SelectComponent,
     DatetimeComponent,
-    EditAddDeleteComponent
+    EditAddDeleteComponent,
+    SelectNegComponent,
+    SelectPosComponent
   ],
   imports: [
     CommonModule,
