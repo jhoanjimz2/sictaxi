@@ -27,13 +27,16 @@ export class EstadisticasService extends ConexionService {
     return this.getAuth('/getGraphTaxistaEstrato', params);
   }
   getGraficaComentarios(data: ReqGrafComentarios) {
-    return this.post('/getGraphComentariosCalificaciones', data);
+    return this.postAuth('/getGraphComentariosCalificaciones', data);
+  }
+  getGraficaCalificaciones(params: { fechaInicial: string, fechaFinal: string }) {
+    return this.getAuth('/getGraphCalificaciones',params);
   }
   getConductoresConQuejas(data: ReqEstadisticaConductores) {
-    return this.post('/getEstadisticaConductoresConQuejas', data);
+    return this.postAuth('/getEstadisticaConductoresConQuejas', data);
   }
   getConductoresBienCalificados(data: ReqEstadisticaConductores) {
-    return this.post('/getEstadisticaConductoresBienCalificados', data);
+    return this.postAuth('/getEstadisticaConductoresBienCalificados', data);
   }
   getDataQuejas(idVinculacion: number) {
     let params = { idVinculacion };

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as moment from 'moment';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { ConductorConCalificacion, ReqEstadisticaConductores } from 'src/app/interfaces';
+import { subWeeks } from 'date-fns';
 
 @Component({
   selector: 'app-card-reporte-calificaciones',
@@ -14,14 +15,14 @@ export class CardReporteCalificacionesComponent {
   cargandoN: boolean = false;
   taxistasN: ConductorConCalificacion[] = [];
   fechaFinalN = moment(new Date()).format("YYYY-MM-DD");
-  fechaInicialN = moment(new Date()).format("YYYY-MM-DD");
+  fechaInicialN = moment(new Date(subWeeks(new Date(), 1))).format("YYYY-MM-DD");
   comentariosN: string[] = [];
   selectComentN(event: string[]) { this.comentariosN = event; this.cargarTaxistasQuejas(); }
 
   cargandoP: boolean = false;
   taxistasP: ConductorConCalificacion[] = [];
   fechaFinalP = moment(new Date()).format("YYYY-MM-DD");
-  fechaInicialP = moment(new Date()).format("YYYY-MM-DD");
+  fechaInicialP = moment(new Date(subWeeks(new Date(), 1))).format("YYYY-MM-DD");
   comentariosP: string[] = [];
   selectComentP(event: string[]) { this.comentariosP = event; this.cargarTaxistasBuenas(); }
 

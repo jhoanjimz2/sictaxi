@@ -10,7 +10,7 @@ export class BarHoySemanaMesComponent {
   @Output() select: EventEmitter<any> = new EventEmitter();
   @Input() cargando: boolean = false;
   @Input() titulo: string = '';
-  type:number = 1;
+  type:number = 2;
   hoy() {
     if( this.cargando ) return;
     this.type = 1;

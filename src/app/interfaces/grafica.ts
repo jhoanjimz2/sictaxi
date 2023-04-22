@@ -25,3 +25,11 @@ export interface Comentario {
     data:  number[];
     label: string;
 }
+export interface RespGraficaCalificaciones {
+    positive: Graph[];
+    negative: Graph[];
+}
+export interface Graph {
+    fecha:    Date;
+    cantidad: number;
+}

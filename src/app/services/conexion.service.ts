@@ -55,6 +55,15 @@ export class ConexionService {
       })
     );
   }
+  postAuthExcel(ruta: string, data?: any ,fromObject?: any) {
+    let params = new HttpParams({ fromObject });
+    let headers = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
+    return this.http.post(this.api + ruta, data, { headers, params, responseType: 'blob' as 'json'  }).pipe(
+      map((data: any) => { 
+        return data; 
+      })
+    );
+  }
   postAuthPDF(ruta: string, data?: any, fromObject?: any) {
     let params = new HttpParams({ fromObject });
     let headers = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
