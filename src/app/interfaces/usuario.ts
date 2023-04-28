@@ -13,7 +13,7 @@ export interface Usuario {
     direccion:               string;
     email:                   string;
     idciudad:                number;
-    fotoUrl:                 null;
+    fotoUrl:                 string;
     tipoImpresion:           string;
     tipoTarjeton:            string;
     solicitarCambioclave:    null;

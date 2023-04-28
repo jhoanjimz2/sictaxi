@@ -3,7 +3,7 @@
         <input
             formControlName="search"
             [placeholder]="placeholder"
-            (keyup)="buscar()"
+            (keyup)="debounce()"
         />
         <img [src]="'assets/buscar.svg'">
     </div>

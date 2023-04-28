@@ -1,6 +1,6 @@
 <div class="contenedor">
     <div class="row mt-20">
-        <app-barra-busqueda [placeholder]="'Buscar por nombre'"/>
+        <app-barra-busqueda [placeholder]="'Buscar por placa o cedula'" (searchEvent)="buscar($event)"/>
     </div>
     <div class="row mt-10">
         <div class="col-6 flex-end">
@@ -22,22 +22,22 @@
     </div>
     <div class="row pb-80">
         <div class="col">
-            <div class="card-taxista sombra" *ngFor="let taxista of [1,1,1,1,1,1,1,1,1]">
+            <div class="card-taxista sombra" *ngFor="let conductor of conductoresConQuejas">
                 <div class="primero">
-                    <img [src]="'' | imagenes" (click)="datosConductor(1)">
+                    <img [src]="'' | imagenes" (click)="datosConductor(conductor.idConductor)">
                 </div>
                 <div class="segundo">
                     <div class="l-h">
-                        <label class="negrita">Jesús Alberto Tamayo Guerrero - <span>Cédula/Licencia: 85450287</span></label><br>
-                        <label class="negrita"><span>Quejas: </span>1</label><br>
-                        <label class="negrita"><span>Quejas tramitadas: </span>0</label>
+                        <label class="negrita">{{conductor.name}} {{conductor.surname}} - <span>Cédula/Licencia: {{'--------'}}</span></label><br>
+                        <label class="negrita"><span>Quejas: </span>{{conductor.cantidad}}</label><br>
+                        <label class="negrita"><span>Quejas tramitadas: </span>{{conductor.cantidadTramitada}}</label>
                     </div>
                 </div>
                 <div class="tercero">
                     <div>
-                        <button class="button" (click)="quejasTramitadas('1')"><img [src]="'assets/tramitar.svg' | imagenes"><label>Tramitar</label></button>
+                        <button class="button" (click)="quejasTramitadas(conductor.idVinculacion)"><img [src]="'assets/tramitar.svg' | imagenes"><label>Tramitar</label></button>
                         <div class="h-10"></div>
-                        <button class="button" (click)="bloquear('1')"><img [src]="'assets/bloquear.svg' | imagenes"><label>Bloquear</label></button>
+                        <button class="button" (click)="bloquear(conductor.idVinculacion)"><img [src]="'assets/bloquear.svg' | imagenes"><label>Bloquear</label></button>
                     </div>
                 </div>
                 <div class="cuarto">
@@ -45,18 +45,19 @@
                 </div>
                 <div class="quinto">
                     <div class="l-h">
-                        <label class="negrita">HYUNDAI Modelo: <span>2012</span></label><br>
-                        <label class="negrita">Placa: <span>UQS546</span></label><br>
-                        <label class="negrita">Número de motor: <span>GE398UEJJE9U3EJ</span></label><br>
-                        <label class="negrita">Número de chasis: <span>MALSNNSMOOANNSMSOMOA</span></label><br>
+                        <label class="negrita">{{conductor.marca}} Modelo: <span>{{conductor.modelo}}</span></label><br>
+                        <label class="negrita">Placa: <span>{{conductor.placa}}</span></label><br>
+                        <label class="negrita">Número de motor: <span>{{conductor.numeroMotor}}</span></label><br>
+                        <label class="negrita">Número de chasis: <span>{{conductor.numeroChasis}}</span></label><br>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="footer-paginacion ">
-        <app-paginacion 
-            [cantidad]="40"
+        <app-paginacion
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { FechasVencidasRoutingModule } from './fechas-vencidas-routing.module';
 import { FechasVencidasComponent } from './fechas-vencidas.component';
+import { PipesModule } from 'src/app/pipes/pipes.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { FechasVencidasComponent } from './fechas-vencidas.component';
   ],
   imports: [
     CommonModule,
-    FechasVencidasRoutingModule
+    FechasVencidasRoutingModule,
+    SharedModule,
+    PipesModule
   ]
 })
 export class FechasVencidasModule { }

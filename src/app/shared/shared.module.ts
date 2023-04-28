@@ -14,6 +14,12 @@ import { DatetimeComponent } from './datetime/datetime.component';
 import { EditAddDeleteComponent } from './edit-add-delete/edit-add-delete.component';
 import { SelectNegComponent } from './select-neg/select-neg.component';
 import { SelectPosComponent } from './select-pos/select-pos.component';
+import { BarHoySemanaMesComponent } from './bar-hoy-semana-mes/bar-hoy-semana-mes.component';
+import { ListTaxistasComponent } from './list-taxistas/list-taxistas.component';
+import { CardReporteCalificacionesComponent } from './card-reporte-calificaciones/card-reporte-calificaciones.component';
+import { CardGraficaCalificacionesComponent } from './card-grafica-calificaciones/card-grafica-calificaciones.component';
+import { CardGraficaComentariosNegComponent } from './card-grafica-comentarios-neg/card-grafica-comentarios-neg.component';
+import { CardGraficaComentariosPosComponent } from './card-grafica-comentarios-pos/card-grafica-comentarios-pos.component';
 
 
 
@@ -28,7 +34,13 @@ import { SelectPosComponent } from './select-pos/select-pos.component';
     DatetimeComponent,
     EditAddDeleteComponent,
     SelectNegComponent,
-    SelectPosComponent
+    SelectPosComponent,
+    BarHoySemanaMesComponent,
+    ListTaxistasComponent,
+    CardReporteCalificacionesComponent,
+    CardGraficaComentariosPosComponent,
+    CardGraficaComentariosNegComponent,
+    CardGraficaCalificacionesComponent
   ],
   exports: [
     SidebarComponent,
@@ -40,7 +52,13 @@ import { SelectPosComponent } from './select-pos/select-pos.component';
     DatetimeComponent,
     EditAddDeleteComponent,
     SelectNegComponent,
-    SelectPosComponent
+    SelectPosComponent,
+    BarHoySemanaMesComponent,
+    ListTaxistasComponent,
+    CardReporteCalificacionesComponent,
+    CardGraficaComentariosPosComponent,
+    CardGraficaComentariosNegComponent,
+    CardGraficaCalificacionesComponent
   ],
   imports: [
     CommonModule,

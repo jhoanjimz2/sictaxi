@@ -1,1 +1,28 @@
-<p>agregar-conductor works!</p>
+<div class="contenedor">
+    <div class="row mt-10">
+        <div class="col">
+            <label class="titulo">Agregar conductor</label>
+        </div>
+    </div>
+    <div class="row mt-10">
+        <div class="col-6">
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 1}" (click)="seleccionado = 1">
+                <img src="assets/sidebar/agregarconductor.svg">Conductor
+            </button>
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 2}" (click)="seleccionado = 2">
+                <img src="assets/sidebar/user.svg">Inf. complementaria
+            </button>
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 3}" (click)="seleccionado = 3">
+                <img src="assets/taxi.svg">Vehículo
+            </button>
+        </div>
+        <div class="col-6"></div>
+    </div>
+    <div class="row mt-20">
+        <div class="col">
+            <app-conductor *ngIf="seleccionado == 1" class="animado animate__animated animate__fadeInRight"/>
+            <app-info-complementaria *ngIf="seleccionado == 2" class="animado animate__animated animate__fadeInRight"/>
+            <app-vehiculo *ngIf="seleccionado == 3" class="animado animate__animated animate__fadeInRight"/>
+        </div>
+    </div>
+</div>

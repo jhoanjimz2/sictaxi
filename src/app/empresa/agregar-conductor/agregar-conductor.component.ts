@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./agregar-conductor.component.scss']
 })
 export class AgregarConductorComponent {
-
+  seleccionado: number = 1;
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { subDays } from 'date-fns';
+import { subWeeks } from 'date-fns';
 import { Graficas, RespGraficaCalificaciones } from 'src/app/interfaces';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -17,7 +17,7 @@ export class CardGraficaCalificacionesComponent {
   dataGraficaCalificaciones: Graficas = {} as Graficas;
   chart: any;
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
-  fechaInicial = moment(subDays(new Date(), 8)).format("YYYY-MM-DD");
+  fechaInicial = moment(subWeeks(new Date(), 1)).format("YYYY-MM-DD");
 
   constructor( 
     private eS: EstadisticasService,

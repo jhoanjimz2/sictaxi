@@ -10,6 +10,8 @@ import { subWeeks } from 'date-fns';
   styleUrls: ['./card-reporte-calificaciones.component.scss']
 })
 export class CardReporteCalificacionesComponent {
+  tipo: string = localStorage.getItem('role')!.toString()
+
   buscar: string = '';
 
   cargandoN: boolean = false;
@@ -17,18 +19,26 @@ export class CardReporteCalificacionesComponent {
   fechaFinalN = moment(new Date()).format("YYYY-MM-DD");
   fechaInicialN = moment(new Date(subWeeks(new Date(), 1))).format("YYYY-MM-DD");
   comentariosN: string[] = [];
-  selectComentN(event: string[]) { this.comentariosN = event; this.cargarTaxistasQuejas(); }
+  selectComentN(event: string[]) { 
+    this.comentariosN = event; 
+    if (this.tipo == 'Empresa') {}
+    else if (this.tipo == 'Secretaria') {this.cargarTaxistasQuejas();} 
+  }
 
   cargandoP: boolean = false;
   taxistasP: ConductorConCalificacion[] = [];
   fechaFinalP = moment(new Date()).format("YYYY-MM-DD");
   fechaInicialP = moment(new Date(subWeeks(new Date(), 1))).format("YYYY-MM-DD");
   comentariosP: string[] = [];
-  selectComentP(event: string[]) { this.comentariosP = event; this.cargarTaxistasBuenas(); }
+  selectComentP(event: string[]) { 
+    this.comentariosP = event; 
+    if (this.tipo == 'Empresa') {}
+    else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas();} 
+  }
 
   constructor( private eS: EstadisticasService ) {
-    this.cargarTaxistasBuenas();
-    this.cargarTaxistasQuejas();
+    if (this.tipo == 'Empresa') {}
+    else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas(); this.cargarTaxistasQuejas();} 
   }
 
   cargarTaxistasBuenas() {
@@ -72,15 +82,18 @@ export class CardReporteCalificacionesComponent {
   selectDateP({start, end}: any) {
     this.fechaFinalP = moment(end).format("YYYY-MM-DD");
     this.fechaInicialP = moment(start).format("YYYY-MM-DD");
-    this.cargarTaxistasBuenas();
+    if (this.tipo == 'Empresa') {}
+    else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas();} 
   }
   selectDateN({start, end}: any) {
     this.fechaFinalN = moment(end).format("YYYY-MM-DD");
     this.fechaInicialN = moment(start).format("YYYY-MM-DD");
-    this.cargarTaxistasQuejas();
+    if (this.tipo == 'Empresa') {}
+    else if (this.tipo == 'Secretaria') {this.cargarTaxistasQuejas();} 
   }
   buscando(event: any) {
     this.buscar = event;
   }
+  
 }
 

@@ -14,4 +14,5 @@ export * from './vinculaciones';
 export * from './parametros';
 export * from './comentarios';
 export * from './taxistas-comentarios';
+export * from './calificacion';
 export * from './quejas';

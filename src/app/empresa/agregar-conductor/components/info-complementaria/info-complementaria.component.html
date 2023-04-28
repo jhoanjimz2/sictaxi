@@ -1,0 +1,129 @@
+<div class="card-formulario sombra">
+
+    <div class="row">
+        <div class="col-3">
+            <label class="subtitulo">Parentesco jefe hogar</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Número de hijos</label>
+            <input type="text" class="input">
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Personas a cargo</label>
+            <input type="text" class="input">
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Nivel educativo</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="row mt-10">
+        <div class="col-3">
+            <label class="subtitulo">¿Estudia actualmente?</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Tipo de discapacidad</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Taxista ocasional</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Tiempo como conductor</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="row mt-10">
+        <div class="col-3">
+            <label class="subtitulo">Ingresos como conductor</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">¿Realiza otra labor?</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Estatro socioeconomico</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Tipo de vivienda</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="row mt-10">
+        <div class="col-3">
+            <label class="subtitulo">Acceso a energía</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Acceso a agua</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Acceso a gas</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <label class="subtitulo">Acceso a alcantarillado</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="row mt-10">
+        <div class="col-3">
+            <label class="subtitulo">Acceso a recoleción de basura</label>
+            <select type="text" class="input">
+                <option value="" *ngFor="let it of [1,1,1,1]; let i = index">opcion {{i}}</option>
+            </select>
+        </div>
+    </div>
+    
+
+    <div class="row mt-20">
+        <div class="col-4"></div>
+        <div class="col-4 end">
+        </div>
+        <div class="col-4 end">
+            <div class="flexible end">
+                <button class="sombra bg-b"><img [src]="'assets/guardar.svg'">Guardar todo</button>
+                <div class="separador"></div>
+                <button class="sombra bg-r" [routerLink]="'/empresa/buscar-conductores'">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

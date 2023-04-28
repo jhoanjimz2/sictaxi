@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ConductorConCalificacion } from 'src/app/interfaces';
-import { ModalQuejasTramitadasComponent } from '../../../../modals/modal-quejas-tramitadas/modal-quejas-tramitadas.component';
+import { ModalQuejasTramitadasComponent } from 'src/app/modals/modal-quejas-tramitadas/modal-quejas-tramitadas.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
+import { ModalBuenasCalificacionesComponent } from 'src/app/modals/modal-buenas-calificaciones/modal-buenas-calificaciones.component';
 
 
 @Component({
@@ -16,9 +17,11 @@ export class ListTaxistasComponent {
   @Input() evento: boolean = false;
   @Input() cargando: boolean = false;
   constructor( public dialog: MatDialog ) {}
-  quejasTramitadas(idVinculacion: number) {
-    if (!this.evento) return;
-    const dialogRef = this.dialog.open(ModalQuejasTramitadasComponent, {
+  calificaciones(idVinculacion: number) {
+    let componente: any;
+    if (this.evento) componente = ModalQuejasTramitadasComponent;
+    else componente = ModalBuenasCalificacionesComponent;
+    const dialogRef = this.dialog.open(componente, {
       data: { idVinculacion },
       height: '450px',
       width: '600px',

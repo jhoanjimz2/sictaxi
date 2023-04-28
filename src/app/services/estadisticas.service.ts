@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConexionService } from './conexion.service';
 import { HttpClient } from "@angular/common/http";
-import { GuardarAsociacion, GuardarEmpresa, ReqEstadisticaConductores, ReqGrafComentarios } from '../interfaces';
+import { GuardarAsociacion, GuardarEmpresa, ReqConductoresConQuejas, ReqEstadisticaConductores, ReqGrafComentarios } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +41,14 @@ export class EstadisticasService extends ConexionService {
   getDataQuejas(idVinculacion: number) {
     let params = { idVinculacion };
     return this.getAuth('/getDataQuejas', params);
+  }
+  getDataQuejasTramitadas(idVinculacion: number) {
+    let params = { idVinculacion };
+    return this.getAuth('/getDataQuejasTramitadas', params);
+  }
+  getDataBuenasCalificaciones(idVinculacion: number) {
+    let params = { idVinculacion };
+    return this.getAuth('/getDataBuenasCalificaciones', params);
   }
 
 
@@ -191,5 +199,14 @@ export class EstadisticasService extends ConexionService {
     return this.getAuthExcel('/exportConductoresSinRefrendarExcel', params)
   }
   //TAXISTAS SIN REFRENDAR
+
+
+
+  //QUEJAS
+  getConductoresConQuejasPaginado(page: number, data: ReqConductoresConQuejas) {
+    let params = { page }
+    return this.postAuth('/getConductoresConQuejas', data ,params);
+  }
+  //QUEJAS
  
 }

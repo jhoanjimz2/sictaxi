@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <div class="col colitems">
-            <div class="card-quejas" [ngClass]="{'list': estado}" *ngFor="let queja of quejasNoTramitadas">
+            <div class="card-quejas" [ngClass]="{'list': estado}" *ngFor="let queja of quejasNoTramitadas| orderDate">
 
                 <div class="comentarios" *ngFor="let comentario of queja.comentarios"><div class="check"></div><label>{{comentario.comentario}}</label></div>
                 <div class="info-usuario">
@@ -29,7 +29,7 @@
 
             </div>
 
-            <div class="card-quejas" [ngClass]="{'list': !estado}" *ngFor="let queja of quejasSiTramitadas">
+            <div class="card-quejas" [ngClass]="{'list': !estado}" *ngFor="let queja of quejasSiTramitadas| orderDate">
 
                 <div class="comentarios" *ngFor="let comentario of queja.comentarios"><div class="checkTramitado"></div><label>{{comentario.comentario}}</label></div>
                 <div class="info-usuario">

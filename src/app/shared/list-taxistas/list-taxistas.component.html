@@ -4,7 +4,7 @@
         <label class="name" (click)="datosConductor(taxista.idConductor)">{{taxista.name}} {{taxista.surname}}</label>
         <label class="guion" (click)="datosConductor(taxista.idConductor)">-</label>
         <label class="placa" (click)="datosConductor(taxista.idConductor)">PLACA: {{taxista.placa}}</label>
-        <div class="cant" (click)="quejasTramitadas(taxista.idVinculacion)">{{taxista.cantidad}}</div>
+        <div class="cant" (click)="calificaciones(taxista.idVinculacion)">{{taxista.cantidad}}</div>
     </div>
 </div>
 <div class="texto" *ngIf="!cargando && !taxistas.length">

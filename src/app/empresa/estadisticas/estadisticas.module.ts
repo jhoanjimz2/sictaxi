@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { EstadisticasRoutingModule } from './estadisticas-routing.module';
 import { EstadisticasComponent } from './estadisticas.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { EstadisticasComponent } from './estadisticas.component';
   ],
   imports: [
     CommonModule,
-    EstadisticasRoutingModule
+    EstadisticasRoutingModule,
+    SharedModule
   ]
 })
 export class EstadisticasModule { }

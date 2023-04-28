@@ -22,6 +22,7 @@ export class SidebarComponent {
   ) {
     if( this.user.rol == 'Secretaria' ) this.items = secretaria;
     else this.items = empresa;
+    console.log(this.user)
   }
   logout() {
     this.loading.show();

@@ -10,13 +10,7 @@ import { CardGraficaEstratoComponent } from './components/card-grafica-estrato/c
 import { CardGraficaModelosComponent } from './components/card-grafica-modelos/card-grafica-modelos.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BarHoySemanaMesComponent } from './components/bar-hoy-semana-mes/bar-hoy-semana-mes.component';
-import { ListTaxistasComponent } from './components/list-taxistas/list-taxistas.component';
 import { PipesModule } from '../../pipes/pipes.module';
-import { CardGraficaComentariosPosComponent } from './components/card-grafica-comentarios-pos/card-grafica-comentarios-pos.component';
-import { CardGraficaComentariosNegComponent } from './components/card-grafica-comentarios-neg/card-grafica-comentarios-neg.component';
-import { CardGraficaCalificacionesComponent } from './components/card-grafica-calificaciones/card-grafica-calificaciones.component';
-import { CardReporteCalificacionesComponent } from './components/card-reporte-calificaciones/card-reporte-calificaciones.component';
 
 @NgModule({
   declarations: [
@@ -24,12 +18,6 @@ import { CardReporteCalificacionesComponent } from './components/card-reporte-ca
     CardGraficaModelosComponent,
     CardGraficaEducacionComponent,
     CardGraficaEstratoComponent,
-    BarHoySemanaMesComponent,
-    ListTaxistasComponent,
-    CardGraficaComentariosPosComponent,
-    CardGraficaComentariosNegComponent,
-    CardGraficaCalificacionesComponent,
-    CardReporteCalificacionesComponent
   ],
   imports: [
     CommonModule,

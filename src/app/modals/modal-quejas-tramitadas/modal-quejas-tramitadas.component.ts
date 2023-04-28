@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { RespQuejasConductor } from 'src/app/interfaces';
+import { Calificacion } from 'src/app/interfaces';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -16,8 +16,8 @@ export interface DialogData {
 export class ModalQuejasTramitadasComponent {
 
   estado: boolean = false;
-  quejasNoTramitadas: RespQuejasConductor[] = [];
-  quejasSiTramitadas: RespQuejasConductor[] = [];
+  quejasNoTramitadas: Calificacion[] = [];
+  quejasSiTramitadas: Calificacion[] = [];
 
   constructor(
     private dialogRef: MatDialogRef<ModalQuejasTramitadasComponent>,
@@ -26,19 +26,33 @@ export class ModalQuejasTramitadasComponent {
     private eS: EstadisticasService
   ) {
     this.cargarQuejas();
+    this.cargarQuejasTramitadas();
   }
 
   cargarQuejas() {
     this.loading.show();
     this.eS.getDataQuejas(this.data.idVinculacion).subscribe({
-      next: (data: RespQuejasConductor[]) => {
+      next: (data: Calificacion[]) => {
         this.loading.hide();
         this.quejasNoTramitadas = data;
+      },
+      error: (error: any) => {
+        this.loading.hide();
+        this.loading.error('Error carga calificaciones');
+        this.dialogRef.close();
+      }
+    })
+  }
+  cargarQuejasTramitadas() {
+    this.loading.show();
+    this.eS.getDataQuejasTramitadas(this.data.idVinculacion).subscribe({
+      next: (data: Calificacion[]) => {
+        this.loading.hide();
         this.quejasSiTramitadas = data;
       },
       error: (error: any) => {
         this.loading.hide();
-        this.loading.error('Error carga quejas');
+        this.loading.error('Error carga calificaciones');
         this.dialogRef.close();
       }
     })

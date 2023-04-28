@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ModalEliminarMatriculaComponent } from './modal-eliminar-matricula/modal-eliminar-matricula.component';
 import { ModalCrearParametroComponent } from './modal-crear-parametro/modal-crear-parametro.component';
 import { ModalEliminarParametroComponent } from './modal-eliminar-parametro/modal-eliminar-parametro.component';
+import { ModalBuenasCalificacionesComponent } from './modal-buenas-calificaciones/modal-buenas-calificaciones.component';
 
 
 
@@ -35,6 +36,7 @@ import { ModalEliminarParametroComponent } from './modal-eliminar-parametro/moda
     ModalEliminarMatriculaComponent,
     ModalCrearParametroComponent,
     ModalEliminarParametroComponent,
+    ModalBuenasCalificacionesComponent,
   ],
   imports: [
     CommonModule,

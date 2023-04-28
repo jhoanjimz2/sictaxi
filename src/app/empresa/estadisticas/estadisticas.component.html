@@ -1,1 +1,42 @@
-<p>estadisticas works!</p>
+<div class="contenedor-70">
+
+    <div class="grid">
+        <div class="row">
+            <div class="col-2-4">
+                <app-card-simple [titulo]="'Taxis Registrados'"  [data]="1875" [route]="''"/>
+            </div>
+            <div class="col-2-4">
+                <app-card-simple [titulo]="'Documentos vencidos'"  [data]="192" [route]="''"/>
+            </div>
+            <div class="col-2-4">
+                <app-card-simple [titulo]="'Próximos en vencerse'"  [data]="50" [route]="''"/>
+            </div>
+            <div class="col-2-4">
+                <app-card-simple [titulo]="'Taxistas registrados'"  [data]="0" [route]="''"/>
+            </div>
+            <div class="col-2-4">
+                <app-card-simple [titulo]="'Matrículas canceladas'"  [data]="50" [route]="''"/>
+            </div>
+        </div>
+        <div class="row mt-20">
+            <div class="col">
+                <app-card-reporte-calificaciones/>
+            </div>
+        </div>
+        <div class="row mt-50">
+            <div class="col">
+                <app-card-grafica-calificaciones/>
+            </div>
+        </div>
+        <div class="row mt-50">
+            <div class="col">
+                <app-card-grafica-comentarios-neg/>
+            </div>
+        </div>
+        <div class="row mt-50">
+            <div class="col">
+                <app-card-grafica-comentarios-pos/>
+            </div>
+        </div>
+    </div>
+</div>
