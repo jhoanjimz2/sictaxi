@@ -50,6 +50,14 @@ export class EstadisticasService extends ConexionService {
     let params = { idVinculacion };
     return this.getAuth('/getDataBuenasCalificaciones', params);
   }
+  getDataDocumentosVencidos(page: number) {
+    let params = { ciudad: 'Santa Marta', page };
+    return this.getAuth('/getDataDocumentosVencidos', params);
+  }
+  getExcelDocumentoVencidos() {
+    let params = { ciudad: 'SantaMarta' };
+    return this.getAuthExcel('/exportDocumentoVencidos', params)
+  }
 
 
   //EMPRESAS AUTORIZADAS

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ImagenesPipe } from './imagenes.pipe';
 import { TaxistasEasyPipe } from './taxistas-easy.pipe';
 import { OrderDatePipe } from './order-date.pipe';
+import { FechasVencidasPipe } from './fechas-vencidas.pipe';
 
 
 
@@ -10,12 +11,14 @@ import { OrderDatePipe } from './order-date.pipe';
   declarations: [
     ImagenesPipe,
     TaxistasEasyPipe,
-    OrderDatePipe
+    OrderDatePipe,
+    FechasVencidasPipe
   ],
   exports: [
     ImagenesPipe,
     TaxistasEasyPipe,
-    OrderDatePipe
+    OrderDatePipe,
+    FechasVencidasPipe
   ],
   imports: [
     CommonModule
