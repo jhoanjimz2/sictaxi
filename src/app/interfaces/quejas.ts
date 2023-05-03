@@ -3,7 +3,8 @@ export interface ReqConductoresConQuejas {
     fechaInicial: string;
     fechaFinal:   string;
     comentarios:  string[] | undefined;
-    placa:       string | undefined;
+    placa:        string | undefined;
+    cedula:       string | undefined;
 }
 
 export interface RespConductoresConQuejas {
@@ -25,4 +26,5 @@ export interface ConductoresConQuejas {
     estado:            string;
     cantidad:          number;
     cantidadTramitada: number;
+    cedula:            string;
 }

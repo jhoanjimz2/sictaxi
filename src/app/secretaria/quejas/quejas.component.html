@@ -28,7 +28,7 @@
                 </div>
                 <div class="segundo">
                     <div class="l-h">
-                        <label class="negrita">{{conductor.name}} {{conductor.surname}} - <span>Cédula/Licencia: {{'--------'}}</span></label><br>
+                        <label class="negrita">{{conductor.name}} {{conductor.surname}} - <span>Cédula/Licencia: {{conductor.cedula}}</span></label><br>
                         <label class="negrita"><span>Quejas: </span>{{conductor.cantidad}}</label><br>
                         <label class="negrita"><span>Quejas tramitadas: </span>{{conductor.cantidadTramitada}}</label>
                     </div>
@@ -37,7 +37,8 @@
                     <div>
                         <button class="button" (click)="quejasTramitadas(conductor.idVinculacion)"><img [src]="'assets/tramitar.svg' | imagenes"><label>Tramitar</label></button>
                         <div class="h-10"></div>
-                        <button class="button" (click)="bloquear(conductor.idVinculacion)"><img [src]="'assets/bloquear.svg' | imagenes"><label>Bloquear</label></button>
+                        <button *ngIf="conductor.estado == 'Activa'" class="button" (click)="bloquear(conductor)"><img [src]="'assets/bloquear.svg' | imagenes"><label>Bloquear</label></button>
+                        <button *ngIf="conductor.estado == 'Bloqueada'" class="button" (click)="desbloquear(conductor)"><img [src]="'assets/bloquear.svg' | imagenes"><label>Desbloquear</label></button>
                     </div>
                 </div>
                 <div class="cuarto">

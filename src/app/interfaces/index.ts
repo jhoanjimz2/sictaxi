@@ -17,3 +17,4 @@ export * from './taxistas-comentarios';
 export * from './calificacion';
 export * from './quejas';
 export * from './fechas-vencidas';
+export * from './conductores';

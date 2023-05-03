@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ConductorSearch, RespBuscarConductores } from 'src/app/interfaces';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
+import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
@@ -9,17 +11,33 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./buscar-conductores.component.scss']
 })
 export class BuscarConductoresComponent {
+
+  conductores: ConductorSearch[] = [];
+  totalPages: number = 0;
+  paginaActual: number = 0;
+  cedula: string = '';
+
   constructor( 
     private loading: LoadingService,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private eS: EstadisticasService
+  ) { this.pagina({ pagina: 1 }); }
 
   pagina({pagina}: any) {
     this.loading.show();
-    console.log(pagina)
-    setTimeout(() => {
-      this.loading.hide();
-    }, 500)
+    this.paginaActual = pagina;
+    this.eS.getConductoresGeneral(pagina, this.cedula).subscribe({
+      next: (data: RespBuscarConductores) => {
+        this.totalPages = data.pages;
+        this.conductores = data.data;
+        this.loading.hide();
+      }, error: (error: any) => {
+        this.totalPages = 0;
+        this.conductores = [];
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
   datosConductor(idConductor: string) {
     const dialogRef = this.dialog.open(ModalPerfilTaxistaComponent, {
@@ -28,5 +46,9 @@ export class BuscarConductoresComponent {
       width: '1000px',
     });
     dialogRef.afterClosed().subscribe(result => {});
+  }
+  buscar(busca: string) {
+    this.cedula = busca;
+    this.pagina({ pagina: 1 });
   }
 }

@@ -9,32 +9,33 @@ interface data {
 }
 
 @Component({
-  selector: 'app-modal-bloquear-conductor',
-  templateUrl: './modal-bloquear-conductor.component.html',
-  styleUrls: ['./modal-bloquear-conductor.component.scss']
+  selector: 'app-modal-desbloquear-conductor',
+  templateUrl: './modal-desbloquear-conductor.component.html',
+  styleUrls: ['./modal-desbloquear-conductor.component.scss']
 })
-export class ModalBloquearConductorComponent {
+export class ModalDesbloquearConductorComponent {
 
   constructor(
-    private dialogRef: MatDialogRef<ModalBloquearConductorComponent>,
+    private dialogRef: MatDialogRef<ModalDesbloquearConductorComponent>,
     @Inject(MAT_DIALOG_DATA) private data: data,
     private eS: EstadisticasService,
     private loading: LoadingService
   ) {}
 
-  bloquear() {
+  desbloquear() {
     this.loading.show();
-    this.eS.bloquearConductor(this.data.conductor.idVinculacion).subscribe({
+    this.eS.desbloquearConductor(this.data.conductor.idVinculacion).subscribe({
       next: () => {
         this.loading.hide();
         this.dialogRef.close();
-        this.loading.exito('Conductor bloqueado');
-        this.data.conductor.estado = 'Bloqueada';
+        this.loading.exito('Conductor desbloqueado');
+        this.data.conductor.estado = 'Activa';
       }, error: () => {
         this.loading.hide();
         this.loading.error('Hubo un error al momento de bloquear este conductor, comuniquese con el administrador de la base de datos');
       }
     })
   }
+
 
 }

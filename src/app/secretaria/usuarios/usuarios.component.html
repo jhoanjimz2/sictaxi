@@ -17,15 +17,15 @@
         <div class="col">
             <div class="card-container sombra">
                 <div class="row">
-                    <div class="col-3" *ngFor="let usuario of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]; let i = index">
+                    <div class="col-3" *ngFor="let usuario of usuarios">
                         <div class="card-user sombra">
                             <div class="user-data">
-                                <img [src]="'' | imagenes" class="img-profile"><br>
-                                <label class="title-username">Usuario {{i}}</label><br>
-                                <label class="labels">Usuario: <span>SECRE2</span></label><br>
-                                <label class="labels">Dirección: <span>0000</span></label><br>
-                                <label class="labels">Teléfono: <span>320 645 7462</span></label><br>
-                                <label class="labels">Razón social: <span>Movilidad</span></label>
+                                <img [src]="usuario.fotoUrl | imagenes" class="img-profile"><br>
+                                <label class="title-username">{{usuario.nombres + ' ' + usuario.apellidos}}</label><br>
+                                <label class="labels">Usuario: <span>{{usuario.cedula}}</span></label><br>
+                                <label class="labels">Dirección: <span>{{usuario.direccion}}</span></label><br>
+                                <label class="labels">Teléfono: <span>{{usuario.telefono}}</span></label><br>
+                                <label class="labels">Razón social: <span>{{usuario.razonSocial}}</span></label>
                             </div>
                             <div class="botones">
                                 <button class="b1" (click)="editar('1')">Editar <img [src]="'assets/editar.svg' | imagenes"></button>

@@ -54,8 +54,8 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'Santa Marta', page };
     return this.getAuth('/getDataDocumentosVencidos', params);
   }
-  getExcelDocumentoVencidos() {
-    let params = { ciudad: 'SantaMarta' };
+  getExcelDocumentoVencidos(page: number) {
+    let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportDocumentoVencidos', params)
   }
 
@@ -215,6 +215,35 @@ export class EstadisticasService extends ConexionService {
     let params = { page }
     return this.postAuth('/getConductoresConQuejas', data ,params);
   }
+  bloquearConductor(id: number) {
+    console.log(id)
+    let data = { id }
+    return this.postAuth('/vinculacionBloquear', data);
+  }
+  desbloquearConductor(id: number) {
+    let data = { id }
+    return this.postAuth('/vinculacionDesbloquear', data);
+  }
+  tramitarQuejas(id: number) {
+    let data = { id }
+    return this.postAuth('/processComplaintsVinculacion', data);
+  }
   //QUEJAS
+
+
+  //CONDUCTORES
+  getConductoresGeneral(page: number, cedula: string) {
+    let params = { ciudad: 'SantaMarta', page, cedula };
+    return this.getAuth('/getDataConductoresGeneral', params);
+  }
+  //CONDUCTORES
+
+
+
+  //USUARIOS
+  getListUsers() {
+    return this.getAuth('/listUsers');
+  }
+  //USUARIOS
  
 }

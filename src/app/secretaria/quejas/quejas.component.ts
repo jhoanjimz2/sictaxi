@@ -8,6 +8,7 @@ import { ConductoresConQuejas, ReqConductoresConQuejas, RespConductoresConQuejas
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import * as moment from 'moment';
 import { subWeeks } from 'date-fns';
+import { ModalDesbloquearConductorComponent } from 'src/app/modals/modal-desbloquear-conductor/modal-desbloquear-conductor.component';
 
 @Component({
   selector: 'app-quejas',
@@ -34,14 +35,19 @@ export class QuejasComponent {
     this.paginaActual = pagina;
     let comentarios = undefined;
     let placa = undefined;
+    let cedula = undefined;
     if (this.comentarios.length) comentarios = this.comentarios;
-    if (this.cedula != '') placa = this.cedula;
+    if (this.cedula != '') {
+      placa = this.cedula;
+      cedula = this.cedula;
+    }
     if (bandera) this.loading.show();
     let data:ReqConductoresConQuejas = {
       fechaInicial: this.fechaInicial,
       fechaFinal: this.fechaFinal,
       comentarios,
       placa,
+      cedula
     };
     this.eS.getConductoresConQuejasPaginado(pagina, data).subscribe({
       next: (data: RespConductoresConQuejas) => {
@@ -73,9 +79,15 @@ export class QuejasComponent {
     });
     dialogRef.afterClosed().subscribe(result => {});
   }
-  bloquear(idVinculacion: number) {
+  bloquear(conductor: ConductoresConQuejas) {
     const dialogRef = this.dialog.open(ModalBloquearConductorComponent, {
-      data: { idVinculacion }
+      data: { conductor }
+    });
+    dialogRef.afterClosed().subscribe(result => {});
+  }
+  desbloquear(conductor: ConductoresConQuejas) {
+    const dialogRef = this.dialog.open(ModalDesbloquearConductorComponent, {
+      data: { conductor }
     });
     dialogRef.afterClosed().subscribe(result => {});
   }

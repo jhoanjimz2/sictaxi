@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { FechasVencidas, RespFechasVencidas } from 'src/app/interfaces';
+import { FasesExportarComponent } from 'src/app/modals/fases-exportar/fases-exportar.component';
 import { DownloadService } from 'src/app/services/download.service';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -19,7 +21,7 @@ export class AlertasVencimientoComponent {
   constructor( 
     private loading: LoadingService,
     private eS: EstadisticasService,
-    private download: DownloadService
+    private dialog: MatDialog
   ) { this.pagina({ pagina: 1 }); }
 
   pagina({pagina}: any) {
@@ -39,15 +41,10 @@ export class AlertasVencimientoComponent {
     })
   }
   exportar() {
-    this.loading.show();
-    this.eS.getExcelDocumentoVencidos().subscribe({
-      next: (data: any) => {
-        this.download.download(data, 'Fechas vencidas');
-      }, error: (error: any) => {
-        this.loading.hide();
-        this.loading.error(error.error.message);
-      }
-    })
+    const dialogRef = this.dialog.open(FasesExportarComponent, { 
+      width: '800px'
+    });
+    dialogRef.afterClosed().subscribe(result => {});
   }
   buscando(event: string) {
     this.buscar = event.toUpperCase();

@@ -29,6 +29,23 @@ export class ModalQuejasTramitadasComponent {
     this.cargarQuejasTramitadas();
   }
 
+  tramitarTodas() {
+    this.loading.show();
+    this.eS.tramitarQuejas(this.data.idVinculacion).subscribe({
+      next: (data: Calificacion[]) => {
+        this.loading.hide();
+        this.loading.exito('Todas las quejas tramitadas');
+        this.cargarQuejas();
+        this.cargarQuejasTramitadas();
+      },
+      error: (error: any) => {
+        this.loading.hide();
+        this.loading.error('Error en la tramitación comuniquese con el administrador de la base de datos');
+        this.dialogRef.close();
+      }
+    })
+  }
+
   cargarQuejas() {
     this.loading.show();
     this.eS.getDataQuejas(this.data.idVinculacion).subscribe({

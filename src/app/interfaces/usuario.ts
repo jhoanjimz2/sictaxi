@@ -23,3 +23,18 @@ export interface Usuario {
     idMigration:             null;
     uuid:                    string;
 }
+export interface RespListUsuarios {
+    result: UsuarioList[];
+}
+export interface UsuarioList {
+    razonSocial: string;
+    id:          number;
+    nombres:     string;
+    apellidos:   string;
+    cedula:      string;
+    email:       string;
+    rol:         string;
+    direccion:   string;
+    telefono:    string;
+    fotoUrl:     string;
+}

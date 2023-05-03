@@ -18,6 +18,8 @@ import { ModalEliminarMatriculaComponent } from './modal-eliminar-matricula/moda
 import { ModalCrearParametroComponent } from './modal-crear-parametro/modal-crear-parametro.component';
 import { ModalEliminarParametroComponent } from './modal-eliminar-parametro/modal-eliminar-parametro.component';
 import { ModalBuenasCalificacionesComponent } from './modal-buenas-calificaciones/modal-buenas-calificaciones.component';
+import { FasesExportarComponent } from './fases-exportar/fases-exportar.component';
+import { ModalDesbloquearConductorComponent } from './modal-desbloquear-conductor/modal-desbloquear-conductor.component';
 
 
 
@@ -37,6 +39,8 @@ import { ModalBuenasCalificacionesComponent } from './modal-buenas-calificacione
     ModalCrearParametroComponent,
     ModalEliminarParametroComponent,
     ModalBuenasCalificacionesComponent,
+    FasesExportarComponent,
+    ModalDesbloquearConductorComponent,
   ],
   imports: [
     CommonModule,
