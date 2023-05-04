@@ -36,11 +36,11 @@ export class UsuariosComponent {
     })
   }
 
-  eliminar(id: string) {
+  eliminar(id: number) {
     const dialogRef = this.dialog.open(ModalEliminarUsuarioComponent, {data: { id }});
     dialogRef.afterClosed().subscribe(result => {});
   }
-  editar(id: string) {
+  editar(id: number) {
     const dialogRef = this.dialog.open(ModalCrearUsuarioComponent, {data: { id }});
     dialogRef.afterClosed().subscribe(result => {});
   }

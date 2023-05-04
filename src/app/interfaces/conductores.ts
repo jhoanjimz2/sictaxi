@@ -11,6 +11,7 @@ export interface ConductorSearch {
     nombres:                 string;
     cedula:                  string;
     direccion:               string;
+    telefono:                string;
     licenciaConduccion:      string;
     licenciaConduccionFecha: string;
     categoriaPase:           string;
