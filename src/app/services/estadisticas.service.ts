@@ -236,6 +236,10 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page, cedula };
     return this.getAuth('/getDataConductoresGeneral', params);
   }
+  getExcelConductoresListadoGeneral() {
+    let params = { ciudad: 'SantaMarta' };
+    return this.getAuthExcel('/exportConductoresListadoGeneral', params)
+  }
   //CONDUCTORES
 
 

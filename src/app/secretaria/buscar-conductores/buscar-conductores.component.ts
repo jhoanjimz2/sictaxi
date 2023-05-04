@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConductorSearch, RespBuscarConductores } from 'src/app/interfaces';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
+import { DownloadService } from 'src/app/services/download.service';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -20,7 +21,8 @@ export class BuscarConductoresComponent {
   constructor( 
     private loading: LoadingService,
     public dialog: MatDialog,
-    private eS: EstadisticasService
+    private eS: EstadisticasService,
+    private download: DownloadService
   ) { this.pagina({ pagina: 1 }); }
 
   pagina({pagina}: any) {
@@ -50,5 +52,16 @@ export class BuscarConductoresComponent {
   buscar(busca: string) {
     this.cedula = busca;
     this.pagina({ pagina: 1 });
+  }
+  exportar() {
+    this.loading.show();
+    this.eS.getExcelConductoresListadoGeneral().subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Conductores');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
 }
