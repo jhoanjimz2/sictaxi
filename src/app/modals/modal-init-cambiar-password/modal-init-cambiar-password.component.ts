@@ -38,7 +38,7 @@ export class ModalInitCambiarPasswordComponent {
         localStorage.setItem('user', JSON.stringify(local));
       }, error: () => {
         this.loading.hide();
-        this.loading.exito('Error actualizar contraseña, comuniquese con el administrador de la base de datos');
+        this.loading.error('Error actualizar contraseña, comuniquese con el administrador de la base de datos');
       }
     })
   }
