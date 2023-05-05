@@ -13,16 +13,18 @@ export class TaxisSoatVencidoComponent {
 
   taxis!: TaxiSoatVencido[];
   totalPages: number = 0;
-
+  paginaActual: number = 0;
+  
   constructor( 
     private loading: LoadingService,
     private eS: EstadisticasService,
     private download: DownloadService
-  ) {
-    this.pagina({pagina: 1});
-  }
-
+    ) {
+      this.pagina({pagina: 1});
+    }
+    
   pagina({pagina}: any) {
+    this.paginaActual = pagina;
     this.loading.show();
     this.eS.getTaxisSoatVencido(pagina).subscribe({
       next: (data: RespTaxisSoatVencido) => {

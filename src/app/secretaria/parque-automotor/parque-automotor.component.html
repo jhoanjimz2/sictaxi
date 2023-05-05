@@ -1,6 +1,6 @@
 <div class="contenedor">
     <div class="row mt-20">
-        <app-barra-busqueda [placeholder]="'Buscar por placa o cédula'"/>
+        <app-barra-busqueda [placeholder]="'Buscar por placa o cédula'" (searchEvent)="buscar($event)"/>
     </div>
     <div class="row mt-10">
         <div class="col-6">
@@ -13,26 +13,26 @@
 
 
     <div class="row pb-80">
-        <div class="col-12" *ngFor="let taxista of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
+        <div class="col-12" *ngFor="let vehiculo of vahiculos">
             <div class="card-taxista sombra">
                 <div class="img">
                     <img [src]="'assets/taxi.svg' | imagenes">
                 </div>
                 <div class="texts">
-                    <label>KIA Modelo: <span>2023</span></label><br>
-                    <label>Empresa: <span>TAXIS S.A.S.</span></label><br>
-                    <label>Placa: <span>TZW522</span></label><br>
-                    <label>Número de motor: <span>G4LCN1063560</span></label><br>
-                    <label>Número de chasis: <span>LJD0AA29AP0204272</span></label>
+                    <label>{{vehiculo.marca}} Modelo: <span>{{vehiculo.modelo}}</span></label><br>
+                    <label>Empresa: <span>{{vehiculo.nombreEmpresa}}</span></label><br>
+                    <label>Placa: <span>{{vehiculo.placa}}</span></label><br>
+                    <label>Número de motor: <span>{{vehiculo.numeroMotor}}</span></label><br>
+                    <label>Número de chasis: <span>{{vehiculo.numeroChasis}}</span></label>
                 </div>
                 <div class="texts">
-                    <label>Propietario: <span>Jairo Rafael Pimienta Lineros</span></label><br>
-                    <label>Cédula: <span>1083023962</span></label><br>
-                    <label>Teléfono: <span>305 276 6362</span></label><br>
-                    <label>Dirección: <span>Manzana L Casa 6 Apto 301</span></label>
+                    <label>Propietario: <span>{{vehiculo.nombrePropietario}}</span></label><br>
+                    <label>Cédula: <span>{{vehiculo.cedulaPropietario}}</span></label><br>
+                    <label>Teléfono: <span>{{vehiculo.telefonoPropietario}}</span></label><br>
+                    <label>Dirección: <span>{{vehiculo.direccionPropietario}}</span></label>
                 </div>
                 <div class="boton">
-                    <button class="cancelarMatricula sombra" (click)="eliminar('1')">
+                    <button class="cancelarMatricula sombra" (click)="eliminar(vehiculo.id)">
                         <img [src]="'assets/cancelarmatricula.svg' | imagenes">
                         <div>Cancelar<br>matricula</div>
                     </button>
@@ -43,7 +43,9 @@
 
     <div class="footer-paginacion ">
         <app-paginacion 
-            [cantidad]="40"
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
+            [focus]="paginaActual"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

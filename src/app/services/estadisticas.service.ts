@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConexionService } from './conexion.service';
 import { HttpClient } from "@angular/common/http";
-import { GuardarAsociacion, GuardarEmpresa, ReqConductoresConQuejas, ReqEstadisticaConductores, ReqGrafComentarios } from '../interfaces';
+import { ActualizarPerfilUsuario, ActualizarUsuario, CambiarPassword, GuardarAsociacion, GuardarEmpresa, ReqConductoresConQuejas, ReqEstadisticaConductores, ReqGrafComentarios } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -248,6 +248,44 @@ export class EstadisticasService extends ConexionService {
   getListUsers() {
     return this.getAuth('/listUsers');
   }
+  getDataUser(id: number) {
+    let data = { id }
+    return this.postAuth('/getProfileUserById', data);
+  }
+  eliminarUser(id: number) {
+    let data = { id }
+    return this.postAuth('/deleteUser', data);
+  }
+  updateUser(data: ActualizarUsuario) {
+    return this.postAuth('/update', data);
+  }
+  crearUser(data: ActualizarUsuario) {
+    return this.postAuth('/register', data);
+  }
+  getEmpresas() {
+    return this.getAuth('/getEmpresas');
+  }
   //USUARIOS
+
+
+  //PERFIL DE USUARIO
+  getPerfilUsuario() {
+    return this.getAuth('/getProfileUser');
+  }
+  editarPerfilUsuario(data: ActualizarPerfilUsuario) {
+    return this.postAuth('/updateUser', data);
+  }
+  cambiarContrasena(data: CambiarPassword) {
+    return this.postAuth('/changePassword ', data);
+  }
+  //PERFIL DE USUARIO
+
+
+  //PARQUE AUTOMOTOR
+  getVehiculosGeneral(page: number) {
+    let params = { ciudad: 'SantaMarta', page };
+    return this.getAuth('/getDataVehiculosGeneral', params);
+  }
+  //PARQUE AUTOMOTOR
  
 }

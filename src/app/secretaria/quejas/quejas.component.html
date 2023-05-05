@@ -56,9 +56,10 @@
         </div>
     </div>
     <div class="footer-paginacion ">
-        <app-paginacion
+        <app-paginacion 
             *ngIf="totalPages"
             [cantidad]="totalPages"
+            [focus]="paginaActual"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

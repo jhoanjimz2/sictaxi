@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
   items!: ItemSidebar[];
 
-  user: Usuario = JSON.parse(localStorage.getItem('user')!);
+  get user(): Usuario { return JSON.parse(localStorage.getItem('user')!); }
 
   constructor(
     private aS: AuthService,

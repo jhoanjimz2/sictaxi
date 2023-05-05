@@ -16,7 +16,8 @@ export class TaxistasLicenciaVencidaComponent {
 
   taxistas!: TaxistaSinLicencia[];
   totalPages: number = 0;
-
+  paginaActual: number = 0;
+  
   constructor( 
     private loading: LoadingService,
     public dialog: MatDialog,
@@ -26,6 +27,7 @@ export class TaxistasLicenciaVencidaComponent {
     this.pagina({ pagina: 1 });
   }
   pagina({pagina}: any) {
+    this.paginaActual = pagina;
     this.loading.show();
     this.eS.getTaxistasSinLicencia(pagina).subscribe({
       next: (data: RespTaxistasSinLicencia) => {

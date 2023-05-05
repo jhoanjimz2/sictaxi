@@ -13,6 +13,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 export class MatriculasCanceladasComponent {
 
   taxis!: TaxiChatarrizado[];
+  paginaActual: number = 0;
   totalPages: number = 0;
 
   constructor( 
@@ -26,6 +27,7 @@ export class MatriculasCanceladasComponent {
 
   pagina({pagina}: any) {
     this.loading.show();
+    this.paginaActual = pagina;
     this.eS.getTaxisChatarrizados(pagina).subscribe({
       next: (data: RespTaxisChatarrizados) => {
         this.totalPages = data.pages;

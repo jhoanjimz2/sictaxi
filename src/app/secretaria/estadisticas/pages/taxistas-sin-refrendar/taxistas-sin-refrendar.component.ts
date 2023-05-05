@@ -15,17 +15,19 @@ import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista
 export class TaxistasSinRefrendarComponent {
 
   taxistas!: TaxistaSinRefrendar[];
+  paginaActual: number = 0;
   totalPages: number = 0;
-
+  
   constructor( 
     private loading: LoadingService,
     public dialog: MatDialog,
     private eS: EstadisticasService,
     private download: DownloadService
-  ) {
-    this.pagina({ pagina: 1 });
-  }
+    ) {
+      this.pagina({ pagina: 1 });
+    }
   pagina({pagina}: any) {
+    this.paginaActual = pagina;
     this.loading.show();
     this.eS.getTaxistasSinRefrendar(pagina).subscribe({
       next: (data: RespTaxistasSinRefrendar) => {

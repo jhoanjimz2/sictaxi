@@ -13,6 +13,7 @@ export class TaxisTarjetaVigenteComponent {
 
   taxis!: TaxiTarjetaVigente[];
   totalPages: number = 0;
+  paginaActual: number = 0;
 
   constructor( 
     private loading: LoadingService,
@@ -24,6 +25,7 @@ export class TaxisTarjetaVigenteComponent {
 
   pagina({pagina}: any) {
     this.loading.show();
+    this.paginaActual = pagina;
     this.eS.getTaxisTarjetaOperaciónVigente(pagina).subscribe({
       next: (data: RespTaxisTarjetaOperacionVigente) => {
         this.totalPages = data.pages;

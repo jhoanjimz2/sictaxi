@@ -21,7 +21,6 @@ export class UsuariosComponent {
   ) {
     this.cargarData();
   }
-
   cargarData() {
     this.loading.show();
     this.eS.getListUsers().subscribe({
@@ -35,14 +34,17 @@ export class UsuariosComponent {
       }
     })
   }
-
   eliminar(id: number) {
     const dialogRef = this.dialog.open(ModalEliminarUsuarioComponent, {data: { id }});
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      if ( result ) this.cargarData();
+    });
   }
-  editar(id: number) {
-    const dialogRef = this.dialog.open(ModalCrearUsuarioComponent, {data: { id }});
-    dialogRef.afterClosed().subscribe(result => {});
+  editar(id: number, type: boolean) {
+    const dialogRef = this.dialog.open(ModalCrearUsuarioComponent, {data: { id, type }});
+    dialogRef.afterClosed().subscribe(result => {
+      if ( result ) this.cargarData();
+    });
   }
   
 }

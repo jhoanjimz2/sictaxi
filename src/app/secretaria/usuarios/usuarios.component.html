@@ -7,8 +7,8 @@
                     <label class="titulo">Usuarios</label>
                 </div>
                 <div class="w-50 flex-end">
-                    <label class="subtitulo" (click)="editar(1)">Nuevo usuario</label>
-                    <img [src]="'assets/agregarusuario.svg'" class="icon" (click)="editar(1)">
+                    <label class="subtitulo" (click)="editar(0, false)">Nuevo usuario</label>
+                    <img [src]="'assets/agregarusuario.svg'" class="icon" (click)="editar(0, false)">
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                                 <label class="labels">Razón social: <span>{{usuario.razonSocial}}</span></label>
                             </div>
                             <div class="botones">
-                                <button class="b1" (click)="editar(usuario.id)">Editar <img [src]="'assets/editar.svg' | imagenes"></button>
+                                <button class="b1" (click)="editar(usuario.id, true)">Editar <img [src]="'assets/editar.svg' | imagenes"></button>
                                 <button class="b2" (click)="eliminar(usuario.id)">Eliminar <img [src]="'assets/eliminar.svg' | imagenes"></button>
                             </div>
                         </div>

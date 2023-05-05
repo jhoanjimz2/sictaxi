@@ -38,6 +38,7 @@
         <app-paginacion 
             *ngIf="totalPages"
             [cantidad]="totalPages"
+            [focus]="paginaActual"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>
