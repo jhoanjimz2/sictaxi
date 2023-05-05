@@ -278,6 +278,10 @@ export class EstadisticasService extends ConexionService {
   cambiarContrasena(data: CambiarPassword) {
     return this.postAuth('/changePassword ', data);
   }
+  cambiarContrasenaInit(pass: string) {
+    let data = { pass }
+    return this.postAuth('/changesolicitarPass', data);
+  }
   //PERFIL DE USUARIO
 
 

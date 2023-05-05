@@ -23,7 +23,7 @@ export class PerfilUsuarioComponent {
   });
   data: ActualizarPerfilUsuario = {} as ActualizarPerfilUsuario;
   constructor( 
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private loading: LoadingService,
     private eS: EstadisticasService,
     private fb: FormBuilder,

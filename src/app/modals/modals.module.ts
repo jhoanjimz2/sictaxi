@@ -20,6 +20,7 @@ import { ModalEliminarParametroComponent } from './modal-eliminar-parametro/moda
 import { ModalBuenasCalificacionesComponent } from './modal-buenas-calificaciones/modal-buenas-calificaciones.component';
 import { FasesExportarComponent } from './fases-exportar/fases-exportar.component';
 import { ModalDesbloquearConductorComponent } from './modal-desbloquear-conductor/modal-desbloquear-conductor.component';
+import { ModalInitCambiarPasswordComponent } from './modal-init-cambiar-password/modal-init-cambiar-password.component';
 
 
 
@@ -41,6 +42,7 @@ import { ModalDesbloquearConductorComponent } from './modal-desbloquear-conducto
     ModalBuenasCalificacionesComponent,
     FasesExportarComponent,
     ModalDesbloquearConductorComponent,
+    ModalInitCambiarPasswordComponent,
   ],
   imports: [
     CommonModule,
