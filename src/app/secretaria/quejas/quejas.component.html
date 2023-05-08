@@ -24,7 +24,7 @@
         <div class="col">
             <div class="card-taxista sombra" *ngFor="let conductor of conductoresConQuejas">
                 <div class="primero">
-                    <img [src]="'' | imagenes" (click)="datosConductor(conductor.idConductor)">
+                    <img [src]="conductor.img | imagenes" (click)="datosConductor(conductor.idConductor)">
                 </div>
                 <div class="segundo">
                     <div class="l-h">
