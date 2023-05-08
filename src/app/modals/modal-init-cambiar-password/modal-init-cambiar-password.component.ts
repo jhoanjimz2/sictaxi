@@ -29,7 +29,11 @@ export class ModalInitCambiarPasswordComponent {
     }
     let local: Usuario = JSON.parse(localStorage.getItem('user')!);
     this.loading.show();
-    this.eS.cambiarContrasenaInit(this.form.controls['nueva'].value).subscribe({
+    let data = {
+      Nuevapass: this.form.controls['nueva'].value,
+      Confirmpass: this.form.controls['confirmacion'].value
+    }
+    this.eS.cambiarContrasenaInit(data).subscribe({
       next: (data: any) => {
         this.loading.hide();
         this.dialogRef.close();
