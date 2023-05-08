@@ -23,7 +23,7 @@ export class QuejasComponent {
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
   fechaInicial = moment(subWeeks(new Date(), 1)).format("YYYY-MM-DD");
   comentarios: string[] = [];
-  cedula!: string;
+  filtro!: string;
 
   constructor( 
     private loading: LoadingService,
@@ -34,20 +34,13 @@ export class QuejasComponent {
   pagina({pagina}: any, bandera = true) {
     this.paginaActual = pagina;
     let comentarios = undefined;
-    let placa = undefined;
-    let cedula = undefined;
     if (this.comentarios.length) comentarios = this.comentarios;
-    if (this.cedula != '') {
-      placa = this.cedula;
-      cedula = this.cedula;
-    }
     if (bandera) this.loading.show();
     let data:ReqConductoresConQuejas = {
       fechaInicial: this.fechaInicial,
       fechaFinal: this.fechaFinal,
       comentarios,
-      placa,
-      cedula
+      filtro: this.filtro
     };
     this.eS.getConductoresConQuejasPaginado(pagina, data).subscribe({
       next: (data: RespConductoresConQuejas) => {
@@ -100,7 +93,7 @@ export class QuejasComponent {
     dialogRef.afterClosed().subscribe(result => {});
   }
   buscar(busca: string) {
-    this.cedula = busca;
+    this.filtro = busca;
     this.pagina({ pagina: 1 });
   }
 }
