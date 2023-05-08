@@ -16,7 +16,7 @@ export class BuscarConductoresComponent {
   conductores: ConductorSearch[] = [];
   totalPages: number = 0;
   paginaActual: number = 0;
-  cedula: string = '';
+  filtro: string = '';
 
   constructor( 
     private loading: LoadingService,
@@ -28,7 +28,7 @@ export class BuscarConductoresComponent {
   pagina({pagina}: any) {
     this.loading.show();
     this.paginaActual = pagina;
-    this.eS.getConductoresGeneral(pagina, this.cedula, this.cedula).subscribe({
+    this.eS.getConductoresGeneral(pagina, this.filtro).subscribe({
       next: (data: RespBuscarConductores) => {
         this.totalPages = data.pages;
         this.conductores = data.data;
@@ -50,7 +50,7 @@ export class BuscarConductoresComponent {
     dialogRef.afterClosed().subscribe(result => {});
   }
   buscar(busca: string) {
-    this.cedula = busca;
+    this.filtro = busca;
     this.pagina({ pagina: 1 });
   }
   exportar() {

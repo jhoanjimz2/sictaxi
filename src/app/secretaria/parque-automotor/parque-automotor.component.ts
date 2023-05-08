@@ -15,7 +15,7 @@ export class ParqueAutomotorComponent {
   vahiculos: Vehiculo[] = [];
   totalPages: number = 0;
   paginaActual: number = 0;
-  placa: string = '';
+  filtro: string = '';
 
   constructor( 
     private loading: LoadingService,
@@ -26,7 +26,7 @@ export class ParqueAutomotorComponent {
   pagina({pagina}: any) {
     this.loading.show();
     this.paginaActual = pagina;
-    this.eS.getVehiculosGeneral(pagina, this.placa, this.placa).subscribe({
+    this.eS.getVehiculosGeneral(pagina, this.filtro).subscribe({
       next: (data: GetParqueAutomotor) => {
         this.totalPages = data.pages;
         this.vahiculos = data.data;
@@ -40,7 +40,7 @@ export class ParqueAutomotorComponent {
     })
   }
   buscar(busca: string) {
-    this.placa = busca;
+    this.filtro = busca;
     this.pagina({ pagina: 1 });
   }
   
