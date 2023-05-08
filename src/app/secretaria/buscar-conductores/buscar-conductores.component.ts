@@ -28,7 +28,7 @@ export class BuscarConductoresComponent {
   pagina({pagina}: any) {
     this.loading.show();
     this.paginaActual = pagina;
-    this.eS.getConductoresGeneral(pagina, this.cedula).subscribe({
+    this.eS.getConductoresGeneral(pagina, this.cedula, this.cedula).subscribe({
       next: (data: RespBuscarConductores) => {
         this.totalPages = data.pages;
         this.conductores = data.data;

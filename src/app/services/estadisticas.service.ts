@@ -232,8 +232,8 @@ export class EstadisticasService extends ConexionService {
 
 
   //CONDUCTORES
-  getConductoresGeneral(page: number, cedula: string) {
-    let params = { ciudad: 'SantaMarta', page, cedula };
+  getConductoresGeneral(page: number, cedula: string, placa: string) {
+    let params = { ciudad: 'SantaMarta', page, placa ,cedula };
     return this.getAuth('/getDataConductoresGeneral', params);
   }
   getExcelConductoresListadoGeneral() {
@@ -286,8 +286,8 @@ export class EstadisticasService extends ConexionService {
 
 
   //PARQUE AUTOMOTOR
-  getVehiculosGeneral(page: number) {
-    let params = { ciudad: 'SantaMarta', page };
+  getVehiculosGeneral(page: number, placa: string, cedula: string) {
+    let params = { ciudad: 'SantaMarta', page, placa, cedula };
     return this.getAuth('/getDataVehiculosGeneral', params);
   }
   //PARQUE AUTOMOTOR

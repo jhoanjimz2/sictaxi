@@ -26,7 +26,7 @@ export class ParqueAutomotorComponent {
   pagina({pagina}: any) {
     this.loading.show();
     this.paginaActual = pagina;
-    this.eS.getVehiculosGeneral(pagina).subscribe({
+    this.eS.getVehiculosGeneral(pagina, this.placa, this.placa).subscribe({
       next: (data: GetParqueAutomotor) => {
         this.totalPages = data.pages;
         this.vahiculos = data.data;
