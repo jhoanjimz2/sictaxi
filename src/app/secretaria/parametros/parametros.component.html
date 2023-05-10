@@ -4,26 +4,10 @@
             <label class="titulo">Parámetros</label>
         </div>
     </div>
+
     <div class="row mt-20">
         <div class="col">
             <div class="card-parametros sombra">
-                <div class="row">
-                    <div class="col-4">
-                        <label class="subtitulo">Máximo número de usuarios para empresas</label>
-                        <input type="text" class="input">
-                    </div>
-                    <div class="col-4">
-                        <label class="subtitulo">Mensaje de bloqueo de inicio de sesión</label>
-                        <input type="text" class="input">
-                    </div>
-                    <div class="col-4">
-                        <label class="subtitulo">Bloquear inicio de sesión a las empresas</label>
-                        <select type="text" class="input">
-                            <option [value]=""></option>
-                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
-                        </select>
-                    </div>
-                </div>
                 <div class="row mt-20">
                     <div class="col-4">
                         <label class="subtitulo">EPS</label>
@@ -67,31 +51,37 @@
                         </select>
                         <app-edit-add-delete action="MAR"/>
                     </div>
+                </div>
+                <div class="row mt-40"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-20">
+        <div class="col">
+            <div class="card-parametros sombra">
+                <div class="row mt-20">
                     <div class="col-4">
-                        <label class="subtitulo">Calificaciones</label>
+                        <label class="subtitulo">Máximo número de usuarios para empresas</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Mensaje de bloqueo de inicio de sesión</label>
+                        <input type="text" class="input">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Bloquear inicio de sesión a las empresas</label>
                         <select type="text" class="input">
                             <option [value]=""></option>
                             <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
                         </select>
-                        <app-edit-add-delete action="CAL"/>
                     </div>
                 </div>
                 <div class="row mt-20">
                     <div class="col-4">
                         <label class="subtitulo">CONDUCTORES X Vehículo</label>
-                        <select type="text" class="input">
-                            <option [value]=""></option>
-                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
-                        </select>
-                        <app-edit-add-delete action="CxV"/>
-                    </div>
-                    <div class="col-4">
-                        <label class="subtitulo">VEHÍCULOS X Conductor</label>
-                        <select type="text" class="input">
-                            <option [value]=""></option>
-                            <option *ngFor="let opcion of [1,1,1,1,1]; let i = index" [value]="i">option {{i}}</option>
-                        </select>
-                        <app-edit-add-delete action="VxC"/>
+                        <input type="number" class="input">
                     </div>
                 </div>
                 <div class="row mt-40">
@@ -104,4 +94,5 @@
             </div>
         </div>
     </div>
+    
 </div>
