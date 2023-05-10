@@ -290,6 +290,18 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page, filtro };
     return this.getAuth('/getDataVehiculosGeneral', params);
   }
+  cancelarMatricula(placa: string) {
+    let data = { placa }
+    return this.postAuth('/cancelarMatricula', data);
+  }
   //PARQUE AUTOMOTOR
+
+
+  //INCIDENCIAS
+  getObservaciones(page: number) {
+    let params = { ciudad: 'SantaMarta', page };
+    return this.getAuth('/getListObservaciones', params);
+  }
+  //INCIDENCIAS
  
 }

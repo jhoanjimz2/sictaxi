@@ -44,12 +44,14 @@ export class ParqueAutomotorComponent {
     this.pagina({ pagina: 1 });
   }
   
-  eliminar(id: number) {
+  eliminar(placa: string) {
     const dialogRef = this.dialog.open(ModalEliminarMatriculaComponent, {
-      data: { id },
+      data: { placa },
       height: '150px',
       width: '800px',
     });
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      if ( result ) this.pagina({ pagina: 1 });
+    });
   }
 }

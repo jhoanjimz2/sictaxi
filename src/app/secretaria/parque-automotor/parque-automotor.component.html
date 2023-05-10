@@ -32,7 +32,7 @@
                     <label>Dirección: <span>{{vehiculo.direccionPropietario}}</span></label>
                 </div>
                 <div class="boton">
-                    <button class="cancelarMatricula sombra" (click)="eliminar(vehiculo.id)">
+                    <button class="cancelarMatricula sombra" (click)="eliminar(vehiculo.placa)">
                         <img [src]="'assets/cancelarmatricula.svg' | imagenes">
                         <div>Cancelar<br>matricula</div>
                     </button>

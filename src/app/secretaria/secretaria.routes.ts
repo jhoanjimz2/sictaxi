@@ -67,7 +67,7 @@ export const rutas: Routes = [
     loadChildren: () => import('./parque-automotor/parque-automotor.module').then( m => m.ParqueAutomotorModule),
   },
   {
-    path: 'incidencias',
+    path: 'alertas',
     loadChildren: () => import('./incidencias/incidencias.module').then( m => m.IncidenciasModule),
   },
   {

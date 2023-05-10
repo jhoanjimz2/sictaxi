@@ -7,7 +7,7 @@ export const secretaria: ItemSidebar[] = [
     { name: 'Usuarios', route: 'usuarios', icon: 'usuarios.svg' },
     { name: 'Perfil de usuario', route: 'perfil-de-usuario', icon: 'perfilusuarios.svg' },
     { name: 'Parque automotor', route: 'parque-automotor', icon: 'parqueautomotor.svg' },
-    { name: 'Incidencias', route: 'incidencias', icon: 'incidencias.svg' },
+    { name: 'Alertas', route: 'alertas', icon: 'incidencias.svg' },
     { name: 'Parámetros', route: 'parametros', icon: 'parametros.svg' }
 ]
 
@@ -20,5 +20,5 @@ export const empresa: ItemSidebar[] = [
     { name: 'Perfil de usuario', route: 'perfil-de-usuario', icon: 'perfilusuarios.svg' },
     { name: 'Fechas vencidas', route: 'fechas-vencidas', icon: 'fechasvencidas.svg' },
     { name: 'Parque automotor', route: 'parque-automotor', icon: 'parqueautomotor.svg' },
-    { name: 'Incidencias', route: 'incidencias', icon: 'incidencias.svg' },
+    { name: 'Alertas', route: 'alertas', icon: 'incidencias.svg' },
 ]
