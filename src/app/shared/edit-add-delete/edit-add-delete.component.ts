@@ -20,6 +20,6 @@ export class EditAddDeleteComponent {
     this.edit.emit({ action, id, texto })
   }
   eliminar(action: Action, id: string) {
-    this.edit.emit({ action, id })
+    this.delete.emit({ action, id })
   }
 }

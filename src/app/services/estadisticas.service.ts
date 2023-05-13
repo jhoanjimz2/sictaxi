@@ -347,6 +347,22 @@ export class EstadisticasService extends ConexionService {
     let data = { nombre, id }
     return this.postAuth('/updateSeguridadSocial', data);
   }
+  updateMarca(nombre: string, id: string) {
+    let data = { nombre, id }
+    return this.postAuth('/updateMarca', data);
+  }
+  eliminarSeguridadSocial(id: string) {
+    let data = { id }
+    return this.postAuth('/eliminarSeguridadSocial', data);
+  }
+  eliminarAseguradora(id: string) {
+    let data = { id }
+    return this.postAuth('/eliminarAseguradora', data);
+  }
+  eliminarMarca(id: string) {
+    let data = { id }
+    return this.postAuth('/eliminarMarca', data);
+  }
   //PARAMETROS
  
 }

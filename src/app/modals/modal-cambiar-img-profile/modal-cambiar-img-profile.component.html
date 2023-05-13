@@ -3,7 +3,7 @@
         <div class="col center">
             <input type="file" (change)="addimg($event)" accept="image/png, image/jpeg" #myInput disabled>
             <img [src]="img | imagenes" class="imgprofile" *ngIf="img">
-            <img [src]="user.fotoURL| imagenes" class="imgprofile" *ngIf="!img">
+            <img [src]="user.fotoUrl| imagenes" class="imgprofile" *ngIf="!img">
         </div>
     </div>
     <div class="row pt-20" *ngIf="!img">

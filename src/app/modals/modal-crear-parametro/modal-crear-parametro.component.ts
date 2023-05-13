@@ -30,14 +30,15 @@ export class ModalCrearParametroComponent {
   }
 
   editar() {
-    this.loading.show();
     let funcion: Observable<any>;
-    if( this.data.action == 'MAR' ) funcion = this.eS.nuevaMarca(this.data.texto);
-    if( this.data.action == 'AFP' ) funcion = this.eS.updateSeguridadSocial(this.data.texto, this.data.id!);
-    if( this.data.action == 'ARL' ) funcion = this.eS.updateSeguridadSocial(this.data.texto, this.data.id!);
-    if( this.data.action == 'EPS' ) funcion = this.eS.updateSeguridadSocial(this.data.texto, this.data.id!);
-    if( this.data.action == 'ASE' ) funcion = this.eS.updateAseguradora(this.data.texto, this.data.id!);
+    if( this.data.action == 'MAR' ) funcion = this.eS.updateMarca(this.data.texto, this.data.id!);
+    else if( this.data.action == 'AFP' ) funcion = this.eS.updateSeguridadSocial(this.data.texto, this.data.id!);
+    else if( this.data.action == 'ARL' ) funcion = this.eS.updateSeguridadSocial(this.data.texto, this.data.id!);
+    else if( this.data.action == 'EPS' ) funcion = this.eS.updateSeguridadSocial(this.data.texto, this.data.id!);
+    else if( this.data.action == 'ASE' ) funcion = this.eS.updateAseguradora(this.data.texto, this.data.id!);
+    else return;
 
+    this.loading.show();
     funcion!.subscribe({
       next: () => {
         this.loading.hide();

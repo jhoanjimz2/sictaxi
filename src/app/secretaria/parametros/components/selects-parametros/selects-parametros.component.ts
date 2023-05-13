@@ -65,6 +65,8 @@ export class SelectsParametrosComponent {
   }
   eliminar(data: { action: Action, id: string }) {
     const dialogRef = this.dialog.open(ModalEliminarParametroComponent, { data });
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(result => {
+      if ( result ) this.cargarParametros();
+    });
   }
 }

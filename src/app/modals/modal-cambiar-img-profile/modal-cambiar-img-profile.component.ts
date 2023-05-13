@@ -51,9 +51,9 @@ export class ModalCambiarImgProfileComponent {
     this.loading.show();
     let local: Usuario = JSON.parse(localStorage.getItem('user')!);
     this.eS.cambiarImgDePerfil(this.id,this.imgsubir).subscribe({
-      next: (data: { fotoURL: string }) => {
+      next: (data: { fotoUrl: string }) => {
         this.loading.hide();
-        local.fotoURL = data.fotoURL;
+        local.fotoUrl = data.fotoUrl;
         localStorage.setItem('user', JSON.stringify(local));
         this.dialogRef.close();
         this.loading.exito('Imagen actualizada correctamente');
