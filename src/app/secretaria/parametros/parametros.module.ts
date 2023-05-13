@@ -6,18 +6,25 @@ import { ParametrosComponent } from './parametros.component';
 import { SharedModule } from '../../shared/shared.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { MaterialModule } from '../../material/material.module';
+import { InputsParametrosComponent } from './components/inputs-parametros/inputs-parametros.component';
+import { SelectsParametrosComponent } from './components/selects-parametros/selects-parametros.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    ParametrosComponent
+    ParametrosComponent,
+    InputsParametrosComponent,
+    SelectsParametrosComponent
   ],
   imports: [
     CommonModule,
     ParametrosRoutingModule,
     SharedModule,
     PipesModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ParametrosModule { }

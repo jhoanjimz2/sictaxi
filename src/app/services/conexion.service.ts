@@ -55,6 +55,15 @@ export class ConexionService {
       })
     );
   }
+  postAuthImg(ruta: string, data?: any ,fromObject?: any) {
+    let params = new HttpParams({ fromObject });
+    let headers = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
+    return this.http.post(this.api + ruta, this.convertidorFormData2(data), { headers, params }).pipe(
+      map((data: any) => { 
+        return data; 
+      })
+    );
+  }
   postAuthExcel(ruta: string, data?: any ,fromObject?: any) {
     let params = new HttpParams({ fromObject });
     let headers = new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` });
@@ -72,6 +81,35 @@ export class ConexionService {
         return data; 
       })
     );
+  }
+
+  convertidorFormData2(data:any) {
+    const fd = new FormData();
+    Object.keys(data).forEach( (key) => {
+      if (Array.isArray(data[key])) {
+        data[key].forEach( (object: any, index: any) => {
+          if (object) {
+            if (
+              Object.keys(object).length == 0 ||
+              !data ||
+              typeof data !== "object"
+            ) {
+              fd.append(key + "[" + index + "]", object);
+            } else {
+              Object.keys(object).forEach( (key_object) => {
+                fd.append(
+                  key + "[" + index + "][" + key_object + "]",
+                  object[key_object]
+                );
+              });
+            }
+          }
+        });
+      } else {
+        fd.append(key, data[key]);
+      }
+    });
+    return fd;
   }
 
 }

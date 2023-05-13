@@ -20,7 +20,7 @@
                     <div class="col-3" *ngFor="let usuario of usuarios">
                         <div class="card-user sombra">
                             <div class="user-data">
-                                <img [src]="usuario.fotoUrl | imagenes" class="img-profile"><br>
+                                <img [src]="usuario.fotoURL | imagenes" class="img-profile"><br>
                                 <label class="title-username">{{usuario.nombres + ' ' + usuario.apellidos}}</label><br>
                                 <label class="labels">Usuario: <span>{{usuario.cedula}}</span></label><br>
                                 <label class="labels">Dirección: <span>{{usuario.direccion}}</span></label><br>

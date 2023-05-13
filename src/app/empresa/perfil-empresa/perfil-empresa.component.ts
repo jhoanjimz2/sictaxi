@@ -15,8 +15,8 @@ export class PerfilEmpresaComponent {
   addimg(event: any) {
     if (event.target.files.length === 0) return;
     var mimeType = event.target.files[0].type;
-    if (mimeType.match(/image\/*/) == null) return this.loading.error('texto');
-    if (event.target.files[0].size > 2000000) return this.loading.error('texto');
+    if (mimeType.match(/image\/*/) == null) return this.loading.error('Solo se permite subir imagenes');
+    if (event.target.files[0].size > 2000000) return this.loading.error('Imagen muy grande para subir');
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (_event) => {

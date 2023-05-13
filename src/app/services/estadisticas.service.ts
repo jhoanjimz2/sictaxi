@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ConexionService } from './conexion.service';
 import { HttpClient } from "@angular/common/http";
-import { ActualizarPerfilUsuario, ActualizarUsuario, CambiarPassword, GuardarAsociacion, GuardarEmpresa, ReqConductoresConQuejas, ReqEstadisticaConductores, ReqGrafComentarios } from '../interfaces';
+import { ActualizarPerfilUsuario, ActualizarUsuario, CambiarPassword, GuardarAsociacion, GuardarEmpresa, ReqConductoresConQuejas, ReqEstadisticaConductores, ReqGrafComentarios, UpdateParametros } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -216,7 +216,6 @@ export class EstadisticasService extends ConexionService {
     return this.postAuth('/getConductoresConQuejas', data ,params);
   }
   bloquearConductor(id: number) {
-    console.log(id)
     let data = { id }
     return this.postAuth('/vinculacionBloquear', data);
   }
@@ -282,6 +281,10 @@ export class EstadisticasService extends ConexionService {
     let data = { pass }
     return this.postAuth('/changesolicitarPass', data);
   }
+  cambiarImgDePerfil(id: string, image: File) {
+    let data = { id, image }
+    return this.postAuthImg('/updateProfileUser', data);
+  }
   //PERFIL DE USUARIO
 
 
@@ -307,5 +310,43 @@ export class EstadisticasService extends ConexionService {
     return this.getAuth('/getListObservaciones', params);
   }
   //INCIDENCIAS
+
+  //PARAMETROS
+  getLoadParameters() {
+    return this.getAuth('/loadParameters');
+  }
+  updateParametros(data: UpdateParametros) {
+    return this.postAuth('/updateParameters', data);
+  }
+  obtenerMarcas() {
+    return this.getAuth('/obtenerMarcas');
+  }
+  nuevaMarca(name: string) {
+    let data = { name }
+    return this.postAuth('/nuevaMarca', data);
+  }
+  obtenerAFPARLEPS() {
+    return this.getAuth('/getListadoobtenerSeguridadSocial');
+  }
+  obtenerAseguradoras() {
+    return this.getAuth('/obtenerAseguradoras');
+  }
+  nuevaSeguridadSocial(name: string, type: string) {
+    let data = { name, type }
+    return this.postAuth('/nuevaSeguridadSocial', data);
+  }
+  nuevaAseguradora(name: string) {
+    let data = { name }
+    return this.postAuth('/nuevaAseguradora', data);
+  }
+  updateAseguradora(nombre: string, id: string) {
+    let data = { nombre, id }
+    return this.postAuth('/updateAseguradora', data);
+  }
+  updateSeguridadSocial(nombre: string, id: string) {
+    let data = { nombre, id }
+    return this.postAuth('/updateSeguridadSocial', data);
+  }
+  //PARAMETROS
  
 }

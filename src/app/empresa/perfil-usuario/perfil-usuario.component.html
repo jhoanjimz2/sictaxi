@@ -1,7 +1,13 @@
 <div class="contenedor">
-    <div class="row mt-10">
-        <div class="col-6">
-            <label class="titulo">Datos del usuario</label>
+    <div class="row">
+        <div class="col">
+            <div class="card-header sombra">
+                <label class="titulo">Datos del usuario</label>
+                <div class="imgprofile" (click)="cambiarImg()">
+                    <img class="imgpro" [src]="user.fotoURL| imagenes">
+                    <div class="sobre"><img [src]="'assets/editar.svg' | imagenes"></div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row mt-20">

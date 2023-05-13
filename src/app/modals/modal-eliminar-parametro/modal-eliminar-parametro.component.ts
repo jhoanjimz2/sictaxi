@@ -17,6 +17,5 @@ export class ModalEliminarParametroComponent {
     private dialogRef: MatDialogRef<ModalEliminarParametroComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
-    console.log(data)
   }
 }

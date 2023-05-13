@@ -8,6 +8,7 @@ import { SharedModule } from './shared/shared.module';
 import { ModalsModule } from './modals/modals.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { WebcamModule } from 'ngx-webcam';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     BrowserAnimationsModule,
     SharedModule,
     ModalsModule,
-    HttpClientModule
+    HttpClientModule,
+    WebcamModule
   ],
   providers: [
     {

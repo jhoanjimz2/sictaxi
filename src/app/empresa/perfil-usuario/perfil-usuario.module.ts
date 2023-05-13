@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PerfilUsuarioRoutingModule } from './perfil-usuario-routing.module';
 import { PerfilUsuarioComponent } from './perfil-usuario.component';
+import { PipesModule } from '../../pipes/pipes.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { PerfilUsuarioComponent } from './perfil-usuario.component';
   ],
   imports: [
     CommonModule,
-    PerfilUsuarioRoutingModule
+    PerfilUsuarioRoutingModule,
+    PipesModule
   ]
 })
 export class PerfilUsuarioModule { }

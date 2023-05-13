@@ -6,6 +6,7 @@ import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActualizarPerfilUsuario, RespGetUser, Usuario } from 'src/app/interfaces';
 import { Location } from '@angular/common';
+import { ModalCambiarImgProfileComponent } from 'src/app/modals/modal-cambiar-img-profile/modal-cambiar-img-profile.component';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -22,6 +23,7 @@ export class PerfilUsuarioComponent {
     email: new FormControl('', [Validators.required]),
   });
   data: ActualizarPerfilUsuario = {} as ActualizarPerfilUsuario;
+  get user(): Usuario { return JSON.parse(localStorage.getItem('user')!); }
   constructor( 
     private dialog: MatDialog,
     private loading: LoadingService,
@@ -30,6 +32,10 @@ export class PerfilUsuarioComponent {
     private location: Location
   ) {
     this.cargarData();
+  }
+  cambiarImg() {
+    const dialogRef = this.dialog.open(ModalCambiarImgProfileComponent, {});
+    dialogRef.afterClosed().subscribe(result => {});
   }
   
   cambiarPassword() {

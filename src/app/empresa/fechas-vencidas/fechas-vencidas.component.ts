@@ -13,7 +13,6 @@ export class FechasVencidasComponent {
 
   pagina({pagina}: any) {
     this.loading.show();
-    console.log(pagina)
     setTimeout(() => {
       this.loading.hide();
     }, 500)

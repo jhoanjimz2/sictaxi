@@ -14,6 +14,7 @@ export interface Usuario {
     email:                   string;
     idciudad:                number;
     fotoUrl:                 string;
+    fotoURL:                 string;
     tipoImpresion:           string;
     tipoTarjeton:            string;
     solicitarCambioclave:    null;
@@ -36,7 +37,7 @@ export interface UsuarioList {
     rol:         string;
     direccion:   string;
     telefono:    string;
-    fotoUrl:     string;
+    fotoURL:     string;
 }
 export interface RespGetUser {
     id:                      number;

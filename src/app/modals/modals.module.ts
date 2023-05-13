@@ -13,7 +13,7 @@ import { ModalCrearAsociacionComponent } from './modal-crear-asociacion/modal-cr
 import { ModalCrearUsuarioComponent } from './modal-crear-usuario/modal-crear-usuario.component';
 import { ModalEliminarUsuarioComponent } from './modal-eliminar-usuario/modal-eliminar-usuario.component';
 import { ModalCambiarPasswordComponent } from './modal-cambiar-password/modal-cambiar-password.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalEliminarMatriculaComponent } from './modal-eliminar-matricula/modal-eliminar-matricula.component';
 import { ModalCrearParametroComponent } from './modal-crear-parametro/modal-crear-parametro.component';
 import { ModalEliminarParametroComponent } from './modal-eliminar-parametro/modal-eliminar-parametro.component';
@@ -21,7 +21,9 @@ import { ModalBuenasCalificacionesComponent } from './modal-buenas-calificacione
 import { FasesExportarComponent } from './fases-exportar/fases-exportar.component';
 import { ModalDesbloquearConductorComponent } from './modal-desbloquear-conductor/modal-desbloquear-conductor.component';
 import { ModalInitCambiarPasswordComponent } from './modal-init-cambiar-password/modal-init-cambiar-password.component';
-
+import { ModalCambiarImgProfileComponent } from './modal-cambiar-img-profile/modal-cambiar-img-profile.component';
+import { WebcamModule } from 'ngx-webcam';
+import { ModalTomarFotoComponent } from './modal-tomar-foto/modal-tomar-foto.component';
 
 
 @NgModule({
@@ -43,13 +45,17 @@ import { ModalInitCambiarPasswordComponent } from './modal-init-cambiar-password
     FasesExportarComponent,
     ModalDesbloquearConductorComponent,
     ModalInitCambiarPasswordComponent,
+    ModalCambiarImgProfileComponent,
+    ModalTomarFotoComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     PipesModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    WebcamModule,
+    FormsModule
   ]
 })
 export class ModalsModule { }

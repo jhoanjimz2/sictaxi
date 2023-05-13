@@ -34,6 +34,7 @@ aside header img {
     background-size: cover;
     transition: all 0.5s cubic-bezier(0, 0, 0.09, 0.87);
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.09); 
+    object-fit: cover;
 }
 aside header .arrow {
   width: 30px;
