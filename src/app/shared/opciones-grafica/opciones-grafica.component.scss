@@ -1,0 +1,48 @@
+.row {
+    padding-top: 25px;
+}
+.cent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+    position: relative;
+    .color-cuadro {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+        border-radius: 5px;
+        background: white;
+    }
+}
+label {
+    font-size: 12px;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.hover {
+    background: grey;
+    position: absolute;
+    top: -20px;
+    left: 17px;
+    z-index: 999;
+    transition: all .5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5px;
+    border-radius: 3px;
+    i {
+        position: absolute;
+        left: 0px;
+        bottom: -16px;
+        color: grey;
+    }
+    label {
+        color: white;
+    }
+}

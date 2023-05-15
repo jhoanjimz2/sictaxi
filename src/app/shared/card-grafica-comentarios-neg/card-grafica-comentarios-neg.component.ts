@@ -20,7 +20,15 @@ export class CardGraficaComentariosNegComponent {
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
   fechaInicial = moment(subDays(new Date(), 8)).format("YYYY-MM-DD");
   comentarios: string[] = [];
-
+  get seleccionados() { 
+    return  this.chart?.data?.datasets?.map( (item: any) => { 
+      return { 
+        color: item.borderColor, 
+        comentario: item.label, 
+        cantidad: item.data.reduce((a: number, b: number) => a + b, 0)
+      }
+    })  
+  }
   constructor( 
     private eS: EstadisticasService,
     private loading: LoadingService

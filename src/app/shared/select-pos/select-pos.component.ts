@@ -10,7 +10,7 @@ import { ComentariosService } from 'src/app/services/comentarios.service';
 })
 export class SelectPosComponent {
   @Output() select: EventEmitter<any> = new EventEmitter();
-  comentarios: RespComentarios[] = this.cS.comentariosP;
+  get comentarios(): RespComentarios[] { return this.cS.comentariosP; }
   debounceSelect: Subject<string> = new Subject();
 
   constructor(private cS: ComentariosService) {

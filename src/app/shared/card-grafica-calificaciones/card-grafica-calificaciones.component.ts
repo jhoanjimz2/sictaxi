@@ -19,6 +19,15 @@ export class CardGraficaCalificacionesComponent {
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
   fechaInicial = moment(subWeeks(new Date(), 1)).format("YYYY-MM-DD");
 
+  get seleccionados() { 
+    return  this.chart?.data?.datasets?.map( (item: any) => { 
+      return { 
+        color: item.borderColor, 
+        comentario: item.label, 
+        cantidad: item.data.reduce((a: number, b: number) => a + b, 0)
+      }
+    })  
+  }
   constructor( 
     private eS: EstadisticasService,
     private loading: LoadingService

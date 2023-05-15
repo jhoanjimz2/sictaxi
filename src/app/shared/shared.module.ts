@@ -20,6 +20,7 @@ import { CardReporteCalificacionesComponent } from './card-reporte-calificacione
 import { CardGraficaCalificacionesComponent } from './card-grafica-calificaciones/card-grafica-calificaciones.component';
 import { CardGraficaComentariosNegComponent } from './card-grafica-comentarios-neg/card-grafica-comentarios-neg.component';
 import { CardGraficaComentariosPosComponent } from './card-grafica-comentarios-pos/card-grafica-comentarios-pos.component';
+import { OpcionesGraficaComponent } from './opciones-grafica/opciones-grafica.component';
 
 
 
@@ -40,7 +41,8 @@ import { CardGraficaComentariosPosComponent } from './card-grafica-comentarios-p
     CardReporteCalificacionesComponent,
     CardGraficaComentariosPosComponent,
     CardGraficaComentariosNegComponent,
-    CardGraficaCalificacionesComponent
+    CardGraficaCalificacionesComponent,
+    OpcionesGraficaComponent
   ],
   exports: [
     SidebarComponent,
