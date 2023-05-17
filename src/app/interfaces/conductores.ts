@@ -6,7 +6,7 @@ export interface RespBuscarConductores {
 }
 
 export interface ConductorSearch {
-    idVinculacion:           number;
+    idVinculacion:           string;
     idConductor:             string;
     nombres:                 string;
     cedula:                  string;

@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConductorSearch, RespBuscarConductores } from 'src/app/interfaces';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
 import { DownloadService } from 'src/app/services/download.service';
-import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { SearchCondutoresService } from 'src/app/services/search-condutores.service';
 
 @Component({
   selector: 'app-buscar-conductores',
@@ -21,14 +21,14 @@ export class BuscarConductoresComponent {
   constructor( 
     private loading: LoadingService,
     public dialog: MatDialog,
-    private eS: EstadisticasService,
+    private sC: SearchCondutoresService,
     private download: DownloadService
   ) { this.pagina({ pagina: 1 }); }
 
   pagina({pagina}: any) {
     this.loading.show();
     this.paginaActual = pagina;
-    this.eS.getConductoresGeneral(pagina, this.filtro).subscribe({
+    this.sC.getConductoresGeneral(pagina, this.filtro).subscribe({
       next: (data: RespBuscarConductores) => {
         this.totalPages = data.pages;
         this.conductores = data.data;
@@ -55,7 +55,7 @@ export class BuscarConductoresComponent {
   }
   exportar() {
     this.loading.show();
-    this.eS.getExcelConductoresListadoGeneral().subscribe({
+    this.sC.getExcelConductoresListadoGeneral().subscribe({
       next: (data: any) => {
         this.download.download(data, 'Conductores');
       }, error: (error: any) => {

@@ -172,14 +172,6 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta' };
     return this.getAuthExcel('/exportConductoresRegistradosExcel', params)
   }
-  getPerfilConductor(idConductor: number) {
-    let params = { ciudad: 'SantaMarta' };
-    return this.postAuth('/searchVehiculoConductorByVinculacion', { idConductor } ,params)
-  }
-  descargarPdfProfile(idConductor: number) {
-    let params = { ciudad: 'SantaMarta' };
-    return this.postAuthPDF('/fichaConductorPDF', { idConductor } ,params)
-  }
   //TAXISTAS REGISTRADOS
 
 
@@ -228,18 +220,6 @@ export class EstadisticasService extends ConexionService {
     return this.postAuth('/processComplaintsVinculacion', data);
   }
   //QUEJAS
-
-
-  //CONDUCTORES
-  getConductoresGeneral(page: number, filtro: string) {
-    let params = { ciudad: 'SantaMarta', page, filtro };
-    return this.getAuth('/getDataConductoresGeneral', params);
-  }
-  getExcelConductoresListadoGeneral() {
-    let params = { ciudad: 'SantaMarta' };
-    return this.getAuthExcel('/exportConductoresListadoGeneral', params)
-  }
-  //CONDUCTORES
 
 
 

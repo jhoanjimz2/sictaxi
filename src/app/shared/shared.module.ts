@@ -21,6 +21,7 @@ import { CardGraficaCalificacionesComponent } from './card-grafica-calificacione
 import { CardGraficaComentariosNegComponent } from './card-grafica-comentarios-neg/card-grafica-comentarios-neg.component';
 import { CardGraficaComentariosPosComponent } from './card-grafica-comentarios-pos/card-grafica-comentarios-pos.component';
 import { OpcionesGraficaComponent } from './opciones-grafica/opciones-grafica.component';
+import { DiasMesesAnhosComponent } from './dias-meses-anhos/dias-meses-anhos.component';
 
 
 
@@ -42,7 +43,8 @@ import { OpcionesGraficaComponent } from './opciones-grafica/opciones-grafica.co
     CardGraficaComentariosPosComponent,
     CardGraficaComentariosNegComponent,
     CardGraficaCalificacionesComponent,
-    OpcionesGraficaComponent
+    OpcionesGraficaComponent,
+    DiasMesesAnhosComponent
   ],
   exports: [
     SidebarComponent,

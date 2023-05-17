@@ -13,10 +13,12 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./card-grafica-comentarios-neg.component.scss']
 })
 export class CardGraficaComentariosNegComponent {
+  formatGrafic: number = 1;
   typeGrafic: number = 1;
-  dataGraficaComentariosN: Graficas = {} as Graficas;
+  dataGraficaComentariosNDias: Graficas = {} as Graficas;
+  dataGraficaComentariosNMeses: Graficas = {} as Graficas;
+  dataGraficaComentariosNAnhos: Graficas = {} as Graficas;
   chart: any;
-
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
   fechaInicial = moment(subDays(new Date(), 8)).format("YYYY-MM-DD");
   comentarios: string[] = [];
@@ -46,8 +48,9 @@ export class CardGraficaComentariosNegComponent {
     }
     this.eS.getGraficaComentarios(data).subscribe({
       next: (data: RespGraficaComentarios[]) => {
-        this.setLabels({ start: new Date(this.fechaInicial), end: new Date(this.fechaFinal)})
-        this.setDatasets(data);
+        this.setDatasetsDias(data);
+        this.setDatasetsMeses(data);
+        this.setDatasetsAnhos(data);
         if ( bandera ) this.updateGrafica();
         else this.createChart();
       }, error: () => {
@@ -56,21 +59,83 @@ export class CardGraficaComentariosNegComponent {
       }
     })
   }
-  setDatasets(data: RespGraficaComentarios[]) {
-    this.dataGraficaComentariosN.datasets = data.map( item => {
-      return {
-        label: item.comentario,
-        data: item.graph.map( item2 => { return item2.cantidad })
-      }
+
+  setDatasetsDias(data: RespGraficaComentarios[]) {
+    let fechas = data[0].graph.map( item => { return item.fecha })
+    let datasets = data.map( item => {
+      return { label: item.comentario, data: item.graph.map( item2 => { return item2.cantidad }) }
     });
+    this.dataGraficaComentariosNDias.datasets = datasets;
+    this.dataGraficaComentariosNDias.labels = fechas;
   }
-  setLabels({start, end}: { start: Date, end: Date }) {
-    this.dataGraficaComentariosN.labels = [];
-    while(end.getTime() >= start.getTime()){
-      start.setDate(start.getDate() + 1);
-      this.dataGraficaComentariosN.labels.push(moment(start).format("YYYY-MM-DD"));
-    }
+
+  setDatasetsMeses(data: RespGraficaComentarios[]) {
+    let stringFechas = data[0].graph.map( item => { return moment(item.fecha).format("YYYY-MM") })
+    let setFechas = new Set(stringFechas);
+    let fechas = [...setFechas];
+    let arr: any = [];
+    fechas.forEach(_fecha => {
+      arr.push(data.map( item => {
+        return { 
+          label: item.comentario, 
+          data: item.graph.filter(({fecha}) => moment(fecha).format("YYYY-MM") === moment(_fecha).format("YYYY-MM"))
+        }
+      }));
+    })
+    let _datasets: any[] = [];
+    arr.map( (item:any) => {
+      item.map((_item:any) => {
+        var vare: any = {
+          label: _item.label, 
+          data: _item.data.map( (__item: any) => { return __item.cantidad })
+        }
+        var pre: any = {
+          label: vare.label,
+          data: [vare.data.reduce((a: number, b: number) => a + b, 0)]
+        }
+        var _pre = _datasets.find(element => element.label == pre.label)
+        if (!_pre) _datasets.push(pre);
+        else _pre.data.push(...pre.data)
+      })
+    })
+    this.dataGraficaComentariosNMeses.datasets = _datasets;
+    this.dataGraficaComentariosNMeses.labels = fechas;
   }
+
+
+  setDatasetsAnhos(data: RespGraficaComentarios[]) {
+    let stringFechas = data[0].graph.map( item => { return moment(item.fecha).format("YYYY") })
+    let setFechas = new Set(stringFechas);
+    let fechas = [...setFechas];
+    let arr: any = [];
+    fechas.forEach(_fecha => {
+      arr.push(data.map( item => {
+        return { 
+          label: item.comentario, 
+          data: item.graph.filter(({fecha}) => moment(fecha).format("YYYY") === moment(_fecha).format("YYYY"))
+        }
+      }));
+    })
+    let _datasets: any[] = [];
+    arr.map( (item:any) => {
+      item.map((_item:any) => {
+        var vare: any = {
+          label: _item.label, 
+          data: _item.data.map( (__item: any) => { return __item.cantidad })
+        }
+        var pre: any = {
+          label: vare.label,
+          data: [vare.data.reduce((a: number, b: number) => a + b, 0)]
+        }
+        var _pre = _datasets.find(element => element.label == pre.label)
+        if (!_pre) _datasets.push(pre);
+        else _pre.data.push(...pre.data)
+      })
+    })
+    this.dataGraficaComentariosNAnhos.datasets = _datasets;
+    this.dataGraficaComentariosNAnhos.labels = fechas;
+  }
+
   typeGrafica(number: number) {
     this.typeGrafic = number;
     if (number == 2) this.chart.config.type = "bar";
@@ -81,7 +146,10 @@ export class CardGraficaComentariosNegComponent {
     let df = { display: false };
     this.chart = new Chart("ChartComentariosN",  {
       type: 'line',
-      data: this.dataGraficaComentariosN,
+      data: 
+        (this.formatGrafic == 1) ? this.dataGraficaComentariosNDias : 
+        (this.formatGrafic == 2) ? this.dataGraficaComentariosNMeses : 
+        (this.formatGrafic == 3) ? this.dataGraficaComentariosNAnhos : {} as Graficas,
       options: {
         plugins: { legend: df },
         scales: {
@@ -92,7 +160,23 @@ export class CardGraficaComentariosNegComponent {
     });
   }
   updateGrafica() {
-    this.chart.config.data = this.dataGraficaComentariosN;
+    this.chart.config.options = {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { grid: { display: false }, title:{ text: 'Número de quejas', display: true } },
+        x: { grid: { display: false }, title: { 
+          text: 
+            (this.formatGrafic == 1) ? 'Días'  : 
+            (this.formatGrafic == 2) ? 'Meses' : 
+            (this.formatGrafic == 3) ? 'Años'  : null, 
+          display: true 
+        }}
+      }
+    };
+    this.chart.config.data = 
+      (this.formatGrafic == 1) ? this.dataGraficaComentariosNDias : 
+      (this.formatGrafic == 2) ? this.dataGraficaComentariosNMeses : 
+      (this.formatGrafic == 3) ? this.dataGraficaComentariosNAnhos : {} as Graficas,
     this.chart.update();
     this.loading.hide();
   }
@@ -104,5 +188,10 @@ export class CardGraficaComentariosNegComponent {
   selectComent(event: string[]) {
     this.comentarios = event;
     this.cargarData(true);
+  }
+  setFormat(type: number) {
+    this.loading.show();
+    this.formatGrafic = type;
+    this.updateGrafica();
   }
 }

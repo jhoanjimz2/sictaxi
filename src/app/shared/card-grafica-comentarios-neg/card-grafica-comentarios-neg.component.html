@@ -28,6 +28,14 @@
     <div class="row">
         <div class="col">
             <div class="card-grafic">
+                <div class="row">
+                    <div class="col">
+                        <app-dias-meses-anhos 
+                            (select)="setFormat($event)"
+                            [formatGrafic]="formatGrafic"
+                        />
+                    </div>
+                </div>
                 <canvas  id="ChartComentariosN">{{ chart }}</canvas>
             </div>
         </div>

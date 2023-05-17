@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Graficas, ReqGrafComentarios, RespGraficaComentarios } from 'src/app/interfaces';
+import { Graficas, Graph, ReqGrafComentarios, RespGraficaComentarios } from 'src/app/interfaces';
 import { subDays } from 'date-fns';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -12,8 +12,13 @@ import * as moment from 'moment';
   styleUrls: ['./card-grafica-comentarios-pos.component.scss']
 })
 export class CardGraficaComentariosPosComponent {
+
+
+  formatGrafic: number = 1;
   typeGrafic: number = 1;
-  dataGraficaComentariosP: Graficas = {} as Graficas;
+  dataGraficaComentariosPDias: Graficas = {} as Graficas;
+  dataGraficaComentariosPMeses: Graficas = {} as Graficas;
+  dataGraficaComentariosPAnhos: Graficas = {} as Graficas;
   chart: any;
 
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
@@ -46,8 +51,9 @@ export class CardGraficaComentariosPosComponent {
     }
     this.eS.getGraficaComentarios(data).subscribe({
       next: (data: RespGraficaComentarios[]) => {
-        this.setLabels({ start: new Date(this.fechaInicial), end: new Date(this.fechaFinal)})
-        this.setDatasets(data);
+        this.setDatasetsDias(data);
+        this.setDatasetsMeses(data);
+        this.setDatasetsAnhos(data);
         if ( bandera ) this.updateGrafica();
         else this.createChart();
       }, error: () => {
@@ -56,21 +62,90 @@ export class CardGraficaComentariosPosComponent {
       }
     })
   }
-  setDatasets(data: RespGraficaComentarios[]) {
-    this.dataGraficaComentariosP.datasets = data.map( item => {
-      return {
-        label: item.comentario,
-        data: item.graph.map( item2 => { return item2.cantidad })
-      }
+  setFormat(type: number) {
+    this.loading.show();
+    this.formatGrafic = type;
+    this.updateGrafica();
+  }
+
+  setDatasetsDias(data: RespGraficaComentarios[]) {
+    let fechas = data[0].graph.map( item => { return item.fecha })
+    let datasets = data.map( item => {
+      return { label: item.comentario, data: item.graph.map( item2 => { return item2.cantidad }) }
     });
+    this.dataGraficaComentariosPDias.datasets = datasets;
+    this.dataGraficaComentariosPDias.labels = fechas;
   }
-  setLabels({start, end}: { start: Date, end: Date }) {
-    this.dataGraficaComentariosP.labels = [];
-    while(end.getTime() >= start.getTime()){
-      start.setDate(start.getDate() + 1);
-      this.dataGraficaComentariosP.labels.push(moment(start).format("YYYY-MM-DD"));
-    }
+
+  setDatasetsMeses(data: RespGraficaComentarios[]) {
+    let stringFechas = data[0].graph.map( item => { return moment(item.fecha).format("YYYY-MM") })
+    let setFechas = new Set(stringFechas);
+    let fechas = [...setFechas];
+    let arr: any = [];
+    fechas.forEach(_fecha => {
+      arr.push(data.map( item => {
+        return { 
+          label: item.comentario, 
+          data: item.graph.filter(({fecha}) => moment(fecha).format("YYYY-MM") === moment(_fecha).format("YYYY-MM"))
+        }
+      }));
+    })
+    let _datasets: any[] = [];
+    arr.map( (item:any) => {
+      item.map((_item:any) => {
+        var vare: any = {
+          label: _item.label, 
+          data: _item.data.map( (__item: any) => { return __item.cantidad })
+        }
+        var pre: any = {
+          label: vare.label,
+          data: [vare.data.reduce((a: number, b: number) => a + b, 0)]
+        }
+        var _pre = _datasets.find(element => element.label == pre.label)
+        if (!_pre) _datasets.push(pre);
+        else _pre.data.push(...pre.data)
+      })
+    })
+    this.dataGraficaComentariosPMeses.datasets = _datasets;
+    this.dataGraficaComentariosPMeses.labels = fechas;
   }
+
+
+  setDatasetsAnhos(data: RespGraficaComentarios[]) {
+    let stringFechas = data[0].graph.map( item => { return moment(item.fecha).format("YYYY") })
+    let setFechas = new Set(stringFechas);
+    let fechas = [...setFechas];
+    let arr: any = [];
+    fechas.forEach(_fecha => {
+      arr.push(data.map( item => {
+        return { 
+          label: item.comentario, 
+          data: item.graph.filter(({fecha}) => moment(fecha).format("YYYY") === moment(_fecha).format("YYYY"))
+        }
+      }));
+    })
+    let _datasets: any[] = [];
+    arr.map( (item:any) => {
+      item.map((_item:any) => {
+        var vare: any = {
+          label: _item.label, 
+          data: _item.data.map( (__item: any) => { return __item.cantidad })
+        }
+        var pre: any = {
+          label: vare.label,
+          data: [vare.data.reduce((a: number, b: number) => a + b, 0)]
+        }
+        var _pre = _datasets.find(element => element.label == pre.label)
+        if (!_pre) _datasets.push(pre);
+        else _pre.data.push(...pre.data)
+      })
+    })
+    this.dataGraficaComentariosPAnhos.datasets = _datasets;
+    this.dataGraficaComentariosPAnhos.labels = fechas;
+  }
+
+
+
   typeGrafica(number: number) {
     this.typeGrafic = number;
     if (number == 2) this.chart.config.type = "bar";
@@ -81,7 +156,10 @@ export class CardGraficaComentariosPosComponent {
     let df = { display: false };
     this.chart = new Chart("ChartComentariosP",  {
       type: 'line',
-      data: this.dataGraficaComentariosP,
+      data: 
+        (this.formatGrafic == 1) ? this.dataGraficaComentariosPDias : 
+        (this.formatGrafic == 2) ? this.dataGraficaComentariosPMeses : 
+        (this.formatGrafic == 3) ? this.dataGraficaComentariosPAnhos : {} as Graficas,
       options: {
         plugins: { legend: df },
         scales: {
@@ -92,7 +170,23 @@ export class CardGraficaComentariosPosComponent {
     });
   }
   updateGrafica() {
-    this.chart.config.data = this.dataGraficaComentariosP;
+    this.chart.config.options = {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { grid: { display: false }, title:{ text: 'Número de quejas', display: true } },
+        x: { grid: { display: false }, title: { 
+          text: 
+            (this.formatGrafic == 1) ? 'Días'  : 
+            (this.formatGrafic == 2) ? 'Meses' : 
+            (this.formatGrafic == 3) ? 'Años'  : null, 
+          display: true 
+        }}
+      }
+    };
+    this.chart.config.data = 
+      (this.formatGrafic == 1) ? this.dataGraficaComentariosPDias : 
+      (this.formatGrafic == 2) ? this.dataGraficaComentariosPMeses : 
+      (this.formatGrafic == 3) ? this.dataGraficaComentariosPAnhos : {} as Graficas,
     this.chart.update();
     this.loading.hide();
   }

@@ -13,8 +13,11 @@ import Chart from 'chart.js/auto';
 })
 export class CardGraficaCalificacionesComponent {
 
+  formatGrafic: number = 1;
   typeGrafic: number = 1;
-  dataGraficaCalificaciones: Graficas = {} as Graficas;
+  dataGraficaCalificacionesDias: Graficas = {} as Graficas;
+  dataGraficaCalificacionesMeses: Graficas = {} as Graficas;
+  dataGraficaCalificacionesAnhos: Graficas = {} as Graficas;
   chart: any;
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
   fechaInicial = moment(subWeeks(new Date(), 1)).format("YYYY-MM-DD");
@@ -40,8 +43,9 @@ export class CardGraficaCalificacionesComponent {
       fechaInicial: this.fechaInicial
     }).subscribe({
       next: (data: RespGraficaCalificaciones) => {
-        this.setLabels({ start: new Date(this.fechaInicial), end: new Date(this.fechaFinal) })
-        this.setDatasets( data );
+        this.setDatasetsDias(data);
+        this.setDatasetsMeses(data);
+        this.setDatasetsAnhos(data);
         if ( bandera ) this.updateGrafica();
         else this.createChart();
       }, error: () => {
@@ -50,18 +54,81 @@ export class CardGraficaCalificacionesComponent {
       }
     });
   }
-  setLabels({start, end}: { start: Date, end: Date }) {
-    this.dataGraficaCalificaciones.labels = [];
-    while(end.getTime() >= start.getTime()){
-      start.setDate(start.getDate() + 1);
-      this.dataGraficaCalificaciones.labels.push(moment(start).format("YYYY-MM-DD"));
-    }
-  }
-  setDatasets(data: RespGraficaCalificaciones) {
+  setDatasetsDias(data: RespGraficaCalificaciones) {
+    let fechas = data.positive.map( item => { return item.fecha });
     let pos = data.positive.map( item => { return item.cantidad });
     let neg = data.negative.map( item => { return item.cantidad });
     let datasets = [ { data: pos, label: 'Buenas Calificaciones'}, { data: neg, label: 'Malas  Calificaciones'} ]
-    this.dataGraficaCalificaciones.datasets = datasets;
+    this.dataGraficaCalificacionesDias.datasets = datasets;
+    this.dataGraficaCalificacionesDias.labels = fechas;
+  }
+
+  setDatasetsMeses(data: RespGraficaCalificaciones) {
+    let stringFechas = data.positive.map( item => { return moment(item.fecha).format("YYYY-MM") })
+    let setFechas = new Set(stringFechas);
+    let fechas = [...setFechas];
+    let pos: number[] = [];
+    let neg: number[] = [];
+    fechas.forEach(_fecha => {
+      let posi = data.positive.filter(({fecha}) => moment(fecha).format("YYYY-MM") === moment(_fecha).format("YYYY-MM"));
+      let nega = data.negative.filter(({fecha}) => moment(fecha).format("YYYY-MM") === moment(_fecha).format("YYYY-MM"));
+      let posiN = posi.map( item => { return item.cantidad });
+      let negaN = nega.map( item => { return item.cantidad });
+      pos.push(posiN.reduce((a: number, b: number) => a + b, 0));
+      neg.push(negaN.reduce((a: number, b: number) => a + b, 0));
+    });
+    let datasets = [ { data: pos, label: 'Buenas Calificaciones'}, { data: neg, label: 'Malas  Calificaciones'} ]
+    this.dataGraficaCalificacionesMeses.datasets = datasets;
+    this.dataGraficaCalificacionesMeses.labels = fechas;
+  }
+
+  
+
+  setDatasetsAnhos(data: RespGraficaCalificaciones) {
+    let stringFechas = data.positive.map( item => { return moment(item.fecha).format("YYYY") })
+    let setFechas = new Set(stringFechas);
+    let fechas = [...setFechas];
+    let pos: number[] = [];
+    let neg: number[] = [];
+    fechas.forEach(_fecha => {
+      let posi = data.positive.filter(({fecha}) => moment(fecha).format("YYYY") === moment(_fecha).format("YYYY"));
+      let nega = data.negative.filter(({fecha}) => moment(fecha).format("YYYY") === moment(_fecha).format("YYYY"));
+      let posiN = posi.map( item => { return item.cantidad });
+      let negaN = nega.map( item => { return item.cantidad });
+      pos.push(posiN.reduce((a: number, b: number) => a + b, 0));
+      neg.push(negaN.reduce((a: number, b: number) => a + b, 0));
+    });
+    let datasets = [ { data: pos, label: 'Buenas Calificaciones'}, { data: neg, label: 'Malas  Calificaciones'} ]
+    this.dataGraficaCalificacionesAnhos.datasets = datasets;
+    this.dataGraficaCalificacionesAnhos.labels = fechas;
+  }
+  setFormat(type: number) {
+    this.loading.show();
+    this.formatGrafic = type;
+    this.updateGrafica();
+  }
+  updateGrafica() {
+    this.chart.config.options = {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { grid: { display: false }, title:{ text: 'Número de quejas', display: true } },
+        x: { grid: { display: false }, title: { 
+          text: 
+            (this.formatGrafic == 1) ? 'Días'  : 
+            (this.formatGrafic == 2) ? 'Meses' : 
+            (this.formatGrafic == 3) ? 'Años'  : null, 
+          display: true 
+        }}
+      }
+    };
+
+    this.chart.config.data = 
+      (this.formatGrafic == 1) ? this.dataGraficaCalificacionesDias : 
+      (this.formatGrafic == 2) ? this.dataGraficaCalificacionesMeses : 
+      (this.formatGrafic == 3) ? this.dataGraficaCalificacionesAnhos : {} as Graficas;
+
+    this.chart.update();
+    this.loading.hide();
   }
 
   typeGrafica(number: number) {
@@ -73,20 +140,21 @@ export class CardGraficaCalificacionesComponent {
   createChart() {
     this.chart = new Chart("ChartCalificaciones",  {
       type: 'line',
-      data: this.dataGraficaCalificaciones,
+      data: 
+        (this.formatGrafic == 1) ? this.dataGraficaCalificacionesDias : 
+        (this.formatGrafic == 2) ? this.dataGraficaCalificacionesMeses : 
+        (this.formatGrafic == 3) ? this.dataGraficaCalificacionesAnhos : {} as Graficas,
       options: {
         plugins: { legend: { display: false } },
         scales: {
           y: { grid: { display: false }, title:{ text: 'Número de quejas', display: true } },
-          x: { grid: { display: false }, title:{ text: 'Días', display: true } }
+          x: { grid: { display: false }, title: { 
+            text: 'Días',
+            display: true 
+          }}
         }
       }
     });
-    this.loading.hide();
-  }
-  updateGrafica() {
-    this.chart.config.data = this.dataGraficaCalificaciones;
-    this.chart.update();
     this.loading.hide();
   }
   selectDate({start, end}: any) {
@@ -94,4 +162,7 @@ export class CardGraficaCalificacionesComponent {
     this.fechaInicial = moment(start).format("YYYY-MM-DD");
     this.cargarData(true);
   }
+
+
+
 }

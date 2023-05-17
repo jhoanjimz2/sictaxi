@@ -7,6 +7,7 @@
     justify-content: flex-start;
     margin-bottom: 5px;
     position: relative;
+    cursor: pointer;
     .color-cuadro {
         width: 20px;
         height: 20px;
@@ -15,7 +16,7 @@
         background: white;
     }
 }
-label {
+.coment {
     font-size: 12px;
     font-weight: bold;
     color: black;
@@ -23,17 +24,16 @@ label {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    cursor: pointer;
 }
 .hover {
+    width: 180px;
     background: grey;
     position: absolute;
-    top: -20px;
+    bottom: 110%;
     left: 17px;
     z-index: 999;
     transition: all .5s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 2.5px;
     border-radius: 3px;
     i {
@@ -44,5 +44,7 @@ label {
     }
     label {
         color: white;
+        font-size: 12px;
+        font-weight: bold;
     }
 }

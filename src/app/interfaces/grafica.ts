@@ -13,10 +13,6 @@ export interface RespGraficaComentarios {
     comentario: string;
     graph:      Graph[];
 }
-export interface Graph {
-    fecha:    Date;
-    cantidad: number;
-}
 export interface Graficas {
     labels:   string[];
     datasets: Comentario[];
@@ -30,6 +26,6 @@ export interface RespGraficaCalificaciones {
     negative: Graph[];
 }
 export interface Graph {
-    fecha:    Date;
+    fecha:    string;
     cantidad: number;
 }
