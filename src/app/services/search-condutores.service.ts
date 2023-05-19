@@ -35,8 +35,8 @@ export class SearchCondutoresService extends ConexionService {
     let params = { ciudad: 'SantaMarta' };
     return this.postAuth('/searchVehiculoConductorByVinculacion', { idVinculacion } ,params)
   }
-  descargarPdfProfileEmpresa(idVinculacion: number) {
-    return this.postAuthPDF('/exportPdfUser', { idVinculacion })
+  descargarPdfProfileEmpresa(id: string) {
+    return this.postAuth('/exportPdfUser', { id })
   }
 
 

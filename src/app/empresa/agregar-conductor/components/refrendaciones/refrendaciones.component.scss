@@ -1,50 +1,39 @@
-.contenedor {
-    padding: 15px 20px;
-    height: 100%;
-}
-.col-3 {
-    margin-top: 10px;
-}
-.mt-10 {
-    margin-top: 10px;
-}
-.titulo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #000;
-}
-.mt-20 {
-    margin-top: 20px;
-}
 .card-formulario {
     width: 100%;
     padding: 30px;
     background-color: white;
     border-radius: 25px;
 }
-.subtitulo {
-    font-size: 12px;
-    font-weight: bold;
-    color: #000;
-    margin-left: 20px;
+table {
+    margin-bottom: 0px !important;
+    border-bottom: 0px !important;
 }
-.input {
-    width: 100%;
+thead {
     background-color: white;
-    border: 2px solid #EFEFEF;
-    padding-left: 20px;
-    border-radius: 20px;
-    height: 28px;
+}
+tr th {
+    border: none;
+    font-size: 14px;
+}
+tr td {
     font-size: 12px;
+    border: none;
 }
-.separador {
-    width: 20px;
+.ptlr {
+    border-top-left-radius: 15px !important;
 }
-.content-buttons {
+.ptrr {
+    border-top-right-radius: 15px !important;
+}
+.h-10 {
+    height: 10px;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+.bw {
+    background: white;
+}
+.mt-20 {
+    margin-top: 20px;
 }
 button {
     padding: 5px 20px;
@@ -67,13 +56,12 @@ button {
 .bg-y {
     background-color: #FFF25C;
 }
-.flexible {
-    width: 100%;
-    display: flex;
-}
 .end {
     display: flex;
     justify-content: end;
     align-items: center;
     padding-right: 12px;
+}
+.separador {
+    width: 20px;
 }

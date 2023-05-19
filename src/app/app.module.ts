@@ -9,6 +9,12 @@ import { ModalsModule } from './modals/modals.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { WebcamModule } from 'ngx-webcam';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
+
+
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
 
 @NgModule({
   declarations: [
@@ -21,7 +27,8 @@ import { WebcamModule } from 'ngx-webcam';
     SharedModule,
     ModalsModule,
     HttpClientModule,
-    WebcamModule
+    WebcamModule,
+    NgxMaskModule.forRoot(maskConfig),
   ],
   providers: [
     {

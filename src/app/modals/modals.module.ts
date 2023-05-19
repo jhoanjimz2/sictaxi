@@ -24,6 +24,7 @@ import { ModalInitCambiarPasswordComponent } from './modal-init-cambiar-password
 import { ModalCambiarImgProfileComponent } from './modal-cambiar-img-profile/modal-cambiar-img-profile.component';
 import { WebcamModule } from 'ngx-webcam';
 import { ModalTomarFotoComponent } from './modal-tomar-foto/modal-tomar-foto.component';
+import { ModalDesvincularComponent } from './modal-desvincular/modal-desvincular.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ModalTomarFotoComponent } from './modal-tomar-foto/modal-tomar-foto.com
     ModalDesbloquearConductorComponent,
     ModalInitCambiarPasswordComponent,
     ModalCambiarImgProfileComponent,
-    ModalTomarFotoComponent
+    ModalTomarFotoComponent,
+    ModalDesvincularComponent
   ],
   imports: [
     CommonModule,

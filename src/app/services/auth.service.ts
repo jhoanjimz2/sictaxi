@@ -16,7 +16,7 @@ export class AuthService extends ConexionService {
     return of(false);
   }
   vaidarEmpre(): Observable<boolean> {
-    if( localStorage.getItem('role') == 'Empresa' ) return of(true); 
+    if( localStorage.getItem('role') == 'Empresa' || 'Auxiliar' ) return of(true); 
     return of(false);
   }
   validarSecre(): Observable<boolean> {

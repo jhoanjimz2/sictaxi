@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ItemSidebar, Usuario } from 'src/app/interfaces';
-import { secretaria, empresa } from '../../../assets/data/sidebar';
+import { secretaria, empresa, auxiliar } from '../../../assets/data/sidebar';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { Router } from '@angular/router';
@@ -21,7 +21,8 @@ export class SidebarComponent {
     private router: Router
   ) {
     if( this.user.rol == 'Secretaria' ) this.items = secretaria;
-    else this.items = empresa;
+    else if( this.user.rol == 'Empresa' ) this.items = empresa;
+    else this.items = auxiliar;
   }
   logout() {
     this.loading.show();

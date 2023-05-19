@@ -14,7 +14,7 @@ export const rutas: Routes = [
     loadChildren: () => import('./agregar-conductor/agregar-conductor.module').then( m => m.AgregarConductorModule),
   },
   {
-    path: 'agregar-conductor/:id/:vinculacion',
+    path: 'agregar-conductor/:id',
     loadChildren: () => import('./agregar-conductor/agregar-conductor.module').then( m => m.AgregarConductorModule),
   },
   {

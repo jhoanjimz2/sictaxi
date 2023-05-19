@@ -68,3 +68,39 @@ button {
     width: 100%;
     display: flex;
 }
+.col-3 {
+    margin-top: 10px;
+}
+.input-iz {
+    width: 70%;
+    background-color: white;
+    border: 2px solid #EFEFEF;
+    padding-left: 20px;
+    border-radius: 20px;
+    height: 28px;
+    font-size: 12px;
+    border-right: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.input-de {
+    width: 30%;
+    background-color: white;
+    border: 2px solid #EFEFEF;
+    padding-left: 5px;
+    border-radius: 20px;
+    height: 28px;
+    font-size: 12px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.combi {
+    display: flex;
+}
+
+.end {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 12px;
+}

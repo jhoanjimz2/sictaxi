@@ -5,24 +5,62 @@
         </div>
     </div>
     <div class="row mt-10">
-        <div class="col-6">
-            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 1}" (click)="seleccionado = 1">
+        <div class="col">
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 1}" (click)="seleccionado = 1"
+                    [disabled]="!botones.uno">
                 <img src="assets/sidebar/agregarconductor.svg">Conductor
             </button>
-            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 2}" (click)="seleccionado = 2">
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 2}" (click)="seleccionado = 2"
+                    [disabled]="!botones.dos">
                 <img src="assets/sidebar/user.svg">Inf. complementaria
             </button>
-            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 3}" (click)="seleccionado = 3">
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 3}" (click)="seleccionado = 3"
+                    [disabled]="!botones.tres">
                 <img src="assets/taxi.svg">Vehículo
             </button>
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 4}" (click)="seleccionado = 4" *ngIf="id">
+                <img src="assets/moneda.png">Refrendaciones
+            </button>
         </div>
-        <div class="col-6"></div>
     </div>
     <div class="row mt-20">
         <div class="col">
-            <app-conductor *ngIf="seleccionado == 1" class="animado animate__animated animate__fadeInRight"/>
-            <app-info-complementaria *ngIf="seleccionado == 2" class="animado animate__animated animate__fadeInRight"/>
-            <app-vehiculo *ngIf="seleccionado == 3" class="animado animate__animated animate__fadeInRight"/>
+            <app-conductor 
+                (next)="next($event)" 
+                (refrendar)="refrendar()"
+                (formulario)="form($event, 1)"
+                (activar)="botones.dos = true"
+                [hidden]="seleccionado != 1" 
+                [id]="id" 
+                [conductor]="conductor" 
+                class="animado animate__animated animate__fadeInRight"
+            />
+            <app-info-complementaria 
+                (next)="next($event)" 
+                (refrendar)="refrendar()"
+                (formulario)="form($event, 2)"
+                (activar)="botones.tres = true"
+                [hidden]="seleccionado != 2" 
+                [id]="id" 
+                [conductor]="conductor" 
+                class="animado animate__animated animate__fadeInRight"
+            />
+            <app-vehiculo 
+                (guardar)="guardar()"
+                (refrendar)="refrendar()"
+                (formulario)="form($event, 3)"
+                [hidden]="seleccionado != 3" 
+                [id]="id" 
+                [conductor]="conductor" 
+                class="animado animate__animated animate__fadeInRight"
+            />
+            <app-refrendaciones 
+                (refrendar)="refrendar()"
+                *ngIf="seleccionado == 4" 
+                [id]="id" 
+                [conductor]="conductor" 
+                class="animado animate__animated animate__fadeInRight"
+            />
         </div>
     </div>
 </div>

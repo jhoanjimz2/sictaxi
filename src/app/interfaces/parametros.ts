@@ -47,3 +47,7 @@ export interface Aseguradora {
     nombre: string;
     codigo: string;
 }
+export interface Asociacion2 {
+    id:          string;
+    razonsocial: string;
+}

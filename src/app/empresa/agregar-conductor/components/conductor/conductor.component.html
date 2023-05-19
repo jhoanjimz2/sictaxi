@@ -1,152 +1,162 @@
-<div class="card-formulario sombra">
-    <div class="flexible">
-        <div class="wid-350">
-            <div>
-                <input type="file" (change)="addimg($event)" accept="image/png, image/jpeg" #myInput disabled>
-                <img [src]="img | imagenes" class="imgprofile">
+<form (ngSubmit)="_next()" [formGroup]="form" autocomplete="off">
+    <div class="card-formulario sombra">
+        <div class="flexible">
+            <div class="wid-350">
+                <div>
+                    <input type="file" (change)="addimg($event)" accept="image/png, image/jpeg" #myInput disabled>
+                    <img [src]="img | imagenes" class="imgprofile">
+                </div>
+                <br>
+                <button class="sombra bg-b" (click)="tomarFoto()" type="button"><i class="bi bi-camera"></i>Tomar una foto</button>
+                <br>
+                <button class="sombra bg-b" (click)="abrirImg()" type="button"><img [src]="'assets/subirfoto.svg'">Subir foto</button>
             </div>
-            <br>
-            <button class="sombra bg-b" (click)="abrirImg()"><img [src]="'assets/subirfoto.svg'">Tomar una foto</button>
-            <br>
-            <button class="sombra bg-b" (click)="abrirImg()"><img [src]="'assets/subirfoto.svg'">Subir foto</button>
+            <div class="w-rest">
+                <div class="row">
+                    <div class="col-4">
+                        <label class="subtitulo">Cédula/Licencia</label>
+                        <input type="number" class="input" formControlName="cedula">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Nombres</label>
+                        <input type="text" class="input" formControlName="nombres">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Apellidos</label>
+                        <input type="text" class="input" formControlName="apellidos" >
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Fecha de nacimiento</label>
+                        <input 
+                            type="text" 
+                            class="input" 
+                            [placeholder]="'aaaa/mm/dd'" 
+                            [mask]="'9999/99/99'"
+                            formControlName="fechaNacimiento" 
+                        >
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Grupo sanguineo</label>
+                        <select class="input" formControlName="tipoSangre" >
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="O">O</option>
+                            <option value="AB">AB</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">RH</label>
+                        <select class="input" formControlName="rh" >
+                            <option value="Positivo">Positivo</option>
+                            <option value="Negativo">Negativo</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Sexo</label>
+                        <select class="input" formControlName="sexo" >
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Estado civil</label>
+                        <select class="input" formControlName="estadoCivil" >
+                            <option value="Soltero(a)">Soltero(a)</option>
+                            <option value="Casado(a)">Casado(a)</option>
+                            <option value="Viudo(a)">Viudo(a)</option>
+                            <option value="Divorcido(a)">Divorcido(a)</option>
+                            <option value="Unión libre">Unión libre</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Dirección</label>
+                        <input type="text" class="input" formControlName="direccion">
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Barrio</label>
+                        <input type="text" class="input" formControlName="barrio" >
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Teléfono/celular</label>
+                        <input type="number" class="input" formControlName="telefono" >
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">E-mail</label>
+                        <input type="email" class="input" formControlName="email" >
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Categoría licencia</label>
+                        <select class="input" formControlName="categoriaPase" >
+                            <option value="C1">C1</option>
+                            <option value="C2">C2</option>
+                            <option value="C3">C3</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Fecha de venc. licencia</label>
+                        <input 
+                            type="text" 
+                            class="input" 
+                            [placeholder]="'aaaa/mm/dd'" 
+                            [mask]="'9999/99/99'"
+                            formControlName="fechaLicenciaConduccion" 
+                        >
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Fondo de pensiones</label>
+                        <select class="input" formControlName="idAfp" >
+                            <option *ngFor="let item of AFPs" value={{item.id}}>{{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">ARL</label>
+                        <select class="input" formControlName="idArl" >
+                            <option *ngFor="let item of ARLs" value={{item.id}}>{{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">EPS</label>
+                        <select class="input" formControlName="idEps" >
+                            <option *ngFor="let item of EPSs" value={{item.id}}>{{item.nombre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label class="subtitulo">Jornada</label>
+                        <select class="input" formControlName="jornada" >
+                            <option  value="Diurna">Diurna</option>
+                            <option  value="Nocturna">Nocturna</option>
+                            <option  value="Mixta">Mixta</option>
+                        </select>
+                    </div>
+                    <div class="col-4"*ngIf="id">
+                        <label class="subtitulo">Número interno/Consecutivo</label>
+                        <input type="number" class="input" formControlName="consecutivo">
+                    </div>
+                    <div class="col-4"*ngIf="id"></div>
+                    <div class="col-4"*ngIf="id">
+                        <label class="subtitulo">Fecha de registro</label>
+                        <input 
+                            type="text" 
+                            class="input" 
+                            [mask]="'9999/99/99'"
+                            formControlName="fechaUltimaRefrendacion"
+                        >
+                    </div>
+                </div>
+    
+            </div>
         </div>
-        <div class="w-rest">
-            <div class="row">
-                <div class="col-4">
-                    <label class="subtitulo">Cédula/Licencia</label>
-                    <input type="number" class="input">
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Nombres</label>
-                    <input type="text" class="input">
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Apellidos</label>
-                    <input type="text" class="input">
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-4">
-                    <label class="subtitulo">Fecha de nacimiento</label>
-                    <input type="date" class="input">
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Grupo sanguineo</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">RH</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-4">
-                    <label class="subtitulo">Sexo</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Estado civil</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Dirección</label>
-                    <input type="text" class="input">
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-4">
-                    <label class="subtitulo">Barrio</label>
-                    <input type="text" class="input">
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Teléfono/celular</label>
-                    <input type="number" class="input">
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">E-mail</label>
-                    <input type="email" class="input">
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-4">
-                    <label class="subtitulo">Categoría licencia</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Fecha de venc. licencia</label>
-                    <input type="text" class="input">
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Fondo de pensiones</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-4">
-                    <label class="subtitulo">ARL</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">EPS</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-                <div class="col-4">
-                    <label class="subtitulo">Jornada</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row mt-10">
-                <div class="col-4">
-                    <label class="subtitulo">Número interno/Consecutivo</label>
-                    <select class="input">
-                        <option value="" *ngFor="let it of [1,1,1,1,1]">Option</option>
-                    </select>
-                </div>
-                <div class="col-4"></div>
-                <div class="col-4">
-                    <label class="subtitulo">Fecha de registro</label>
-                    <input type="date" class="input">
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row mt-20">
-        <div class="col-4"></div>
-        <div class="col-4 end">
-        </div>
-        <div class="col-4 end">
-            <div class="flexible end">
-                <button class="sombra bg-b"><img [src]="'assets/guardar.svg'">Guardar todo</button>
+    
+        <div class="row mt-20">
+            <div class="col-6"></div>
+            <div class="col-6 end">
+                <button class="sombra bg-b" type="submit"><img [src]="'assets/guardar.svg'">Guardar todo</button>
+                <div class="separador" *ngIf="id"></div>
+                <button class="sombra bg-r" *ngIf="id" type="button" (click)="_refrendar()"><img [src]="'assets/moneda.png'">Refrendar</button>
                 <div class="separador"></div>
-                <button class="sombra bg-r" [routerLink]="'/empresa/buscar-conductores'">Cancelar</button>
+                <button class="sombra bg-r" [routerLink]="'/empresa/buscar-conductores'" type="button">Cancelar</button>
             </div>
         </div>
+    
     </div>
-
-</div>
+</form>

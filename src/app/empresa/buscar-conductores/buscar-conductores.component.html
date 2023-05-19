@@ -47,13 +47,13 @@
                         <div class="separador"></div>
                         <div class="centrar">
                             <div>
-                                <button class="botonanimado sombra" [routerLink]="'/empresa/agregar-conductor/'+conductor.idConductor+'/'+conductor.idVinculacion">
+                                <button class="botonanimado sombra" [routerLink]="'/empresa/agregar-conductor/'+conductor.idVinculacion">
                                     <img [src]="'assets/editarnegro.svg' | imagenes">Editar
                                 </button>
-                                <button class="botonanimado sombra">
+                                <button class="botonanimado sombra" (click)="desvincular(conductor.idVinculacion)">
                                     <img [src]="'assets/eliminarnegro.svg' | imagenes">Desvincular
                                 </button>
-                                <button class="botonanimado sombra">
+                                <button class="botonanimado sombra" (click)="pdfExportar(conductor.idVinculacion)">
                                     <img [src]="'assets/imprimir.svg' | imagenes">Imprimir
                                 </button>
                             </div>

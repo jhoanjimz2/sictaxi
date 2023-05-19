@@ -1,4 +1,4 @@
-<aside [ngClass]="{ 'bb': user.rol == 'Empresa'}">
+<aside [ngClass]="{ 'bb': user.rol == 'Empresa' || 'Auxiliar'}">
     <header>
         <div><img [src]="user.fotoUrl | imagenes"></div>
         <h4 class="name">{{user.nombres + ' ' + user.apellidos}}</h4>
