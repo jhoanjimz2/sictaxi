@@ -27,7 +27,7 @@ export class AddConductorService extends ConexionService {
     return this.getAuth('/obtenerAsociaciones');
   }
   crearConductor(data: AddCrearConductor) {
-    return this.postAuthImg('/addConductorVehiculo ', data);
+    return this.postAuthImg('/addConductorVehiculo', data);
   }
   getRefrendaciones(idVinculacion: string) {
     let data = { idVinculacion }

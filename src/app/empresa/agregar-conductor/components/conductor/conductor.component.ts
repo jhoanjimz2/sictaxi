@@ -132,7 +132,13 @@ export class ConductorComponent implements OnChanges {
     if ( this.form.valid ) {
       this.next.emit(2);
       this.form.controls['cedula'].enable();
-      this.formulario.emit({ ...this.form.value, foto: this.imgsubir });
+      this.formulario.emit({ 
+        ...this.form.value,
+        fechaLicenciaConduccion: moment(this.form.controls['fechaLicenciaConduccion'].value).format('DD/MM/YYYY'),
+        fechaNacimiento: moment(this.form.controls['fechaNacimiento'].value).format('DD/MM/YYYY'),
+        fechaUltimaRefrendacion: moment(this.form.controls['fechaUltimaRefrendacion'].value).format('DD/MM/YYYY'),
+        foto: this.imgsubir 
+      });
       this.form.controls['cedula'].disable();
       this.activar.emit();
     }

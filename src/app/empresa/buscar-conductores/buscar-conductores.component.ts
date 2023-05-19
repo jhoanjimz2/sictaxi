@@ -67,6 +67,18 @@ export class BuscarConductoresComponent {
     });
   }
 
+  exportar() {
+    this.loading.show();
+    let id = JSON.parse(localStorage.getItem('user')!).id;
+    this.sC.getExcelConductoresListadoGeneralEmpresa(id).subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Conductores');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
+  }
 
   pdfExportar(id: string){
     this.loading.show();

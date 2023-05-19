@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 import { Aseguradora, Asociacion2, GetConductorIDVinculacion, Marca, RespAsociasiones } from 'src/app/interfaces';
 import { AddConductorService } from 'src/app/services/add-conductor.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -103,7 +104,15 @@ export class VehiculoComponent {
   _guardar() {
     this.form.markAllAsTouched();
     if ( this.form.valid ) {
-      this.formulario.emit({ ...this.form.value });
+      this.formulario.emit({ 
+        ...this.form.value,
+        fechaTarjetaOperacion: moment(this.form.controls['fechaTarjetaOperacion'].value).format('DD/MM/YYYY'),
+        fechaTarjetaOperacionF: moment(this.form.controls['fechaTarjetaOperacionF'].value).format('DD/MM/YYYY'),
+        fechaNumeroRCC: moment(this.form.controls['fechaNumeroRCC'].value).format('DD/MM/YYYY'),
+        fechaNumeroRCE: moment(this.form.controls['fechaNumeroRCE'].value).format('DD/MM/YYYY'),
+        fechaNumeroSOAT: moment(this.form.controls['fechaNumeroSOAT'].value).format('DD/MM/YYYY'),
+        fechaNumeroTecnoMecanica: moment(this.form.controls['fechaNumeroTecnoMecanica'].value).format('DD/MM/YYYY'),
+      });
       this.guardar.emit()
     }
   }

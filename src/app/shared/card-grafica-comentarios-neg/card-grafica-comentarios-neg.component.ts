@@ -14,7 +14,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 })
 export class CardGraficaComentariosNegComponent {
   formatGrafic: number = 1;
-  typeGrafic: number = 1;
+  typeGrafic: number = 2;
   dataGraficaComentariosNDias: Graficas = {} as Graficas;
   dataGraficaComentariosNMeses: Graficas = {} as Graficas;
   dataGraficaComentariosNAnhos: Graficas = {} as Graficas;
@@ -145,7 +145,7 @@ export class CardGraficaComentariosNegComponent {
   createChart() {
     let df = { display: false };
     this.chart = new Chart("ChartComentariosN",  {
-      type: 'line',
+      type: 'bar',
       data: 
         (this.formatGrafic == 1) ? this.dataGraficaComentariosNDias : 
         (this.formatGrafic == 2) ? this.dataGraficaComentariosNMeses : 

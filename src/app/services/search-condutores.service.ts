@@ -38,6 +38,10 @@ export class SearchCondutoresService extends ConexionService {
   descargarPdfProfileEmpresa(id: string) {
     return this.postAuth('/exportPdfUser', { id })
   }
+  getExcelConductoresListadoGeneralEmpresa(idEmpresa: string) {
+    let params = { idEmpresa };
+    return this.getAuthExcel('/exportDataConductoresGeneralEmpresasExcel', params)
+  }
 
 
 

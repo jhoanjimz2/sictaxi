@@ -15,7 +15,7 @@ export class CardGraficaComentariosPosComponent {
 
 
   formatGrafic: number = 1;
-  typeGrafic: number = 1;
+  typeGrafic: number = 2;
   dataGraficaComentariosPDias: Graficas = {} as Graficas;
   dataGraficaComentariosPMeses: Graficas = {} as Graficas;
   dataGraficaComentariosPAnhos: Graficas = {} as Graficas;
@@ -155,7 +155,7 @@ export class CardGraficaComentariosPosComponent {
   createChart() {
     let df = { display: false };
     this.chart = new Chart("ChartComentariosP",  {
-      type: 'line',
+      type: 'bar',
       data: 
         (this.formatGrafic == 1) ? this.dataGraficaComentariosPDias : 
         (this.formatGrafic == 2) ? this.dataGraficaComentariosPMeses : 

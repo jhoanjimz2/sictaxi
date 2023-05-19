@@ -62,7 +62,16 @@ export class AgregarConductorComponent {
     if ( type == 1 ) this.form1 = event;
     else if ( type == 2 ) this.form2 = event;
     else this.form3 = event;
-    this.crearConductor = { ...this.form1, ...this.form2, ...this.form3 }
+    this.crearConductor = { 
+      ...this.form1, 
+      ...this.form2, 
+      ...this.form3,
+      consecutivo        : this.conductor?.consecutivo? this.conductor.consecutivo : undefined,
+      comparendosVigentes: undefined,
+      clase              : undefined,
+      capacidad          : undefined,
+      tipoCombustible    : undefined,
+    }
   }
   
   guardar() {
