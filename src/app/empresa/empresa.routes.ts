@@ -5,6 +5,26 @@ export const rutas: Routes = [
     path: 'estadisticas',
     loadChildren: () => import('./estadisticas/estadisticas.module').then( m => m.EstadisticasModule),
   },
+  { 
+    path: 'taxis-registrados',
+    loadChildren: () => import('./estadisticas/pages/taxis-registrados/taxis-registrados.module').then( m => m.TaxisRegistradosModule),
+  },
+  { 
+    path: 'documentos-vencidos',
+    loadChildren: () => import('./estadisticas/pages/documentos-vencidos/documentos-vencidos.module').then( m => m.DocumentosVencidosModule),
+  },
+  { 
+    path: 'proximos-vencerse',
+    loadChildren: () => import('./estadisticas/pages/proximos-vencerse/proximos-vencerse.module').then( m => m.ProximosVencerseModule),
+  },
+  { 
+    path: 'taxistas-registrados',
+    loadChildren: () => import('./estadisticas/pages/taxistas-registrados/taxistas-registrados.module').then( m => m.TaxistasRegistradosModule),
+  },
+  { 
+    path: 'matriculas-canceladas',
+    loadChildren: () => import('./estadisticas/pages/matriculas-canceladas/matriculas-canceladas.module').then( m => m.MatriculasCanceladasModule),
+  },
   {
     path: 'buscar-conductores',
     loadChildren: () => import('./buscar-conductores/buscar-conductores.module').then( m => m.BuscarConductoresModule),

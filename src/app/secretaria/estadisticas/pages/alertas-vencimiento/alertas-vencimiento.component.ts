@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FechasVencidas, RespFechasVencidas } from 'src/app/interfaces';
 import { FasesExportarComponent } from 'src/app/modals/fases-exportar/fases-exportar.component';
-import { DownloadService } from 'src/app/services/download.service';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
