@@ -214,3 +214,114 @@ export interface Refrendaciones {
     usuario:       string;
     fechaRegistro: string;
 }
+export interface RespBusquedaPorCedula {
+    conductor: null;
+    empresas:  EmpresaBxC[];
+    actual:    ConductorBxC;
+}
+export interface ConductorBxC {
+    id:                      number;
+    cedula:                  string;
+    apellidos:               string;
+    nombres:                 string;
+    direccion:               string;
+    telefono:                string;
+    categoriaPase:           string;
+    licenciaConduccion:      string;
+    barrio:                  string;
+    fechaLicenciaConduccion: string;
+    tipoSangre:              string;
+    rh:                      string;
+    email:                   string;
+    fotoURL:                 string;
+    idCiudad:                number;
+    fechaNacimiento:         string;
+    idEmpresa:               number;
+    idUsuario:               number;
+    fechaEliminacion:        null;
+    fechaRegistro:           string;
+    fechaUltimaModificacion: string;
+    idUsuarioModificacion:   number;
+    idUsuarioEliminacion:    null;
+    sexo:                    string;
+    comparendosVigentes:     string;
+    polizaAccidentes:        null;
+    estadoCivil:             string;
+    parentescoJefeHogar:     string;
+    numeroHijos:             string;
+    personasCargo:           string;
+    nivelEducativoAlcanzado: string;
+    estudia:                 number;
+    tipoDiscapacidad:        string;
+    taxistaOcacional:        number;
+    tiempoComoConductor:     string;
+    otraLabor:               string;
+    tiempoOtraLabor:         string;
+    ingresosAproxConductor:  string;
+    ingresosOtraLabor:       string;
+    estratoSocioEconomico:   string;
+    tipoVivienda:            string;
+    luz:                     number;
+    agua:                    number;
+    gas:                     number;
+    alcantarillado:          number;
+    recoleccionBasura:       number;
+    otraLaborUnidad:         null;
+    conductorLaborUnidad:    number;
+    idMigration:             null;
+    idEps:                   number;
+    idAfp:                   number;
+    idArl:                   number;
+    uuid:                    string;
+}
+export interface EmpresaBxC {
+    id:          number;
+    razonSocial: string;
+    placa:       string;
+    cedula:      string;
+    nombres:     string;
+    apellidos:   string;
+}
+export interface RespBusquedaPorPlaca {
+    vehiculo: null;
+    empresas: EmpresaBxC[];
+    actual:   VehiculoBxC;
+}
+export interface VehiculoBxC {
+    id:                       number;
+    placa:                    string;
+    idEmpresa:                number;
+    idMarca:                  number;
+    emailPropietario:         null;
+    idMatricula:              string;
+    modelo:                   string;
+    clase:                    string;
+    capacidad:                string;
+    tipoCombustible:          string;
+    numeroMotor:              string;
+    numeroChasis:             string;
+    tarjetaOperacion:         string;
+    fechaTarjetaOperacion:    string;
+    fechaTarjetaOperacionF:   string;
+    cedulaPropietario:        string;
+    nombrePropietario:        string;
+    telefonoPropietario:      string;
+    direccionPropietario:     string;
+    numeroRCC:                string;
+    numeroRCE:                string;
+    numeroSOAT:               string;
+    numeroTecnoMecanica:      string;
+    fechaNumeroRCC:           string;
+    fechaNumeroRCE:           string;
+    fechaNumeroSOAT:          string;
+    fechaNumeroTecnoMecanica: string;
+    idAseguradora:            number;
+    idUsuario:                number;
+    fechaEliminacion:         null;
+    fechaRegistro:            string;
+    fechaUltimaModificacion:  string;
+    idUsuarioModificacion:    number;
+    idUsuarioEliminacion:     null;
+    idMigration:              null;
+    idAsociacion:             number;
+}

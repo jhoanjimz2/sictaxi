@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AddCrearConductor, FormAddConductor1, FormAddConductor2, FormAddConductor3, GetConductorIDVinculacion } from 'src/app/interfaces';
+import { AddCrearConductor, ConductorBxC, FormAddConductor1, FormAddConductor2, FormAddConductor3, GetConductorIDVinculacion, RespBusquedaPorCedula, RespBusquedaPorPlaca, VehiculoBxC } from 'src/app/interfaces';
 import { AddConductorService } from 'src/app/services/add-conductor.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -20,6 +20,9 @@ export class AgregarConductorComponent {
   form3!: FormAddConductor3;
   crearConductor: AddCrearConductor = {} as AddCrearConductor;
 
+  conductorBxC!: ConductorBxC;
+  vehiculoBxC!: VehiculoBxC;
+  
   constructor(
     private activatedRoute: ActivatedRoute,
     private loading: LoadingService,
@@ -89,6 +92,20 @@ export class AgregarConductorComponent {
       }, error: () => {
         this.loading.hide();
         this.loading.error('Error data conductor, comuniquese con el administrador de la base de datos');
+      }
+    })
+  }
+  buscarC(cedula: string) {
+    this.aC.searchConductorEmpresasByCedula(cedula).subscribe({
+      next: (data: RespBusquedaPorCedula) => {
+        this.conductorBxC = data.actual;
+      }
+    })
+  }
+  buscarV(placa: string) {
+    this.aC.searchVehiculoEmpresasByPlaca(placa).subscribe({
+      next: (data: RespBusquedaPorPlaca) => {
+        this.vehiculoBxC = data.actual;
       }
     })
   }

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-3">
                 <label class="subtitulo">Placa</label>
-                <input type="text" class="input" formControlName="placa">
+                <input type="text" class="input" formControlName="placa" (keyup)="debounce()">
             </div>
             <div class="col-3">
                 <label class="subtitulo">Marca</label>

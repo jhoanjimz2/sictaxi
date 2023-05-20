@@ -2,7 +2,8 @@ import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleCh
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
-import { GetConductorIDVinculacion, LoadParametrosSelects, Param } from 'src/app/interfaces';
+import { Subject, debounceTime } from 'rxjs';
+import { ConductorBxC, GetConductorIDVinculacion, LoadParametrosSelects, Param } from 'src/app/interfaces';
 import { ModalTomarFotoComponent } from 'src/app/modals/modal-tomar-foto/modal-tomar-foto.component';
 import { AddConductorService } from 'src/app/services/add-conductor.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -20,8 +21,11 @@ export class ConductorComponent implements OnChanges {
   @Output() refrendar: EventEmitter<any> = new EventEmitter();
   @Output() formulario: EventEmitter<any> = new EventEmitter();
   @Output() activar: EventEmitter<any> = new EventEmitter();
+  @Output() busquedaXCedula: EventEmitter<any> = new EventEmitter();
+  @Input() conductorBxC!: ConductorBxC;
   @Input() conductor!: GetConductorIDVinculacion;
   @Input() id = '';
+  _debounce: Subject<string> = new Subject();
 
   img: string = '';
   imgsubir!:File;
@@ -60,11 +64,36 @@ export class ConductorComponent implements OnChanges {
     private fb: FormBuilder
   ) {
     this.cargarData();
+    this._debounce.pipe(debounceTime(500)).subscribe(valor => {
+      this.busquedaXCedula.emit(this.form.controls['cedula'].value);
+    })
   }
   ngOnChanges() {
-    if ( this.conductor ) {
-      this.cargarDatos();
-    }
+    if ( this.conductor ) this.cargarDatos();
+    if ( this.conductorBxC ) this.rellenar();
+  }
+  debounce() {
+    this._debounce.next(this.form.controls['cedula'].value);
+  }
+  rellenar() {
+    this.form.controls['cedula'].setValue(this.conductorBxC.cedula);
+    this.form.controls['nombres'].setValue(this.conductorBxC.nombres);
+    this.form.controls['apellidos'].setValue(this.conductorBxC.apellidos);
+    this.form.controls['fechaNacimiento'].setValue(this.conductorBxC.fechaNacimiento);
+    this.form.controls['tipoSangre'].setValue(this.conductorBxC.tipoSangre);
+    this.form.controls['rh'].setValue(this.conductorBxC.rh);
+    this.form.controls['sexo'].setValue(this.conductorBxC.sexo);
+    this.form.controls['estadoCivil'].setValue(this.conductorBxC.estadoCivil);
+    this.form.controls['direccion'].setValue(this.conductorBxC.direccion);
+    this.form.controls['barrio'].setValue(this.conductorBxC.barrio);
+    this.form.controls['telefono'].setValue(this.conductorBxC.telefono);
+    this.form.controls['email'].setValue(this.conductorBxC.email);
+    this.form.controls['categoriaPase'].setValue(this.conductorBxC.categoriaPase);
+    this.form.controls['fechaLicenciaConduccion'].setValue(this.conductorBxC.fechaLicenciaConduccion);
+    this.form.controls['idArl'].setValue(this.conductorBxC.idArl);
+    this.form.controls['idEps'].setValue(this.conductorBxC.idEps);
+    this.form.controls['idAfp'].setValue(this.conductorBxC.idAfp);
+    this.img = environment.apiImg + this.conductorBxC.fotoURL;
   }
   transformar(fecha: any) {
     return moment(fecha).utc().format('YYYY-MM-DD')

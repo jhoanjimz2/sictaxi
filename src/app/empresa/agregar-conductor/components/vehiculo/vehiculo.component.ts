@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { Aseguradora, Asociacion2, GetConductorIDVinculacion, Marca, RespAsociasiones } from 'src/app/interfaces';
+import { Subject, debounceTime } from 'rxjs';
+import { Aseguradora, Asociacion2, GetConductorIDVinculacion, Marca, RespAsociasiones, VehiculoBxC } from 'src/app/interfaces';
 import { AddConductorService } from 'src/app/services/add-conductor.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -15,8 +16,11 @@ export class VehiculoComponent {
   @Output() guardar: EventEmitter<any> = new EventEmitter();
   @Output() refrendar: EventEmitter<any> = new EventEmitter();
   @Output() formulario: EventEmitter<any> = new EventEmitter();
+  @Output() busquedaXPlaca: EventEmitter<any> = new EventEmitter();
   @Input() conductor!: GetConductorIDVinculacion;
+  @Input() vehiculoBxC!: VehiculoBxC;
   @Input() id = '';
+  _debounce: Subject<string> = new Subject();
 
   aseguradoras: Aseguradora[] = [];
   marcas: Marca[] = [];
@@ -53,11 +57,41 @@ export class VehiculoComponent {
     private fb: FormBuilder
   ) {
     this.cargarData();
+    this._debounce.pipe(debounceTime(500)).subscribe(valor => {
+      this.busquedaXPlaca.emit(this.form.controls['placa'].value);
+    })
   }
   ngOnChanges() {
-    if ( this.conductor ) {
-      this.cargarDatos();
-    }
+    if ( this.conductor ) this.cargarDatos();
+    if ( this.vehiculoBxC ) this.rellenar();
+  }
+  debounce() {
+    this._debounce.next(this.form.controls['placa'].value);
+  }
+  rellenar() {
+    this.form.controls['placa'].setValue(this.vehiculoBxC.placa);
+    this.form.controls['idMarca'].setValue(this.vehiculoBxC.idMarca);
+    this.form.controls['modelo'].setValue(this.vehiculoBxC.modelo);
+    this.form.controls['cedulaPropietario'].setValue(this.vehiculoBxC.cedulaPropietario);
+    this.form.controls['nombrePropietario'].setValue(this.vehiculoBxC.nombrePropietario);
+    this.form.controls['direccionPropietario'].setValue(this.vehiculoBxC.direccionPropietario);
+    this.form.controls['telefonoPropietario'].setValue(this.vehiculoBxC.telefonoPropietario);
+    this.form.controls['numeroMotor'].setValue(this.vehiculoBxC.numeroMotor);
+    this.form.controls['numeroChasis'].setValue(this.vehiculoBxC.numeroChasis);
+    this.form.controls['tarjetaOperacion'].setValue(this.vehiculoBxC.tarjetaOperacion);
+    this.form.controls['fechaTarjetaOperacion'].setValue(this.vehiculoBxC.fechaTarjetaOperacion);
+    this.form.controls['fechaTarjetaOperacionF'].setValue(this.vehiculoBxC.fechaTarjetaOperacionF);
+    this.form.controls['numeroRCC'].setValue(this.vehiculoBxC.numeroRCC);
+    this.form.controls['numeroRCE'].setValue(this.vehiculoBxC.numeroRCE);
+    this.form.controls['numeroSOAT'].setValue(this.vehiculoBxC.numeroSOAT);
+    this.form.controls['numeroTecnoMecanica'].setValue(this.vehiculoBxC.numeroTecnoMecanica);
+    this.form.controls['fechaNumeroRCC'].setValue(this.vehiculoBxC.fechaNumeroRCC);
+    this.form.controls['fechaNumeroRCE'].setValue(this.vehiculoBxC.fechaNumeroRCE);
+    this.form.controls['fechaNumeroSOAT'].setValue(this.vehiculoBxC.fechaNumeroSOAT);
+    this.form.controls['fechaNumeroTecnoMecanica'].setValue(this.vehiculoBxC.fechaNumeroTecnoMecanica);
+    this.form.controls['idAseguradora'].setValue(this.vehiculoBxC.idAseguradora);
+    this.form.controls['idAsociacion'].setValue(this.vehiculoBxC.idAsociacion);
+    this.form.controls['idMatricula'].setValue(this.vehiculoBxC.idMatricula);
   }
   cargarData() {
     this.aC.obtenerMarcas().subscribe({

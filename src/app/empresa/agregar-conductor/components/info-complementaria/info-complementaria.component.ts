@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { GetConductorIDVinculacion } from 'src/app/interfaces';
+import { ConductorBxC, GetConductorIDVinculacion } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-info-complementaria',
@@ -13,6 +13,7 @@ export class InfoComplementariaComponent implements OnChanges {
   @Output() formulario: EventEmitter<any> = new EventEmitter();
   @Output() activar: EventEmitter<any> = new EventEmitter();
   @Input() conductor!: GetConductorIDVinculacion;
+  @Input() conductorBxC!: ConductorBxC;
   @Input() id = '';
 
   form: FormGroup = this.fb.group({
@@ -42,9 +43,31 @@ export class InfoComplementariaComponent implements OnChanges {
     private fb: FormBuilder
   ) {}
   ngOnChanges() {
-    if ( this.conductor ) {
-      this.cargarDatos();
-    }
+    if ( this.conductor ) this.cargarDatos();
+    if ( this.conductorBxC ) this.rellenar();
+  }
+  rellenar() {
+    this.form.controls['parentescoJefeHogar'].setValue(this.conductorBxC.parentescoJefeHogar);
+    this.form.controls['numeroHijos'].setValue(this.conductorBxC.numeroHijos);
+    this.form.controls['personasCargo'].setValue(this.conductorBxC.personasCargo);
+    this.form.controls['nivelEducativoAlcanzado'].setValue(this.conductorBxC.nivelEducativoAlcanzado);
+    this.form.controls['estudia'].setValue(this.conductorBxC.estudia);
+    this.form.controls['tipoDiscapacidad'].setValue(this.conductorBxC.tipoDiscapacidad);
+    this.form.controls['taxistaOcacional'].setValue(this.conductorBxC.taxistaOcacional);
+    this.form.controls['tiempoComoConductor'].setValue(this.conductorBxC.tiempoComoConductor);
+    this.form.controls['conductorLaborUnidad'].setValue(this.conductorBxC.conductorLaborUnidad);
+    this.form.controls['ingresosAproxConductor'].setValue(this.conductorBxC.ingresosAproxConductor);
+    this.form.controls['otraLabor'].setValue(this.conductorBxC.otraLabor);
+    this.form.controls['ingresosOtraLabor'].setValue(this.conductorBxC.ingresosOtraLabor);
+    this.form.controls['tiempoOtraLabor'].setValue(this.conductorBxC.tiempoOtraLabor);
+    this.form.controls['otraLaborUnidad'].setValue(this.conductorBxC.otraLaborUnidad);
+    this.form.controls['estratoSocioEconomico'].setValue(this.conductorBxC.estratoSocioEconomico);
+    this.form.controls['tipoVivienda'].setValue(this.conductorBxC.tipoVivienda);
+    this.form.controls['luz'].setValue(this.conductorBxC.luz);
+    this.form.controls['agua'].setValue(this.conductorBxC.agua);
+    this.form.controls['gas'].setValue(this.conductorBxC.gas);
+    this.form.controls['alcantarillado'].setValue(this.conductorBxC.alcantarillado);
+    this.form.controls['recoleccionBasura'].setValue(this.conductorBxC.recoleccionBasura);
   }
   otraLab() {
     if ( this.form.controls['otraLabor'].value == '1' ) {

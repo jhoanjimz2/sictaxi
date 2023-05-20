@@ -30,9 +30,11 @@
                 (refrendar)="refrendar()"
                 (formulario)="form($event, 1)"
                 (activar)="botones.dos = true"
-                [hidden]="seleccionado != 1" 
+                (busquedaXCedula)="buscarC($event)"
+                [conductorBxC]="conductorBxC"
+                [conductor]="conductor"
                 [id]="id" 
-                [conductor]="conductor" 
+                [hidden]="seleccionado != 1" 
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-info-complementaria 
@@ -40,18 +42,21 @@
                 (refrendar)="refrendar()"
                 (formulario)="form($event, 2)"
                 (activar)="botones.tres = true"
-                [hidden]="seleccionado != 2" 
-                [id]="id" 
+                [conductorBxC]="conductorBxC"
                 [conductor]="conductor" 
+                [id]="id" 
+                [hidden]="seleccionado != 2" 
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-vehiculo 
                 (guardar)="guardar()"
                 (refrendar)="refrendar()"
                 (formulario)="form($event, 3)"
-                [hidden]="seleccionado != 3" 
-                [id]="id" 
+                (busquedaXPlaca)="buscarV($event)"
+                [vehiculoBxC]="vehiculoBxC"
                 [conductor]="conductor" 
+                [id]="id" 
+                [hidden]="seleccionado != 3" 
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-refrendaciones 

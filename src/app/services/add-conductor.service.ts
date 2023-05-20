@@ -41,5 +41,12 @@ export class AddConductorService extends ConexionService {
     let data = { idVinculacion, clave }
     return this.postAuth('/desvincular ', data);
   }
-
+  searchConductorEmpresasByCedula(cedula: string) {
+    let data = { cedula }
+    return this.postAuth('/searchConductorEmpresasByCedula', data);
+  }
+  searchVehiculoEmpresasByPlaca(placa: string) {
+    let data = { placa }
+    return this.postAuth('/searchVehiculoEmpresasByPlaca', data);
+  }
 }

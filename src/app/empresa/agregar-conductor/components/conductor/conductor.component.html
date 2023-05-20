@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-4">
                         <label class="subtitulo">Cédula/Licencia</label>
-                        <input type="number" class="input" formControlName="cedula">
+                        <input type="number" class="input" formControlName="cedula" (keyup)="debounce()">
                     </div>
                     <div class="col-4">
                         <label class="subtitulo">Nombres</label>
