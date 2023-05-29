@@ -1,4 +1,4 @@
-<aside [ngClass]="{ 'bb': user.rol == ('Empresa' || 'Auxiliar')}">
+<aside [ngClass]="{ 'bb': user.rol == 'Auxiliar' || user.rol == 'Empresa' }">
     <header>
         <div><img [src]="user.fotoUrl | imagenes"></div>
         <h4 class="name">{{user.nombres + ' ' + user.apellidos}}</h4>
@@ -11,11 +11,11 @@
     </header>
     <div class="nav">
         <a 
-            [ngClass]="{ 'bb': user.rol == 'Empresa'}"
+            [ngClass]="{ 'bb': user.rol == 'Auxiliar' || user.rol == 'Empresa' }"
             class="item-sidebar" 
             *ngFor="let item of items"
             [routerLink]="item.route" 
-            [routerLinkActive]="(user.rol == 'Empresa') ? 'active-nuevo2' : 'active-nuevo'"
+            [routerLinkActive]="(user.rol == 'Auxiliar' || user.rol == 'Empresa' ) ? 'active-nuevo2' : 'active-nuevo'"
         >
             <img [src]="'assets/sidebar/'+item.icon">&nbsp;
             <span>{{item.name}}</span>
@@ -25,7 +25,7 @@
     <div id="footer">
         <img [src]="'assets/sidebar/alcaldia-logo.png'" class="alcaldia">
         <img [src]="'assets/sidebar/innlab-logo.png'" class="innlab" *ngIf="user.rol == 'Secretaria'">
-        <img [src]="'assets/sidebar/innlab-logo-negro.png'" class="innlab" *ngIf="user.rol == 'Empresa'">
+        <img [src]="'assets/sidebar/innlab-logo-negro.png'" class="innlab" *ngIf="user.rol == 'Auxiliar' || user.rol == 'Empresa' ">
     </div>
 
 

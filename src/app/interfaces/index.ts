@@ -19,4 +19,5 @@ export * from './quejas';
 export * from './fechas-vencidas';
 export * from './conductores';
 export * from './addconductor';
-export * from './formularios'
+export * from './formularios';
+export * from './perfil-empresa';

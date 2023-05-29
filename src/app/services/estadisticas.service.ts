@@ -221,32 +221,6 @@ export class EstadisticasService extends ConexionService {
   }
   //QUEJAS
 
-
-
-  //USUARIOS
-  getListUsers() {
-    return this.getAuth('/listUsers');
-  }
-  getDataUser(id: number) {
-    let data = { id }
-    return this.postAuth('/getProfileUserById', data);
-  }
-  eliminarUser(id: number) {
-    let data = { id }
-    return this.postAuth('/deleteUser', data);
-  }
-  updateUser(data: ActualizarUsuario) {
-    return this.postAuth('/update', data);
-  }
-  crearUser(data: ActualizarUsuario) {
-    return this.postAuth('/register', data);
-  }
-  getEmpresas() {
-    return this.getAuth('/getEmpresas');
-  }
-  //USUARIOS
-
-
   //PERFIL DE USUARIO
   getPerfilUsuario() {
     return this.getAuth('/getProfileUser');

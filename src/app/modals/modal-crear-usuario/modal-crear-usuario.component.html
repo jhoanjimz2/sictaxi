@@ -40,11 +40,11 @@
         <div class="row mt-10">
             <div class="col-6">
                 <label class="subtitulo">Nueva contraseña</label>
-                <input type="password" class="input" formControlName="contra">
+                <input type="password" class="input" formControlName="nueva">
             </div>
             <div class="col-6">
                 <label class="subtitulo">Confirme la nueva contraseña</label>
-                <input type="password" class="input" formControlName="newcontra">
+                <input type="password" class="input" formControlName="confirmacion">
             </div>
         </div>
         <div class="row mt-10">
@@ -58,7 +58,7 @@
             </div>
             <div class="col-6">
                 <label class="subtitulo">Empresa</label>
-                <select [value]="" class="input" formControlName="empresa">
+                <select [value]="" class="input" formControlName="idEmpresa">
                     <option value="">Selecciona una opción</option>
                     <option *ngFor="let item of empresas" [value]="item.id">{{item.razonSocial}}</option>                 
                 </select>
@@ -67,7 +67,7 @@
         <div class="row mt-30">
             <div class="col-6">
                 <label class="advertencia">Solicitar cambio de contraseña al iniciar sesión</label>
-                <mat-slide-toggle formControlName="solicitar"></mat-slide-toggle>
+                <mat-slide-toggle formControlName="solicitarCambioclave"></mat-slide-toggle>
             </div>
             <div class="col-6 flex-end">
                 <button class="b-b" [disabled]="!form.valid" type="submit"><img [src]="'assets/guardar.svg'">Guardar</button> 

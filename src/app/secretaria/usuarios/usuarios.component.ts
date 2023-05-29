@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { RespListUsuarios, UsuarioList } from 'src/app/interfaces';
 import { ModalCrearUsuarioComponent } from 'src/app/modals/modal-crear-usuario/modal-crear-usuario.component';
 import { ModalEliminarUsuarioComponent } from 'src/app/modals/modal-eliminar-usuario/modal-eliminar-usuario.component';
-import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -16,14 +16,14 @@ export class UsuariosComponent {
 
   constructor(
     private loading: LoadingService,
-    private eS: EstadisticasService,
+    private uS: UsuariosService,
     public dialog: MatDialog
   ) {
     this.cargarData();
   }
   cargarData() {
     this.loading.show();
-    this.eS.getListUsers().subscribe({
+    this.uS.getListUsers().subscribe({
       next: (data: RespListUsuarios) => {
         this.usuarios = data.result;
         this.loading.hide();

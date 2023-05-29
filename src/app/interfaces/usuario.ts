@@ -102,17 +102,29 @@ export interface GetEmpresas {
     idMigration:                     null | string;
 }
 export interface ActualizarUsuario {
+    email:                string;
+    nueva:                string;
     cedula:               string;
     nombres:              string;
     apellidos:            string;
     direccion:            string;
     telefono:             string;
-    email:                string;
+    confirmacion:         string;
+    solicitarCambioclave: boolean;
     idEmpresa:            number;
     rol:                  string;
+}
+export interface ActualizarUsuarioEmpresa {
+    email:                string;
     nueva:                string;
-    solicitarCambioclave: boolean;
+    cedula:               string;
+    nombres:              string;
+    apellidos:            string;
+    direccion:            string;
+    telefono:             string;
     confirmacion:         string;
+    solicitarCambioclave: boolean;
+    rol:                  string;
 }
 export interface ActualizarPerfilUsuario {
     cedula:               string;

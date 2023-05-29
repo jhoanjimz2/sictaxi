@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { ActualizarUsuario, GetEmpresas, RespGetUser } from 'src/app/interfaces';
-import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 export interface DialogData {
   id: number;
@@ -24,26 +24,30 @@ export class ModalCrearUsuarioComponent {
     direccion: new FormControl('', [Validators.required]),
     telefono: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required]),
-    contra: new FormControl('', [Validators.required]),
-    newcontra: new FormControl('', [Validators.required]),
+    nueva: new FormControl('', [Validators.required]),
+    confirmacion: new FormControl('', [Validators.required]),
     rol: new FormControl('', [Validators.required]),
-    empresa: new FormControl('', [Validators.required]),
-    solicitar: new FormControl(false, [Validators.required]),
+    idEmpresa: new FormControl('', [Validators.required]),
+    solicitarCambioclave: new FormControl(false, [Validators.required]),
   });
   empresas: GetEmpresas[] = [];
   constructor(
     private dialogRef: MatDialogRef<ModalCrearUsuarioComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private loading: LoadingService,
-    private eS: EstadisticasService,
+    private uS: UsuariosService,
     private fb: FormBuilder
   ) {
     this.cargarEmpresas();
     if ( data.type ) this.cargarData();
+    if ( JSON.parse(localStorage.getItem('user')!).idempresa ) {
+      this.form.controls['idEmpresa'].setValue(JSON.parse(localStorage.getItem('user')!).idempresa);
+      this.form.controls['idEmpresa'].disable();
+    }
   }
 
   cargarEmpresas() {
-    this.eS.getEmpresas().subscribe({
+    this.uS.getEmpresas().subscribe({
       next: (data: GetEmpresas[]) => {
         this.empresas = data;
       }
@@ -52,7 +56,7 @@ export class ModalCrearUsuarioComponent {
 
   cargarData() {
     this.loading.show();
-    this.eS.getDataUser(this.data.id).subscribe({
+    this.uS.getDataUser(this.data.id).subscribe({
       next: (data: RespGetUser) => {
         this.rellenar(data);
       }, error: () => {
@@ -71,34 +75,21 @@ export class ModalCrearUsuarioComponent {
     this.form.controls['telefono'].setValue(data.telefono);
     this.form.controls['email'].setValue(data.email);
     this.form.controls['rol'].setValue(data.rol);
-    this.form.controls['empresa'].setValue(data.idempresa);
-    this.form.controls['solicitar'].setValue(data.solicitarCambioclave);
-    this.form.controls['contra'].setValue('');
-    this.form.controls['newcontra'].setValue('');
+    this.form.controls['idEmpresa'].setValue(data.idempresa);
+    this.form.controls['solicitarCambioclave'].setValue(data.solicitarCambioclave);
+    this.form.controls['nueva'].setValue('');
+    this.form.controls['confirmacion'].setValue('');
     this.loading.hide();
   }
 
   guardar() {
     if(this.form.value['password'] != this.form.value['newpassword']) return this.loading.error('Las contraseñas no son iguales');
     if(!this.form.valid) return this.loading.error('Todos los campos son requeridos');
-    let data: ActualizarUsuario = {} as ActualizarUsuario;
-
-    data.nombres = this.form.controls['nombres'].value;
-    data.apellidos = this.form.controls['apellidos'].value;
-    data.cedula = this.form.controls['cedula'].value;
-    data.direccion = this.form.controls['direccion'].value;
-    data.telefono = this.form.controls['telefono'].value;
-    data.email = this.form.controls['email'].value;
-    data.rol = this.form.controls['rol'].value;
-    data.idEmpresa = this.form.controls['empresa'].value;
-    data.solicitarCambioclave = this.form.controls['solicitar'].value;
-    data.nueva = this.form.controls['contra'].value;
-    data.confirmacion = this.form.controls['newcontra'].value;
-
+    let data: ActualizarUsuario = { ...this.form.value };
     this.loading.show();
     var servicio: Observable<any>;
-    if (this.data.type ) servicio = this.eS.updateUser(data);
-    else servicio = this.eS.crearUser(data);
+    if (this.data.type ) servicio = this.uS.updateUser(data);
+    else servicio = this.uS.crearUser(data);
     servicio.subscribe({
       next: (data: RespGetUser) => {
         this.loading.exito(`Usuario ${ this.data.type ? 'actualizado' : 'creado' } con exito`);

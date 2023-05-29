@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 export interface DialogData {
   id: number;
@@ -17,13 +17,13 @@ export class ModalEliminarUsuarioComponent {
     private dialogRef: MatDialogRef<ModalEliminarUsuarioComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DialogData,
     private loading: LoadingService,
-    private eS: EstadisticasService
+    private uS: UsuariosService
   ) {}
 
 
   eliminar() {
     this.loading.show();
-    this.eS.eliminarUser(this.data.id).subscribe({
+    this.uS.eliminarUser(this.data.id).subscribe({
       next: () => {
         this.loading.exito(`Usuario eliminado con exito`);
         this.loading.hide();
