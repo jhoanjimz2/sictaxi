@@ -58,6 +58,27 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportDocumentoVencidos', params)
   }
+  getConductoresBienCalificadosExcel(params: any) {
+    return this.getAuthExcel('/exportDataConductoresBienCalificadosExcel', params)
+  }
+  getConductoresMalCalificadosExcel(params: any) {
+    return this.getAuthExcel('/exportDataConductoresMalCalificadosExcel', params)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   //EMPRESAS AUTORIZADAS

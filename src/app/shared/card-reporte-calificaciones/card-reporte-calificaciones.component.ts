@@ -3,6 +3,8 @@ import * as moment from 'moment';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { ConductorConCalificacion, ReqEstadisticaConductores } from 'src/app/interfaces';
 import { subWeeks } from 'date-fns';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalExcelCalificacionesComponent } from 'src/app/modals/modal-excel-calificaciones/modal-excel-calificaciones.component';
 
 @Component({
   selector: 'app-card-reporte-calificaciones',
@@ -36,7 +38,10 @@ export class CardReporteCalificacionesComponent {
     else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas();} 
   }
 
-  constructor( private eS: EstadisticasService ) {
+  constructor( 
+    private eS: EstadisticasService,
+    private dialog: MatDialog
+  ) {
     if (this.tipo == 'Empresa') {}
     else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas(); this.cargarTaxistasQuejas();} 
   }
@@ -93,6 +98,16 @@ export class CardReporteCalificacionesComponent {
   }
   buscando(event: any) {
     this.buscar = event;
+  }
+
+  export() {
+    const dialogRef = this.dialog.open(ModalExcelCalificacionesComponent, {
+      data: { 
+        pos: { fechaInicial: this.fechaInicialP, fechaFinal: this.fechaFinalP, comentarios: this.comentariosP },
+        neg: { fechaInicial: this.fechaInicialN, fechaFinal: this.fechaFinalN, comentarios: this.comentariosN },
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {});
   }
   
 }

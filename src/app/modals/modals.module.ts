@@ -25,6 +25,7 @@ import { ModalCambiarImgProfileComponent } from './modal-cambiar-img-profile/mod
 import { WebcamModule } from 'ngx-webcam';
 import { ModalTomarFotoComponent } from './modal-tomar-foto/modal-tomar-foto.component';
 import { ModalDesvincularComponent } from './modal-desvincular/modal-desvincular.component';
+import { ModalExcelCalificacionesComponent } from './modal-excel-calificaciones/modal-excel-calificaciones.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ModalDesvincularComponent } from './modal-desvincular/modal-desvincular
     ModalInitCambiarPasswordComponent,
     ModalCambiarImgProfileComponent,
     ModalTomarFotoComponent,
-    ModalDesvincularComponent
+    ModalDesvincularComponent,
+    ModalExcelCalificacionesComponent
   ],
   imports: [
     CommonModule,
