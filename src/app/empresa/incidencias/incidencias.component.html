@@ -4,30 +4,31 @@
             <label class="titulo">Alertas</label>
         </div>
     </div>
-
     <div class="row pb-80">
-        <div class="col-12">
-            <div class="card-incidencias sombra relative">
-                <textarea
-                    [value]="textarea"
-                    rows="5"
-                    placeholder="Envianos tus reportes de incidencias o fallas del sistema">
-                </textarea>
-                <button class="boton-enviar">
-                    <i class="bi bi-cursor-fill"></i>
-                    Enviar
-                </button>
+        <form (ngSubmit)="guardar()" [formGroup]="form" autocomplete="off">
+            <div class="col-12">
+                <div class="card-incidencias sombra relative">
+                    <textarea
+                        formControlName="observacion"
+                        rows="5"
+                        placeholder="Envianos tus reportes de incidencias o fallas del sistema">
+                    </textarea>
+                    <button class="boton-enviar">
+                        <i class="bi bi-cursor-fill"></i>
+                        Enviar
+                    </button>
+                </div>
             </div>
-        </div>
-        <div class="col-12" *ngFor="let incidencia of [1,1,1,1,1,1]">
+        </form>
+        <div class="col-12" *ngFor="let alerta of alertas">
             <div class="card-incidencias sombra">
                 <div class="w-80">
-                    <label class="label1">Gueyner Albeiro Guzmán Ibarra</label><br>
-                    <label class="label1">Taxis 1a</label><br>
-                    <label class="label2">Hola, buenos días, el sistema esta fallando a la hora de refrendar y exportar excel</label>
+                    <label class="label1">{{alerta.nombres + ' ' + alerta.apellidos}}</label><br>
+                    <label class="label1">{{alerta.razonSocial}}</label><br>
+                    <label class="label2">{{alerta.observacion}}</label>
                 </div>
                 <div class="w-20">
-                    <label>17:02:36/15/03/2023</label>
+                    <label>{{alerta.fechaRegistro}}</label>
                 </div>
             </div>
         </div>
@@ -35,7 +36,9 @@
 
     <div class="footer-paginacion ">
         <app-paginacion 
-            [cantidad]="40"
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
+            [focus]="paginaActual"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

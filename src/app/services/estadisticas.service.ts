@@ -284,6 +284,10 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page };
     return this.getAuth('/getListObservaciones', params);
   }
+  addObservacion(observacion: string) {
+    let data = { observacion }
+    return this.postAuth('/addObservacion', data);
+  }
   //INCIDENCIAS
 
   //PARAMETROS

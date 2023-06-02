@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { IncidenciasRoutingModule } from './incidencias-routing.module';
 import { IncidenciasComponent } from './incidencias.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     IncidenciasRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class IncidenciasModule { }

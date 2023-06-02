@@ -20,6 +20,9 @@ export class UsuariosService extends ConexionService {
   updateUser(data: ActualizarUsuario) {
     return this.postAuth('/update', data);
   }
+  updateUserEmpresa(data: ActualizarUsuario) {
+    return this.postAuth('/updateUser', data);
+  }
   eliminarUser(id: number) {
     let data = { id }
     return this.postAuth('/deleteUser', data);

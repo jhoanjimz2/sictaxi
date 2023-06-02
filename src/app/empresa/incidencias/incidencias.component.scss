@@ -50,6 +50,9 @@ textarea {
     border: none;
     resize: none;
 }
+textarea:focus {
+    outline: none;
+}
 .relative {
     position: relative;
 }

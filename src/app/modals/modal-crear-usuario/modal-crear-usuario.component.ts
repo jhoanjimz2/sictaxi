@@ -40,7 +40,7 @@ export class ModalCrearUsuarioComponent {
   ) {
     this.cargarEmpresas();
     if ( data.type ) this.cargarData();
-    if ( JSON.parse(localStorage.getItem('user')!).idempresa ) {
+    if ( JSON.parse(localStorage.getItem('user')!).rol != 'Secretaria') {
       this.form.controls['idEmpresa'].setValue(JSON.parse(localStorage.getItem('user')!).idempresa);
       this.form.controls['idEmpresa'].disable();
     }
