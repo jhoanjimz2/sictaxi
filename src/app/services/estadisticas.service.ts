@@ -273,8 +273,7 @@ export class EstadisticasService extends ConexionService {
     return this.postAuth('/cancelarMatricula', data);
   }
   getParqueAutomotorExcel() {
-    let params = { ciudad: 'SantaMarta' };
-    return this.getAuthExcel('/exportParqueAutomotorExcel', params)
+    return this.getAuthExcel('/exportParqueAutomotorExcel')
   }
   //PARQUE AUTOMOTOR
 
