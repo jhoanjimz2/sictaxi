@@ -53,6 +53,7 @@ export class PerfilUsuarioComponent {
         this.form.controls['tipoImpresion'].setValue(data.tipoImpresion);
         this.form.controls['tipoTarjeton'].setValue(data.tipoTarjeton);
         this.form.controls['cedula'].disable();
+        this.form.controls['email'].disable();
         this.loading.hide();
       },error: () => {
         this.loading.hide();
@@ -73,8 +74,10 @@ export class PerfilUsuarioComponent {
     this.loading.show();
     let local: Usuario = JSON.parse(localStorage.getItem('user')!);
     this.form.controls['cedula'].enable();
+    this.form.controls['email'].enable();
     let data: ActualizarUsuario = { ...this.form.value };
     this.form.controls['cedula'].disable();
+    this.form.controls['email'].disable();
     this.uS.updateUserEmpresa(data).subscribe({
       next: (data: RespGetUser) => {
         local.nombres = data.nombres;
