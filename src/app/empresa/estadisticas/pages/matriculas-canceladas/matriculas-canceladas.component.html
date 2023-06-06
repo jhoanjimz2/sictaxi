@@ -1,43 +1,46 @@
 <div class="contenedor">
-    <div class="row mt-20">
-        <app-barra-busqueda [placeholder]="'Buscar por placa o cédula'"/>
-    </div>
-    <div class="row mt-10">
+    <div class="row">
         <div class="col-6">
-            <label class="titulo">Matriculas Canceladas</label>
+            <label class="titulo">Matriculas canceladas</label>
         </div>
         <div class="col-6 flex-end">
-            <app-export-excel/>
+            <app-export-excel (export)="exportar()"/>
         </div>
     </div>
-
-
-    <div class="row pb-80">
-        <div class="col-12" *ngFor="let taxista of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
-            <div class="card-taxista sombra">
-                <div class="img">
-                    <img [src]="'assets/taxi.svg' | imagenes">
-                </div>
-                <div class="texts">
-                    <label>KIA Modelo: <span>2023</span></label><br>
-                    <label>Empresa: <span>TAXIS S.A.S.</span></label><br>
-                    <label>Placa: <span>TZW522</span></label><br>
-                    <label>Número de motor: <span>G4LCN1063560</span></label><br>
-                    <label>Número de chasis: <span>LJD0AA29AP0204272</span></label>
-                </div>
-                <div class="texts">
-                    <label>Propietario: <span>Jairo Rafael Pimienta Lineros</span></label><br>
-                    <label>Cédula: <span>1083023962</span></label><br>
-                    <label>Teléfono: <span>305 276 6362</span></label><br>
-                    <label>Dirección: <span>Manzana L Casa 6 Apto 301</span></label>
-                </div>
-            </div>
+    <div class="row mt-20 pb-80">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="ptlr">Empresa</th>
+                        <th>Placa</th>
+                        <th>Modelo</th>
+                        <th>Marca</th>
+                        <th>Nombre propietario</th>
+                        <th>Cédula propietario</th>
+                        <th class="ptrr">Fecha de cancelación</th>
+                    </tr>
+                </thead>
+                <div class="h-10"></div>
+                <tbody class="bw">
+                  <tr *ngFor="let taxi of taxis">
+                    <td>{{taxi.nombreEmpresa}}</td>
+                    <td>{{taxi.placa}}</td>
+                    <td>{{taxi.modelo}}</td>
+                    <td>{{taxi.marca}}</td>
+                    <td>{{taxi.nombrePropietario}}</td>
+                    <td>{{taxi.cedulaPropietario}}</td>
+                    <td>{{taxi.fechaChatarrizado | date: 'dd/MM/YYYY'}}</td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </div>
-
     <div class="footer-paginacion ">
         <app-paginacion 
-            [cantidad]="40"
+            *ngIf="totalPages"
+            [cantidad]="totalPages"
+            [focus]="paginaActual"
             (paginar)="pagina($event)">
         </app-paginacion>
     </div>

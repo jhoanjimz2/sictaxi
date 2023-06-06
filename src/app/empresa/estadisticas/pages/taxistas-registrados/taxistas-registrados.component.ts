@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { RespTaxistasRegistrados } from 'src/app/interfaces';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
 import { DownloadService } from 'src/app/services/download.service';
+import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
@@ -18,34 +20,35 @@ export class TaxistasRegistradosComponent {
   constructor( 
     private loading: LoadingService,
     public dialog: MatDialog,
-    private download: DownloadService
+    private download: DownloadService,
+    private eS: EstadisticasService
     ) {
       this.pagina({ pagina: 1 });
     }
   pagina({pagina}: any) {
     this.paginaActual = pagina;
-    // this.loading.show();
-    // this.eS.getTaxistasRegistrados(pagina).subscribe({
-    //   next: (data: RespTaxistasRegistrados) => {
-    //     this.totalPages = data.pages;
-    //     this.taxistas = data.data;
-    //     this.loading.hide();
-    //   }, error: (error: any) => {
-    //     this.loading.hide();
-    //     this.loading.error(error.error.message);
-    //   }
-    // })
+    this.loading.show();
+    this.eS.getTaxistasRegistrados(pagina).subscribe({
+      next: (data: RespTaxistasRegistrados) => {
+        this.totalPages = data.pages;
+        this.taxistas = data.data;
+        this.loading.hide();
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
   exportar() {
     this.loading.show();
-    // this.eS.getExcelConductoresRegistradosExcel().subscribe({
-    //   next: (data: any) => {
-    //     this.download.download(data, 'Taxistas Registrados');
-    //   }, error: (error: any) => {
-    //     this.loading.hide();
-    //     this.loading.error(error.error.message);
-    //   }
-    // })
+    this.eS.getExcelConductoresRegistradosExcel().subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Taxistas Registrados');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
   datosConductor(idConductor: number) {
     const dialogRef = this.dialog.open(ModalPerfilTaxistaComponent, {

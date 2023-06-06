@@ -14,6 +14,10 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta' };
     return this.getAuth('/getCardDataSecretaria', params);
   }
+  getCardsEmpresas() {
+    let params = { ciudad: 'SantaMarta' };
+    return this.getAuth('/getCardDataEmpresa', params);
+  }
   getModelos() {
     let params = { ciudad: 'SantaMarta' };
     return this.getAuth('/getGraphModelCar', params);

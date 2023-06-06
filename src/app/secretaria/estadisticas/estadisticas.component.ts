@@ -9,7 +9,7 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./estadisticas.component.scss']
 })
 export class EstadisticasComponent {
-  dataCards: Cards = new Cards();
+  dataCards: Cards = {} as Cards;
 
   constructor(
     private loading: LoadingService,

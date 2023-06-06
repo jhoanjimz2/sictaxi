@@ -4,35 +4,35 @@
             <div class="col-2-4">
                 <app-card-simple 
                     [titulo]="'Taxis Registrados'"  
-                    [data]="1875" 
+                    [data]="dataCards.taxisRegistrados" 
                     [route]="'/empresa/taxis-registrados'"
                 />
             </div>
             <div class="col-2-4">
                 <app-card-simple 
                     [titulo]="'Documentos vencidos'"
-                    [data]="192"
+                    [data]="dataCards.documentosVencidos"
                     [route]="'/empresa/documentos-vencidos'"
                 />
             </div>
             <div class="col-2-4">
                 <app-card-simple 
                     [titulo]="'Próximos en vencerse'"  
-                    [data]="50" 
+                    [data]="dataCards.alertasDeVencimiento" 
                     [route]="'/empresa/proximos-vencerse'"
                 />
             </div>
             <div class="col-2-4">
                 <app-card-simple 
                     [titulo]="'Taxistas registrados'"  
-                    [data]="0" 
+                    [data]="dataCards.taxistasRegistrados" 
                     [route]="'/empresa/taxistas-registrados'"
                 />
             </div>
             <div class="col-2-4">
                 <app-card-simple 
                     [titulo]="'Matrículas canceladas'"  
-                    [data]="50" 
+                    [data]="dataCards.vehiculoChatarrizados" 
                     [route]="'/empresa/matriculas-canceladas'"
                 />
             </div>

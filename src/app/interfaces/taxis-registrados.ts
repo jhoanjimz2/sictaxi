@@ -4,6 +4,7 @@ export interface RespTaxisRegistrados {
 }
 
 export interface TaxiRegistrado {
+    id:                string;
     nombreEmpresa:     string;
     placa:             string;
     modelo:            string;
