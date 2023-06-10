@@ -18,7 +18,7 @@ export const empresa: ItemSidebar[] = [
     { name: 'Usuarios', route: 'usuarios', icon: 'user.svg' },
     { name: 'Perfil de empresa', route: 'perfil-de-empresa', icon: 'perfilempresas.svg' },
     { name: 'Perfil de usuario', route: 'perfil-de-usuario', icon: 'perfilusuarios.svg' },
-    { name: 'Fechas vencidas', route: 'fechas-vencidas', icon: 'fechasvencidas.svg' },
+    { name: 'Fechas vencidas', route: 'documentos-vencidos', icon: 'fechasvencidas.svg' },
     { name: 'Parque automotor', route: 'parque-automotor', icon: 'parqueautomotor.svg' },
     { name: 'Alertas', route: 'alertas', icon: 'incidencias.svg' },
 ]
@@ -29,6 +29,6 @@ export const auxiliar: ItemSidebar[] = [
     { name: 'Agregar conductor', route: 'agregar-conductor', icon: 'agregarconductor.svg' },
     { name: 'Perfil de empresa', route: 'perfil-de-empresa', icon: 'perfilempresas.svg' },
     { name: 'Perfil de usuario', route: 'perfil-de-usuario', icon: 'perfilusuarios.svg' },
-    { name: 'Fechas vencidas', route: 'fechas-vencidas', icon: 'fechasvencidas.svg' },
+    { name: 'Fechas vencidas', route: 'documentos-vencidos', icon: 'fechasvencidas.svg' },
     { name: 'Alertas', route: 'alertas', icon: 'incidencias.svg' },
 ]

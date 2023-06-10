@@ -4,6 +4,7 @@ import { ImagenesPipe } from './imagenes.pipe';
 import { TaxistasEasyPipe } from './taxistas-easy.pipe';
 import { OrderDatePipe } from './order-date.pipe';
 import { FechasVencidasPipe } from './fechas-vencidas.pipe';
+import { FechasVencidasEmpresaPipe } from './fechas-vencidas-empresa.pipe';
 
 
 
@@ -12,13 +13,15 @@ import { FechasVencidasPipe } from './fechas-vencidas.pipe';
     ImagenesPipe,
     TaxistasEasyPipe,
     OrderDatePipe,
-    FechasVencidasPipe
+    FechasVencidasPipe,
+    FechasVencidasEmpresaPipe
   ],
   exports: [
     ImagenesPipe,
     TaxistasEasyPipe,
     OrderDatePipe,
-    FechasVencidasPipe
+    FechasVencidasPipe,
+    FechasVencidasEmpresaPipe
   ],
   imports: [
     CommonModule

@@ -5,15 +5,15 @@
         </div>
     </div>
     <div class="row pb-80">
-        <form (ngSubmit)="guardar()" [formGroup]="form" autocomplete="off">
+        <form (ngSubmit)="confirm()" [formGroup]="form" autocomplete="off">
             <div class="col-12">
                 <div class="card-incidencias sombra relative">
                     <textarea
                         formControlName="observacion"
                         rows="5"
-                        placeholder="Envianos tus reportes de incidencias o fallas del sistema">
+                        placeholder="Envianos tus reportes de alertas o fallas del sistema">
                     </textarea>
-                    <button class="boton-enviar">
+                    <button class="boton-enviar" type="submit" [disabled]="!form.valid">
                         <i class="bi bi-cursor-fill"></i>
                         Enviar
                     </button>

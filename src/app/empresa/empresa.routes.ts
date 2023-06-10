@@ -50,10 +50,6 @@ export const rutas: Routes = [
     loadChildren: () => import('./perfil-usuario/perfil-usuario.module').then( m => m.PerfilUsuarioModule),
   },
   {
-    path: 'fechas-vencidas',
-    loadChildren: () => import('./fechas-vencidas/fechas-vencidas.module').then( m => m.FechasVencidasModule),
-  },
-  {
     path: 'parque-automotor',
     loadChildren: () => import('./parque-automotor/parque-automotor.module').then( m => m.ParqueAutomotorModule),
   },

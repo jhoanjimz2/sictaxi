@@ -17,3 +17,31 @@ export interface FechasVencidas {
     soat:               string;
     tecnicoMecanica:    string;
 }
+
+export interface RespFechasVencidasEmpresas {
+    data:  FechasVencidasEmpresa[];
+    pages: number;
+}
+
+
+export interface FechasVencidasEmpresa {
+    idVinculacion:                      string;
+    cedula:                             string;
+    nombres:                            string;
+    apellidos:                          string;
+    fotoURL:                            string;
+    razonSocial:                        string;
+    diferencialicencia:                 string;
+    fechaLicenciaConduccion:            string;
+    diferenciatarjetaO:                 string;
+    fechaTarjetaOperacionF:             string;
+    diferenciaFechaNumeroRCC:           string;
+    FechaNumeroRCC:                     string;
+    diferenciaFechaNumeroRCE:           string;
+    FechaNumeroRCE:                     string;
+    diferenciaFechaNumeroSOAT:          string;
+    FechaNumeroSOAT:                    string;
+    diferenciaFechaNumeroTecnomecanica: string;
+    FechaNumeroTecnomecanica:           string;
+    placa:                              string;
+}

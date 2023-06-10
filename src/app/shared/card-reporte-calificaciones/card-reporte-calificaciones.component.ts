@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import * as moment from 'moment';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
-import { ConductorConCalificacion, ReqEstadisticaConductores } from 'src/app/interfaces';
+import { ConductorConCalificacion, ReqEstadisticaConductores, Usuario } from 'src/app/interfaces';
 import { subWeeks } from 'date-fns';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalExcelCalificacionesComponent } from 'src/app/modals/modal-excel-calificaciones/modal-excel-calificaciones.component';
@@ -12,8 +12,9 @@ import { ModalExcelCalificacionesComponent } from 'src/app/modals/modal-excel-ca
   styleUrls: ['./card-reporte-calificaciones.component.scss']
 })
 export class CardReporteCalificacionesComponent {
-  tipo: string = localStorage.getItem('role')!.toString()
 
+  get user(): Usuario { return JSON.parse(localStorage.getItem('user')!); }
+  
   buscar: string = '';
 
   cargandoN: boolean = false;
@@ -23,8 +24,7 @@ export class CardReporteCalificacionesComponent {
   comentariosN: string[] = [];
   selectComentN(event: string[]) { 
     this.comentariosN = event; 
-    if (this.tipo == 'Empresa') {}
-    else if (this.tipo == 'Secretaria') {this.cargarTaxistasQuejas();} 
+    this.cargarTaxistasQuejas();
   }
 
   cargandoP: boolean = false;
@@ -34,16 +34,15 @@ export class CardReporteCalificacionesComponent {
   comentariosP: string[] = [];
   selectComentP(event: string[]) { 
     this.comentariosP = event; 
-    if (this.tipo == 'Empresa') {}
-    else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas();} 
+    this.cargarTaxistasBuenas(); 
   }
 
   constructor( 
     private eS: EstadisticasService,
     private dialog: MatDialog
   ) {
-    if (this.tipo == 'Empresa') {}
-    else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas(); this.cargarTaxistasQuejas();} 
+    this.cargarTaxistasBuenas(); 
+    this.cargarTaxistasQuejas();
   }
 
   cargarTaxistasBuenas() {
@@ -87,14 +86,12 @@ export class CardReporteCalificacionesComponent {
   selectDateP({start, end}: any) {
     this.fechaFinalP = moment(end).format("YYYY-MM-DD");
     this.fechaInicialP = moment(start).format("YYYY-MM-DD");
-    if (this.tipo == 'Empresa') {}
-    else if (this.tipo == 'Secretaria') {this.cargarTaxistasBuenas();} 
+    this.cargarTaxistasBuenas();
   }
   selectDateN({start, end}: any) {
     this.fechaFinalN = moment(end).format("YYYY-MM-DD");
     this.fechaInicialN = moment(start).format("YYYY-MM-DD");
-    if (this.tipo == 'Empresa') {}
-    else if (this.tipo == 'Secretaria') {this.cargarTaxistasQuejas();} 
+    this.cargarTaxistasQuejas();
   }
   buscando(event: any) {
     this.buscar = event;

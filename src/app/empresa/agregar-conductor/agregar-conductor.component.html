@@ -6,16 +6,13 @@
     </div>
     <div class="row mt-10">
         <div class="col">
-            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 1}" (click)="seleccionado = 1"
-                    [disabled]="!botones.uno">
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 1}" (click)="seleccion(1)">
                 <img src="assets/sidebar/agregarconductor.svg">Conductor
             </button>
-            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 2}" (click)="seleccionado = 2"
-                    [disabled]="!botones.dos">
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 2}" (click)="seleccion(2)">
                 <img src="assets/sidebar/user.svg">Inf. complementaria
             </button>
-            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 3}" (click)="seleccionado = 3"
-                    [disabled]="!botones.tres">
+            <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 3}" (click)="seleccion(3)">
                 <img src="assets/taxi.svg">Vehículo
             </button>
             <button class="opcion-button" [ngClass]="{'seleccionado': seleccionado != 4}" (click)="seleccionado = 4" *ngIf="id">

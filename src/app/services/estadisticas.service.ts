@@ -58,6 +58,14 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'Santa Marta', page };
     return this.getAuth('/getDataDocumentosVencidos', params);
   }
+  getDataDocumentosVencidosEmpresa(page: number) {
+    let params = { ciudad: 'Santa Marta', page };
+    return this.getAuth('/getDataConductoresDocumentosVencidos', params);
+  }
+  getDataProximosDocumentosVencidosEmpresa(page: number) {
+    let params = { ciudad: 'Santa Marta', page };
+    return this.getAuth('/getDataConductoresProximosDocumentosVencidos', params);
+  }
   getExcelDocumentoVencidos(page: number) {
     let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportDocumentoVencidos', params)

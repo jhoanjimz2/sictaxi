@@ -110,4 +110,17 @@ export class AgregarConductorComponent {
     })
   }
 
+  seleccion(value: number) {
+    if (value == 1) {
+      if ( this.botones.uno ) this.seleccionado = value;
+      else this.loading.error('Rellena todos los campos y guarda el formulario para pasar al siguiente');
+    } else if (value == 2) {
+      if ( this.botones.dos ) this.seleccionado = value;
+      else this.loading.error('Rellena todos los campos y guarda el formulario para pasar al siguiente');
+    } else if (value == 3) {
+      if ( this.botones.tres ) this.seleccionado = value;
+      else this.loading.error('Rellena todos los campos y guarda el formulario para pasar al siguiente');
+    }
+  }
+
 }

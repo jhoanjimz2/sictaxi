@@ -148,7 +148,7 @@ export class VehiculoComponent {
         fechaNumeroTecnoMecanica: moment(this.form.controls['fechaNumeroTecnoMecanica'].value).format('DD/MM/YYYY'),
       });
       this.guardar.emit()
-    }
+    } else this.loading.error('Todos los campos son obligatorios');
   }
   _refrendar() {
     this.refrendar.emit();

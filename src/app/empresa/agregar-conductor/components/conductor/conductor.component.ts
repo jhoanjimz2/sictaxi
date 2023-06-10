@@ -170,7 +170,7 @@ export class ConductorComponent implements OnChanges {
       });
       this.form.controls['cedula'].disable();
       this.activar.emit();
-    }
+    } else this.loading.error('Todos los campos son obligatorios');
   }
   _refrendar() {
     this.refrendar.emit();

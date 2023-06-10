@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConductorBxC, GetConductorIDVinculacion } from 'src/app/interfaces';
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-info-complementaria',
@@ -40,6 +41,7 @@ export class InfoComplementariaComponent implements OnChanges {
     recoleccionBasura: new FormControl('', [Validators.required]),
   });
   constructor(
+    private loading: LoadingService,
     private fb: FormBuilder
   ) {}
   ngOnChanges() {
@@ -112,7 +114,7 @@ export class InfoComplementariaComponent implements OnChanges {
       this.next.emit(3);
       this.formulario.emit({ ...this.form.value });
       this.activar.emit();
-    }
+    } else this.loading.error('Todos los campos son obligatorios');
   }
   _refrendar() {
     this.refrendar.emit();

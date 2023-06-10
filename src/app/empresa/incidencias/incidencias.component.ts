@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Alertas, RespAlertas } from 'src/app/interfaces/alertas';
+import { ModalConfirmAlertComponent } from 'src/app/modals/modal-confirm-alert/modal-confirm-alert.component';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -21,7 +23,8 @@ export class IncidenciasComponent {
   constructor( 
     private fb: FormBuilder,
     private loading: LoadingService,
-    private eS: EstadisticasService
+    private eS: EstadisticasService,
+    private dialog: MatDialog
   ) { this.pagina({ pagina: 1 }); }
   
   pagina({pagina}: any) {
@@ -54,5 +57,14 @@ export class IncidenciasComponent {
         this.loading.error(error.error.message);
       }
     })
+  }
+
+  confirm() {
+    const dialogRef = this.dialog.open(ModalConfirmAlertComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      if( result ) {
+        this.guardar();
+      }
+    });
   }
 }
