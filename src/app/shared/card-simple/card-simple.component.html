@@ -1,5 +1,6 @@
 <div class="card-simple sombra">
     <label class="title">{{titulo}}</label>
-    <label class="data">{{data}}</label>
+    <label class="data" *ngIf="data || data >= 0">{{data}}</label>
+    <mat-spinner class="zoom-5" *ngIf="!data && data != 0"></mat-spinner>
     <button class="button" [routerLink]="[route]">Ver más</button>
 </div>
