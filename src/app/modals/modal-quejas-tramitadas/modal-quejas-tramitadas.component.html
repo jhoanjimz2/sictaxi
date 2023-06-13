@@ -20,6 +20,7 @@
             <div class="card-quejas" [ngClass]="{'list': estado}" *ngFor="let queja of quejasNoTramitadas| orderDate">
 
                 <div class="comentarios" *ngFor="let comentario of queja.comentarios"><div class="check"></div><label>{{comentario.comentario}}</label></div>
+                <div class="comentarios" *ngIf="!queja.comentarios.length"><div class="check"></div><label>Mala Calificación</label></div>
                 <div class="info-usuario" *ngIf="user.rol == 'Secretaria'">
                     <label>Email: {{queja.email}}</label>
                     <label>Nombre: {{queja.nombre}}</label>
@@ -32,6 +33,7 @@
             <div class="card-quejas" [ngClass]="{'list': !estado}" *ngFor="let queja of quejasSiTramitadas| orderDate">
 
                 <div class="comentarios" *ngFor="let comentario of queja.comentarios"><div class="checkTramitado"></div><label>{{comentario.comentario}}</label></div>
+                <div class="comentarios" *ngIf="!queja.comentarios.length"><div class="check"></div><label>Mala Calificación</label></div>
                 <div class="info-usuario"  *ngIf="user.rol == 'Secretaria'">
                     <label>Email: {{queja.email}}</label>
                     <label>Nombre: {{queja.nombre}}</label>
