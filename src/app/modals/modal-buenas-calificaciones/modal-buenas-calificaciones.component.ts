@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Calificacion } from 'src/app/interfaces';
+import { Calificacion, Usuario } from 'src/app/interfaces';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -16,6 +16,7 @@ export interface DialogData {
 export class ModalBuenasCalificacionesComponent {
   
   buenasCalificaciones: Calificacion[] = [];
+  get user(): Usuario { return JSON.parse(localStorage.getItem('user')!); }
 
   constructor(
     private dialogRef: MatDialogRef<ModalBuenasCalificacionesComponent>,

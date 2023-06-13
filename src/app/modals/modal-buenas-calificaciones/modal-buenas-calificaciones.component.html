@@ -15,7 +15,7 @@
             <div class="card-quejas" *ngFor="let buen of buenasCalificaciones | orderDate">
 
                 <div class="comentarios" *ngFor="let comentario of buen.comentarios"><div class="check"></div><label>{{comentario.comentario}}</label></div>
-                <div class="info-usuario">
+                <div class="info-usuario" *ngIf="user.rol == 'Secretaria'">
                     <label>Email: {{buen.email}}</label>
                     <label>Nombre: {{buen.nombre}}</label>
                     <label>Telefono: {{buen.telefono}}</label>
