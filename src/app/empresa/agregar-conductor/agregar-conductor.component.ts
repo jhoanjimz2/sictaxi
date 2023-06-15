@@ -78,14 +78,26 @@ export class AgregarConductorComponent {
   }
   
   guardar() {
-    this.editar();
+    if ( this.id ) this.editar();
+    else this.nuevo();
   }
 
-  nuevo() {}
+  nuevo() {
+    this.loading.show();
+    this.aC.crearConductor(this.crearConductor).subscribe({
+      next: (data: any) => {
+        this.loading.exito('Perfil de taxista creado');
+        this.loading.hide();
+      }, error: () => {
+        this.loading.hide();
+        this.loading.error('Error data conductor, comuniquese con el administrador de la base de datos');
+      }
+    })
+  }
 
   editar() {
     this.loading.show();
-    this.aC.crearConductor(this.crearConductor).subscribe({
+    this.aC.editarConductor(this.crearConductor).subscribe({
       next: (data: any) => {
         this.loading.exito('Perfil de taxista actualizado');
         this.loading.hide();
