@@ -36,6 +36,9 @@ export class EstadisticasService extends ConexionService {
   getGraficaCalificaciones(params: { fechaInicial: string, fechaFinal: string }) {
     return this.getAuth('/getGraphCalificaciones',params);
   }
+  exportDataGraphCalificacionesGeneral(params: { fechaInicial: string, fechaFinal: string }) {
+    return this.getAuthExcel('/exportDataGraphCalificacionesGeneral', params)
+  }
   getConductoresConQuejas(data: ReqEstadisticaConductores) {
     return this.postAuth('/getEstadisticaConductoresConQuejas', data);
   }

@@ -5,6 +5,7 @@ import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import Chart from 'chart.js/auto';
 import * as moment from 'moment';
+import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-card-grafica-comentarios-pos',
@@ -36,7 +37,8 @@ export class CardGraficaComentariosPosComponent {
 
   constructor( 
     private eS: EstadisticasService,
-    private loading: LoadingService
+    private loading: LoadingService,
+    private download: DownloadService
   ) { this.cargarData(); }
 
   cargarData(bandera = false) {
@@ -198,5 +200,19 @@ export class CardGraficaComentariosPosComponent {
   selectComent(event: string[]) {
     this.comentarios = event;
     this.cargarData(true);
+  }
+  exportar() {
+    // this.loading.show();
+    // this.eS.exportDataGraphCalificacionesGeneral({ 
+    //   fechaFinal: this.fechaFinal,
+    //   fechaInicial: this.fechaInicial
+    // }).subscribe({
+    //   next: (data: any) => {
+    //     this.download.download(data, 'Reporte de calificaciones');
+    //   }, error: (error: any) => {
+    //     this.loading.hide();
+    //     this.loading.error(error.error.message);
+    //   }
+    // })
   }
 }

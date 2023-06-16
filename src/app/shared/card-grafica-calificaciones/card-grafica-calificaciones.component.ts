@@ -5,6 +5,7 @@ import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import * as moment from 'moment';
 import Chart from 'chart.js/auto';
+import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-card-grafica-calificaciones',
@@ -33,7 +34,8 @@ export class CardGraficaCalificacionesComponent {
   }
   constructor( 
     private eS: EstadisticasService,
-    private loading: LoadingService
+    private loading: LoadingService,
+    private download: DownloadService
   ) { this.cargarData(); }
 
   cargarData(bandera = false) {
@@ -161,6 +163,20 @@ export class CardGraficaCalificacionesComponent {
     this.fechaFinal = moment(end).format("YYYY-MM-DD");
     this.fechaInicial = moment(start).format("YYYY-MM-DD");
     this.cargarData(true);
+  }
+  exportar() {
+    this.loading.show();
+    this.eS.exportDataGraphCalificacionesGeneral({ 
+      fechaFinal: this.fechaFinal,
+      fechaInicial: this.fechaInicial
+    }).subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Reporte de calificaciones');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
 
 
