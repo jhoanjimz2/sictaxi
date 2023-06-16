@@ -4,6 +4,7 @@ import { FechasVencidasEmpresa, RespFechasVencidasEmpresas } from 'src/app/inter
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { environment } from '../../../../../environments/environment.development';
+import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-documentos-vencidos',
@@ -21,7 +22,8 @@ export class DocumentosVencidosComponent {
   constructor( 
     private loading: LoadingService,
     private eS: EstadisticasService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private download: DownloadService
   ) { this.pagina({ pagina: 1 }); }
 
   pagina({pagina}: any) {
@@ -41,10 +43,15 @@ export class DocumentosVencidosComponent {
     })
   }
   exportar() {
-    // const dialogRef = this.dialog.open(FasesExportarComponent, { 
-    //   width: '800px'
-    // });
-    // dialogRef.afterClosed().subscribe(result => {});
+    this.loading.show();
+    this.eS.getExcelDocumentoVencidosEmpresa().subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Documentos vencidos');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
   buscando(event: string) {
     this.buscar = event.toUpperCase();
