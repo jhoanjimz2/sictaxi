@@ -29,7 +29,9 @@
                     <div class="col">
                         <app-dias-meses-anhos 
                             (select)="setFormat($event)"
-                            [formatGrafic]="formatGrafic"
+                            [dias]="this.dataGraficaCalificacionesDias.labels ? this.dataGraficaCalificacionesDias.labels.length : 0"
+                            [meses]="this.dataGraficaCalificacionesMeses.labels ? this.dataGraficaCalificacionesMeses.labels.length : 0"
+                            [anhos]="this.dataGraficaCalificacionesAnhos.labels ? this.dataGraficaCalificacionesAnhos.labels.length : 0"
                         />
                     </div>
                 </div>

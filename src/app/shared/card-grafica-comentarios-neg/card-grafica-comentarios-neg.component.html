@@ -32,7 +32,9 @@
                     <div class="col">
                         <app-dias-meses-anhos 
                             (select)="setFormat($event)"
-                            [formatGrafic]="formatGrafic"
+                            [dias]="this.dataGraficaComentariosNDias.labels ? this.dataGraficaComentariosNDias.labels.length : 0"
+                            [meses]="this.dataGraficaComentariosNMeses.labels ? this.dataGraficaComentariosNMeses.labels.length : 0"
+                            [anhos]="this.dataGraficaComentariosNAnhos.labels ? this.dataGraficaComentariosNAnhos.labels.length : 0"
                         />
                     </div>
                 </div>

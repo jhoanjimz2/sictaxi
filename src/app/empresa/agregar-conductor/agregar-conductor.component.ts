@@ -110,7 +110,8 @@ export class AgregarConductorComponent {
   buscarC(cedula: string) {
     this.aC.searchConductorEmpresasByCedula(cedula).subscribe({
       next: (data: RespBusquedaPorCedula) => {
-        this.conductorBxC = data.actual;
+        if ( data.conductor ) this.conductorBxC = data.conductor;
+        else this.conductorBxC = data.actual;
       }
     })
   }
