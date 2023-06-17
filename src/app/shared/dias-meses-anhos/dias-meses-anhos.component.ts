@@ -22,17 +22,16 @@ export class DiasMesesAnhosComponent implements OnChanges {
     } else if (this.meses > 1) {
       this.formatGrafic = 2;
       this.select.emit(2);
-    } else if (this.dias > 1) {
+    } else if (this.dias >= 1) {
       this.formatGrafic = 1;
       this.select.emit(1);
+      if ( this.dias == 1) this.loading.error('Selecciona un rango de fecha que involucren almenos 2 días diferentes para una mejor visualización de la información');
     }
   }
 
   seleccionar(type: number) {
-    if ( this.dias == 1 && type == 1) return this.loading.error('Selecciona un rango de fecha que involucren almenos 2 días diferentes para una mejor visualización de la información');
     if ( this.meses == 1 && type == 2) return this.loading.error('Selecciona un rango de fecha que involucren almenos 2 meses diferentes para una mejor visualización de la información');
     if ( this.anhos == 1 && type == 3) return this.loading.error('Selecciona un rango de fecha que involucren almenos 2 años diferentes para una mejor visualización de la información');
-
     this.formatGrafic = type;
     this.select.emit(type);
   }
