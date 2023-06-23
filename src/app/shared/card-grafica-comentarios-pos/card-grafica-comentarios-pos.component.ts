@@ -202,17 +202,18 @@ export class CardGraficaComentariosPosComponent {
     this.cargarData(true);
   }
   exportar() {
-    // this.loading.show();
-    // this.eS.exportDataGraphCalificacionesGeneral({ 
-    //   fechaFinal: this.fechaFinal,
-    //   fechaInicial: this.fechaInicial
-    // }).subscribe({
-    //   next: (data: any) => {
-    //     this.download.download(data, 'Reporte de calificaciones');
-    //   }, error: (error: any) => {
-    //     this.loading.hide();
-    //     this.loading.error(error.error.message);
-    //   }
-    // })
+    this.loading.show();
+    this.eS.exportDataGraphComentariosPositivos({ 
+      fechaFinal: this.fechaFinal,
+      fechaInicial: this.fechaInicial,
+      comentarios: this.comentarios
+    }).subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Reporte de comentarios positivos');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
 }

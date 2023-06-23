@@ -197,17 +197,18 @@ export class CardGraficaComentariosNegComponent {
     this.updateGrafica();
   }
   exportar() {
-    // this.loading.show();
-    // this.eS.exportDataGraphCalificacionesGeneral({ 
-    //   fechaFinal: this.fechaFinal,
-    //   fechaInicial: this.fechaInicial
-    // }).subscribe({
-    //   next: (data: any) => {
-    //     this.download.download(data, 'Reporte de calificaciones');
-    //   }, error: (error: any) => {
-    //     this.loading.hide();
-    //     this.loading.error(error.error.message);
-    //   }
-    // })
+    this.loading.show();
+    this.eS.exportDataGraphComentariosNegativos({ 
+      fechaFinal: this.fechaFinal,
+      fechaInicial: this.fechaInicial,
+      comentarios: this.comentarios
+    }).subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Reporte de comentarios negativos');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
 }
