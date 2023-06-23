@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Graficas, Graph, ReqGrafComentarios, RespGraficaComentarios } from 'src/app/interfaces';
-import { subDays } from 'date-fns';
+import { Graficas, ReqGrafComentarios, RespGraficaComentarios } from 'src/app/interfaces';
+import { subMonths } from 'date-fns';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import Chart from 'chart.js/auto';
@@ -23,7 +23,7 @@ export class CardGraficaComentariosPosComponent {
   chart: any;
 
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
-  fechaInicial = moment(subDays(new Date(), 8)).format("YYYY-MM-DD");
+  fechaInicial = moment(subMonths(new Date(), 1)).format("YYYY-MM-DD");
   comentarios: string[] = [];
   get seleccionados() { 
     return  this.chart?.data?.datasets?.map( (item: any) => { 

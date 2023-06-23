@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { subWeeks } from 'date-fns';
+import { subMonths } from 'date-fns';
 import { Graficas, RespGraficaCalificaciones } from 'src/app/interfaces';
 import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -15,13 +15,13 @@ import { DownloadService } from 'src/app/services/download.service';
 export class CardGraficaCalificacionesComponent {
 
   formatGrafic: number = 1;
-  typeGrafic: number = 1;
+  typeGrafic: number = 2;
   dataGraficaCalificacionesDias: Graficas = {} as Graficas;
   dataGraficaCalificacionesMeses: Graficas = {} as Graficas;
   dataGraficaCalificacionesAnhos: Graficas = {} as Graficas;
   chart: any;
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
-  fechaInicial = moment(subWeeks(new Date(), 1)).format("YYYY-MM-DD");
+  fechaInicial = moment(subMonths(new Date(), 1)).format("YYYY-MM-DD");
 
   get seleccionados() { 
     return  this.chart?.data?.datasets?.map( (item: any) => { 
@@ -141,7 +141,7 @@ export class CardGraficaCalificacionesComponent {
   }
   createChart() {
     this.chart = new Chart("ChartCalificaciones",  {
-      type: 'line',
+      type: 'bar',
       data: 
         (this.formatGrafic == 1) ? this.dataGraficaCalificacionesDias : 
         (this.formatGrafic == 2) ? this.dataGraficaCalificacionesMeses : 
