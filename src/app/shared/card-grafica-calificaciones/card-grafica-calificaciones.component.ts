@@ -22,6 +22,7 @@ export class CardGraficaCalificacionesComponent {
   chart: any;
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
   fechaInicial = moment(subMonths(new Date(), 1)).format("YYYY-MM-DD");
+  ceroDatos: boolean = false;
 
   get seleccionados() { 
     return  this.chart?.data?.datasets?.map( (item: any) => { 
@@ -58,8 +59,11 @@ export class CardGraficaCalificacionesComponent {
   }
   setDatasetsDias(data: RespGraficaCalificaciones) {
     let fechas = data.positive.map( item => { return item.fecha });
-    let pos = data.positive.map( item => { return item.cantidad });
-    let neg = data.negative.map( item => { return item.cantidad });
+    let pos: number[] = data.positive.map( item => { return item.cantidad });
+    let neg: number[] = data.negative.map( item => { return item.cantidad });
+    this.ceroDatos = true;
+    pos.forEach(num => { if (num) this.ceroDatos = false; });
+    neg.forEach(num => { if (num) this.ceroDatos = false; });
     let datasets = [ { data: pos, label: 'Buenas Calificaciones'}, { data: neg, label: 'Malas  Calificaciones'} ]
     this.dataGraficaCalificacionesDias.datasets = datasets;
     this.dataGraficaCalificacionesDias.labels = fechas;

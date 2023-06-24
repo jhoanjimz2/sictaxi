@@ -25,6 +25,7 @@ export class CardGraficaComentariosPosComponent {
   fechaFinal = moment(new Date()).format("YYYY-MM-DD");
   fechaInicial = moment(subMonths(new Date(), 1)).format("YYYY-MM-DD");
   comentarios: string[] = [];
+  ceroDatos: boolean = false;
   get seleccionados() { 
     return  this.chart?.data?.datasets?.map( (item: any) => { 
       return { 
@@ -75,6 +76,8 @@ export class CardGraficaComentariosPosComponent {
     let datasets = data.map( item => {
       return { label: item.comentario, data: item.graph.map( item2 => { return item2.cantidad }) }
     });
+    this.ceroDatos = true;
+    datasets.forEach(coment => coment.data.forEach(num => { if (num) this.ceroDatos = false; }))
     this.dataGraficaComentariosPDias.datasets = datasets;
     this.dataGraficaComentariosPDias.labels = fechas;
   }

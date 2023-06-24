@@ -1,3 +1,12 @@
+.mensajeError {
+    position: absolute;
+    top: calc(50% - 18.75px);
+    left: calc(50% - 247.795px);
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    z-index: 999;
+}
 .flex-end {
     display: flex;
     justify-content: flex-end;
@@ -63,8 +72,9 @@
 .card-grafic {
     width: 100%;
     padding: 40px;
-    background-color: white;
+    position: relative;
     border-radius: 25px;
+    background-color: white;
     box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.085);
 }
 .export {

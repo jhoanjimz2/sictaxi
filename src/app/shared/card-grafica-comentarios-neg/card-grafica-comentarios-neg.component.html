@@ -38,6 +38,7 @@
                         />
                     </div>
                 </div>
+                <label *ngIf="ceroDatos" class="mensajeError">No hay calificaciones en el rango de fecha selecciondo</label>
                 <canvas  id="ChartComentariosN">{{ chart }}</canvas>
             </div>
         </div>

@@ -86,7 +86,8 @@ export class AgregarConductorComponent {
     this.loading.show();
     this.aC.crearConductor(this.crearConductor).subscribe({
       next: (data: any) => {
-        this.loading.exito('Perfil de taxista creado');
+        if ( data.status ) this.loading.exito('Perfil de taxista creado');
+        else this.loading.error(data.message);
         this.loading.hide();
       }, error: () => {
         this.loading.hide();
