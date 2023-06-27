@@ -1,4 +1,4 @@
-<div class="listado" *ngIf="!cargando && taxistas.length">
+<div class="listado" *ngIf="!cargando && taxistas.length && !message(taxistas | taxistasEasy : search)">
     <div class="item d-flex ordenar" *ngFor="let taxista of taxistas | taxistasEasy : search">
         <img [src]="taxista.img| imagenes" (click)="datosConductor(taxista.idConductor)">
         <label class="name" (click)="datosConductor(taxista.idConductor)">{{taxista.name}} {{taxista.surname}}</label>
@@ -7,7 +7,7 @@
         <div class="cant" (click)="calificaciones(taxista.idVinculacion)">{{taxista.cantidad}}</div>
     </div>
 </div>
-<div class="texto" *ngIf="!cargando && !taxistas.length">
+<div class="texto" *ngIf="!cargando && !taxistas.length || message(taxistas | taxistasEasy : search)">
     <label>No hay conductores</label>
 </div>
 <div class="loading" *ngIf="cargando">

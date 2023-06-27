@@ -269,6 +269,9 @@ export class EstadisticasService extends ConexionService {
     let data = { id }
     return this.postAuth('/processComplaintsVinculacion', data);
   }
+  exportConductoresConQuejasExcel(data: { fechaInicial: string, fechaFinal: string, placa: string }) {
+    return this.postAuthExcel('/exportConductoresConQuejasExcel', data)
+  }
   //QUEJAS
 
   //PERFIL DE USUARIO

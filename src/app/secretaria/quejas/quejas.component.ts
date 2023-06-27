@@ -9,6 +9,7 @@ import { EstadisticasService } from 'src/app/services/estadisticas.service';
 import * as moment from 'moment';
 import { subWeeks } from 'date-fns';
 import { ModalDesbloquearConductorComponent } from 'src/app/modals/modal-desbloquear-conductor/modal-desbloquear-conductor.component';
+import { DownloadService } from 'src/app/services/download.service';
 
 @Component({
   selector: 'app-quejas',
@@ -28,7 +29,8 @@ export class QuejasComponent {
   constructor( 
     private loading: LoadingService,
     public dialog: MatDialog,
-    private eS: EstadisticasService
+    private eS: EstadisticasService,
+    private download: DownloadService
   ) { this.pagina({ pagina: 1 }); }
 
   pagina({pagina}: any, bandera = true) {
@@ -95,5 +97,20 @@ export class QuejasComponent {
   buscar(busca: string) {
     this.filtro = busca;
     this.pagina({ pagina: 1 });
+  }
+  exportar() {
+    this.loading.show();
+    this.eS.exportConductoresConQuejasExcel({ 
+      fechaFinal: this.fechaFinal,
+      fechaInicial: this.fechaInicial,
+      placa: this.filtro
+    }).subscribe({
+      next: (data: any) => {
+        this.download.download(data, 'Conductores con quejas');
+      }, error: (error: any) => {
+        this.loading.hide();
+        this.loading.error(error.error.message);
+      }
+    })
   }
 }

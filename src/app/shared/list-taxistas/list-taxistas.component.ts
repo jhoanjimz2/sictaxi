@@ -36,4 +36,8 @@ export class ListTaxistasComponent {
     });
     dialogRef.afterClosed().subscribe(result => {});
   }
+  message(resp: any) {
+    if ( resp.length ) return false
+    else return true
+  }
 }
