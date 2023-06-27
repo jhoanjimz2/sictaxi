@@ -17,14 +17,16 @@ import { environment } from 'src/environments/environment';
 export class ConductorComponent implements OnChanges {
   mask: any = [/[0-3]/, /[0-9]/, '/', /[0-1]/, /[0-9]/, '/', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/];
   @ViewChild('myInput') input!: ElementRef;
-  @Output() next: EventEmitter<any> = new EventEmitter();
+  
   @Output() refrendar: EventEmitter<any> = new EventEmitter();
-  @Output() formulario: EventEmitter<any> = new EventEmitter();
-  @Output() activar: EventEmitter<any> = new EventEmitter();
+  @Output() saveForm: EventEmitter<any> = new EventEmitter();
   @Output() busquedaXCedula: EventEmitter<any> = new EventEmitter();
+  
   @Input() conductorBxC!: ConductorBxC;
   @Input() conductor!: GetConductorIDVinculacion;
   @Input() id = '';
+  @Input() form!: FormGroup;
+
   _debounce: Subject<string> = new Subject();
 
   img: string = '';
@@ -34,28 +36,6 @@ export class ConductorComponent implements OnChanges {
   ARLs: Param[] = [];
   AFPs: Param[] = [];
 
-  form: FormGroup = this.fb.group({
-    cedula: new FormControl('', [Validators.required]),
-    nombres: new FormControl('', [Validators.required]),
-    apellidos: new FormControl('', [Validators.required]),
-    fechaNacimiento: new FormControl('', [Validators.required]),
-    tipoSangre: new FormControl('', [Validators.required]),
-    rh: new FormControl('', [Validators.required]),
-    sexo: new FormControl('', [Validators.required]),
-    estadoCivil: new FormControl('', [Validators.required]),
-    direccion: new FormControl('', [Validators.required]),
-    barrio: new FormControl('', [Validators.required]),
-    telefono: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
-    categoriaPase: new FormControl('', [Validators.required]),
-    fechaLicenciaConduccion: new FormControl('', [Validators.required]),
-    idAfp: new FormControl('', [Validators.required]),
-    idArl: new FormControl('', [Validators.required]),
-    idEps: new FormControl('', [Validators.required]),
-    jornada: new FormControl('', [Validators.required]),
-    consecutivo: new FormControl({value:'', disabled: true}),
-    fechaUltimaRefrendacion: new FormControl({value:'', disabled: true}),
-  });
 
   constructor(
     private loading: LoadingService,
@@ -95,6 +75,30 @@ export class ConductorComponent implements OnChanges {
     this.form.controls['idAfp'].setValue(this.conductorBxC.idAfp);
     this.img = environment.apiImg + this.conductorBxC.fotoURL;
   }
+  cargarDatos() {
+    this.form.controls['cedula'].setValue(this.conductor.conductor.cedula);
+    this.form.controls['nombres'].setValue(this.conductor.conductor.nombres);
+    this.form.controls['apellidos'].setValue(this.conductor.conductor.apellidos);
+    this.form.controls['fechaNacimiento'].setValue(this.conductor.conductor.fechaNacimiento);
+    this.form.controls['tipoSangre'].setValue(this.conductor.conductor.tipoSangre);
+    this.form.controls['rh'].setValue(this.conductor.conductor.rh);
+    this.form.controls['sexo'].setValue(this.conductor.conductor.sexo);
+    this.form.controls['estadoCivil'].setValue(this.conductor.conductor.estadoCivil);
+    this.form.controls['direccion'].setValue(this.conductor.conductor.direccion);
+    this.form.controls['barrio'].setValue(this.conductor.conductor.barrio);
+    this.form.controls['telefono'].setValue(this.conductor.conductor.telefono);
+    this.form.controls['email'].setValue(this.conductor.conductor.email);
+    this.form.controls['categoriaPase'].setValue(this.conductor.conductor.categoriaPase);
+    this.form.controls['fechaLicenciaConduccion'].setValue(this.conductor.conductor.fechaLicenciaConduccion);
+    this.form.controls['idArl'].setValue(this.conductor.conductor.seguridad_social[0].id);
+    this.form.controls['idEps'].setValue(this.conductor.conductor.seguridad_social[1].id);
+    this.form.controls['idAfp'].setValue(this.conductor.conductor.seguridad_social[2].id);
+    this.form.controls['jornada'].setValue(this.conductor.jornada);
+    this.form.controls['consecutivo'].setValue(this.conductor.consecutivo);
+    this.form.controls['fechaUltimaRefrendacion'].setValue(this.conductor.fechaUltimaRefrendacion);
+    this.form.controls['cedula'].disable();
+    this.img = environment.apiImg + this.conductor.conductor.fotoURL;
+  }
   transformar(fecha: any) {
     return moment(fecha).utc().format('YYYY-MM-DD')
   }
@@ -132,36 +136,11 @@ export class ConductorComponent implements OnChanges {
       }
     })
   }
-  cargarDatos() {
-    this.form.controls['cedula'].setValue(this.conductor.conductor.cedula);
-    this.form.controls['nombres'].setValue(this.conductor.conductor.nombres);
-    this.form.controls['apellidos'].setValue(this.conductor.conductor.apellidos);
-    this.form.controls['fechaNacimiento'].setValue(this.conductor.conductor.fechaNacimiento);
-    this.form.controls['tipoSangre'].setValue(this.conductor.conductor.tipoSangre);
-    this.form.controls['rh'].setValue(this.conductor.conductor.rh);
-    this.form.controls['sexo'].setValue(this.conductor.conductor.sexo);
-    this.form.controls['estadoCivil'].setValue(this.conductor.conductor.estadoCivil);
-    this.form.controls['direccion'].setValue(this.conductor.conductor.direccion);
-    this.form.controls['barrio'].setValue(this.conductor.conductor.barrio);
-    this.form.controls['telefono'].setValue(this.conductor.conductor.telefono);
-    this.form.controls['email'].setValue(this.conductor.conductor.email);
-    this.form.controls['categoriaPase'].setValue(this.conductor.conductor.categoriaPase);
-    this.form.controls['fechaLicenciaConduccion'].setValue(this.conductor.conductor.fechaLicenciaConduccion);
-    this.form.controls['idArl'].setValue(this.conductor.conductor.seguridad_social[0].id);
-    this.form.controls['idEps'].setValue(this.conductor.conductor.seguridad_social[1].id);
-    this.form.controls['idAfp'].setValue(this.conductor.conductor.seguridad_social[2].id);
-    this.form.controls['jornada'].setValue(this.conductor.jornada);
-    this.form.controls['consecutivo'].setValue(this.conductor.consecutivo);
-    this.form.controls['fechaUltimaRefrendacion'].setValue(this.conductor.fechaUltimaRefrendacion);
-    this.form.controls['cedula'].disable();
-    this.img = environment.apiImg + this.conductor.conductor.fotoURL;
-  }
-  _next() {
+  next() {
     this.form.markAllAsTouched();
     if ( this.form.valid ) {
-      this.next.emit(2);
       this.form.controls['cedula'].enable();
-      this.formulario.emit({ 
+      this.saveForm.emit({ 
         ...this.form.value,
         fechaLicenciaConduccion: moment(this.form.controls['fechaLicenciaConduccion'].value).format('DD/MM/YYYY'),
         fechaNacimiento: moment(this.form.controls['fechaNacimiento'].value).format('DD/MM/YYYY'),
@@ -169,10 +148,12 @@ export class ConductorComponent implements OnChanges {
         foto: this.imgsubir 
       });
       this.form.controls['cedula'].disable();
-      this.activar.emit();
     } else this.loading.error('Todos los campos son obligatorios');
   }
   _refrendar() {
     this.refrendar.emit();
+  }
+  prueba(event: any) {
+    console.log(event)
   }
 }

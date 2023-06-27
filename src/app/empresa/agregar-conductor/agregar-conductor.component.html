@@ -23,44 +23,54 @@
     <div class="row mt-20">
         <div class="col">
             <app-conductor 
-                (next)="next($event)" 
                 (refrendar)="refrendar()"
-                (formulario)="form($event, 1)"
-                (activar)="botones.dos = true"
+                (saveForm)="savedForm($event, 1)"
                 (busquedaXCedula)="buscarC($event)"
+
                 [conductorBxC]="conductorBxC"
                 [conductor]="conductor"
-                [id]="id" 
+                [form]="_form1"
+                [id]="id"
+
                 [hidden]="seleccionado != 1" 
+
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-info-complementaria 
-                (next)="next($event)" 
                 (refrendar)="refrendar()"
-                (formulario)="form($event, 2)"
-                (activar)="botones.tres = true"
+                (saveForm)="savedForm($event, 2)"
+
                 [conductorBxC]="conductorBxC"
-                [conductor]="conductor" 
-                [id]="id" 
+                [conductor]="conductor"
+                [form]="_form2"
+                [id]="id"
+
                 [hidden]="seleccionado != 2" 
+
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-vehiculo 
-                (guardar)="guardar()"
                 (refrendar)="refrendar()"
-                (formulario)="form($event, 3)"
+                (saveForm)="savedForm($event, 3)"
                 (busquedaXPlaca)="buscarV($event)"
+
                 [vehiculoBxC]="vehiculoBxC"
                 [conductor]="conductor" 
-                [id]="id" 
+                [form]="_form3"
+                [id]="id"
+
                 [hidden]="seleccionado != 3" 
+
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-refrendaciones 
                 (refrendar)="refrendar()"
-                *ngIf="seleccionado == 4" 
+
                 [id]="id" 
                 [conductor]="conductor" 
+
+                *ngIf="seleccionado == 4"
+
                 class="animado animate__animated animate__fadeInRight"
             />
         </div>

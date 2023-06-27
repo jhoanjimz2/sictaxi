@@ -9,37 +9,13 @@ import { LoadingService } from 'src/app/services/loading.service';
   styleUrls: ['./info-complementaria.component.scss']
 })
 export class InfoComplementariaComponent implements OnChanges {
-  @Output() next: EventEmitter<any> = new EventEmitter();
   @Output() refrendar: EventEmitter<any> = new EventEmitter();
-  @Output() formulario: EventEmitter<any> = new EventEmitter();
-  @Output() activar: EventEmitter<any> = new EventEmitter();
+  @Output() saveForm: EventEmitter<any> = new EventEmitter();
   @Input() conductor!: GetConductorIDVinculacion;
   @Input() conductorBxC!: ConductorBxC;
   @Input() id = '';
-
-  form: FormGroup = this.fb.group({
-    parentescoJefeHogar: new FormControl('', [Validators.required]),
-    numeroHijos: new FormControl('', [Validators.required]),
-    personasCargo: new FormControl('', [Validators.required]),
-    nivelEducativoAlcanzado: new FormControl('', [Validators.required]),
-    estudia: new FormControl('', [Validators.required]),
-    tipoDiscapacidad: new FormControl('', [Validators.required]),
-    taxistaOcacional: new FormControl('', [Validators.required]),
-    tiempoComoConductor: new FormControl('', [Validators.required]),
-    conductorLaborUnidad: new FormControl('', [Validators.required]),
-    ingresosAproxConductor: new FormControl('', [Validators.required]),
-    otraLabor: new FormControl('', [Validators.required]),
-    ingresosOtraLabor: new FormControl(''),
-    tiempoOtraLabor: new FormControl(''),
-    otraLaborUnidad: new FormControl(''),
-    estratoSocioEconomico: new FormControl('', [Validators.required]),
-    tipoVivienda: new FormControl('', [Validators.required]),
-    luz: new FormControl('', [Validators.required]),
-    agua: new FormControl('', [Validators.required]),
-    gas: new FormControl('', [Validators.required]),
-    alcantarillado: new FormControl('', [Validators.required]),
-    recoleccionBasura: new FormControl('', [Validators.required]),
-  });
+  @Input() form!: FormGroup;
+  
   constructor(
     private loading: LoadingService,
     private fb: FormBuilder
@@ -111,9 +87,7 @@ export class InfoComplementariaComponent implements OnChanges {
   _next() {
     this.form.markAllAsTouched();
     if ( this.form.valid ) {
-      this.next.emit(3);
-      this.formulario.emit({ ...this.form.value });
-      this.activar.emit();
+      this.saveForm.emit({ ...this.form.value });
     } else this.loading.error('Todos los campos son obligatorios');
   }
   _refrendar() {
