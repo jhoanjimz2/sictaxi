@@ -13,7 +13,7 @@ export class SliderComponent {
     window.open('https://apps.apple.com/us/app/buen-taxi/id1363253486');
   }
   instagram() {
-    window.open('https://www.instagram.com/innlabcorp/');
+    window.open('https://www.instagram.com/innlabcol/');
   }
   twitter() {
     window.open('https://twitter.com/InnLabCorp');
@@ -21,4 +21,6 @@ export class SliderComponent {
   facebook() {
     window.open('https://web.facebook.com/Innlabcorp/');
   }
+  constructor() { setTimeout(() => this.activar(),4000) }
+  activar() { var button = (<HTMLButtonElement>document.getElementById("bnext")); button.click(); }
 }
