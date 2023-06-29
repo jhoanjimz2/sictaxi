@@ -40,11 +40,11 @@ export class TaxistasSinRefrendarComponent {
       }
     })
   }
-  exportar() {
+  exportar(page: number) {
     this.loading.show();
-    this.eS.getExcelConductoresSinRefrendarExcel().subscribe({
+    this.eS.getExcelConductoresSinRefrendarExcel(page).subscribe({
       next: (data: any) => {
-        this.download.download(data, 'Taxistas Sin Refrendar');
+        this.download.download(data, `Taxistas Sin Refrendar Parte ${page}`);
       }, error: (error: any) => {
         this.loading.hide();
         this.loading.error(error.error.message);

@@ -1,2 +1,5 @@
-
-<button class="opc" (click)="exportar()"> Exportar a Excel <img [src]="'assets/excel.svg' | imagenes"></button>
+<button class="opc" (click)="exportar()" [hidden]="exportMultiple"> Exportar a Excel <img [src]="'assets/excel.svg' | imagenes"></button>
+<button class="opc" mat-button [matMenuTriggerFor]="menu" [hidden]="!exportMultiple"> Exportar a Excel <img [src]="'assets/excel.svg' | imagenes"></button>
+<mat-menu [hidden]="!exportMultiple" #menu="matMenu">
+    <button mat-menu-item *ngFor="let item of arr; let i = index" (click)="exportarPag(i + 1)">Parte {{i + 1}}</button>
+</mat-menu>

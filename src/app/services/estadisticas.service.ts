@@ -218,8 +218,8 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page };
     return this.getAuth('/getDataConductoresRegistrados', params);
   }
-  getExcelConductoresRegistradosExcel() {
-    let params = { ciudad: 'SantaMarta' };
+  getExcelConductoresRegistradosExcel(page?: number) {
+    let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportConductoresRegistradosExcel', params)
   }
   //TAXISTAS REGISTRADOS
@@ -231,8 +231,8 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page };
     return this.getAuth('/getDataConductoresSinLicencia', params);
   }
-  getExcelConductoresSinLicenciaExcel() {
-    let params = { ciudad: 'SantaMarta' };
+  getExcelConductoresSinLicenciaExcel(page?: number) {
+    let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportConductoresSinLicenciaExcel', params)
   }
   //TAXISTAS SIN LICENCIA
@@ -244,8 +244,8 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page };
     return this.getAuth('/getDataConductoresSinRefrendar', params);
   }
-  getExcelConductoresSinRefrendarExcel() {
-    let params = { ciudad: 'SantaMarta' };
+  getExcelConductoresSinRefrendarExcel(page?: number) {
+    let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportConductoresSinRefrendarExcel', params)
   }
   //TAXISTAS SIN REFRENDAR

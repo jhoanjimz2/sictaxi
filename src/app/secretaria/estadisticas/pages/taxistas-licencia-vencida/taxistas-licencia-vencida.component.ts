@@ -40,11 +40,11 @@ export class TaxistasLicenciaVencidaComponent {
       }
     })
   }
-  exportar() {
+  exportar(page: number) {
     this.loading.show();
-    this.eS.getExcelConductoresSinLicenciaExcel().subscribe({
+    this.eS.getExcelConductoresSinLicenciaExcel(page).subscribe({
       next: (data: any) => {
-        this.download.download(data, 'Taxistas Sin Licencia');
+        this.download.download(data, `Taxistas Sin Licencia Parte ${page}`);
       }, error: (error: any) => {
         this.loading.hide();
         this.loading.error(error.error.message);

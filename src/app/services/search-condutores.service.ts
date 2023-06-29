@@ -13,8 +13,8 @@ export class SearchCondutoresService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page, filtro };
     return this.getAuth('/getDataConductoresGeneral', params);
   }
-  getExcelConductoresListadoGeneral() {
-    let params = { ciudad: 'SantaMarta' };
+  getExcelConductoresListadoGeneral(page?: number) {
+    let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportConductoresListadoGeneral', params)
   }
   getPerfilConductor(idConductor: number) {

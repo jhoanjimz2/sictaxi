@@ -53,11 +53,11 @@ export class BuscarConductoresComponent {
     this.filtro = busca;
     this.pagina({ pagina: 1 });
   }
-  exportar() {
+  exportar(page: number) {
     this.loading.show();
-    this.sC.getExcelConductoresListadoGeneral().subscribe({
+    this.sC.getExcelConductoresListadoGeneral(page).subscribe({
       next: (data: any) => {
-        this.download.download(data, 'Conductores');
+        this.download.download(data, `Conductores Parte ${page}`);
       }, error: (error: any) => {
         this.loading.hide();
         this.loading.error(error.error.message);

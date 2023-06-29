@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-export-excel',
@@ -7,9 +7,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class ExportExcelComponent {
   @Output() export: EventEmitter<any> = new EventEmitter();
-
+  @Input() exportMultiple: number = 0;
   exportar() {
     this.export.emit();
   }
-
+  exportarPag(pag: number) {
+    this.export.emit(pag);
+  }
+  get arr(): any[] {
+    return new Array<number>(this.exportMultiple);
+  }
 }

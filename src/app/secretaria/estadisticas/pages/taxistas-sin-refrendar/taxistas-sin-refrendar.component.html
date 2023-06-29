@@ -4,7 +4,7 @@
             <label class="titulo">Taxistas sin refrendar</label>
         </div>
         <div class="col-6 flex-end">
-            <app-export-excel (export)="exportar()"/>
+            <app-export-excel (export)="exportar($event)" [exportMultiple]="3"/>
         </div>
     </div>
     <div class="row mt-20 pb-80">
