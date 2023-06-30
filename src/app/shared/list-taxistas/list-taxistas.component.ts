@@ -16,13 +16,28 @@ export class ListTaxistasComponent {
   @Input() search!: string;
   @Input() evento: boolean = false;
   @Input() cargando: boolean = false;
+  @Input() fechaInicialP!: string;
+  @Input() fechaFinalP!: string;
+  @Input() fechaInicialN!: string;
+  @Input() fechaFinalN!: string;
+  
   constructor( public dialog: MatDialog ) {}
+
   calificaciones(idVinculacion: number) {
-    let componente: any;
-    if (this.evento) componente = ModalQuejasTramitadasComponent;
-    else componente = ModalBuenasCalificacionesComponent;
-    const dialogRef = this.dialog.open(componente, {
-      data: { idVinculacion },
+    if (this.evento) this.calificacionesN(idVinculacion);
+    else this.calificacionesP(idVinculacion);
+  }
+  calificacionesP(idVinculacion: number) {
+    const dialogRef = this.dialog.open(ModalBuenasCalificacionesComponent, {
+      data: { idVinculacion: idVinculacion, fechaInicial: this.fechaInicialP, fechaFinal: this.fechaFinalP,},
+      height: '450px',
+      width: '600px',
+    });
+    dialogRef.afterClosed().subscribe(result => {});
+  }
+  calificacionesN(idVinculacion: number) {
+    const dialogRef = this.dialog.open(ModalQuejasTramitadasComponent, {
+      data: { idVinculacion: idVinculacion, fechaInicial: this.fechaInicialN, fechaFinal: this.fechaFinalN },
       height: '450px',
       width: '600px',
     });

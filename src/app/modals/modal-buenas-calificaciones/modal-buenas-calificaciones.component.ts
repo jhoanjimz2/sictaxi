@@ -6,6 +6,8 @@ import { LoadingService } from 'src/app/services/loading.service';
 
 export interface DialogData {
   idVinculacion: number;
+  fechaInicial: string;
+  fechaFinal: string;
 }
 
 @Component({
@@ -29,7 +31,7 @@ export class ModalBuenasCalificacionesComponent {
 
   dataBuenasCalificaciones() {
     this.loading.show();
-    this.eS.getDataBuenasCalificaciones(this.data.idVinculacion).subscribe({
+    this.eS.getDataBuenasCalificaciones(this.data.idVinculacion, this.data.fechaInicial, this.data.fechaFinal).subscribe({
       next: (data: Calificacion[]) => {
         this.loading.hide();
         this.buenasCalificaciones = data;

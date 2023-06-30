@@ -6,6 +6,8 @@ import { LoadingService } from 'src/app/services/loading.service';
 
 export interface DialogData {
   idVinculacion: number;
+  fechaInicial: string;
+  fechaFinal: string;
 }
 
 @Component({
@@ -49,7 +51,7 @@ export class ModalQuejasTramitadasComponent {
 
   cargarQuejas() {
     this.loading.show();
-    this.eS.getDataQuejas(this.data.idVinculacion).subscribe({
+    this.eS.getDataQuejas(this.data.idVinculacion, this.data.fechaInicial, this.data.fechaFinal).subscribe({
       next: (data: Calificacion[]) => {
         this.loading.hide();
         this.quejasNoTramitadas = data;
@@ -63,7 +65,7 @@ export class ModalQuejasTramitadasComponent {
   }
   cargarQuejasTramitadas() {
     this.loading.show();
-    this.eS.getDataQuejasTramitadas(this.data.idVinculacion).subscribe({
+    this.eS.getDataQuejasTramitadas(this.data.idVinculacion, this.data.fechaInicial, this.data.fechaFinal).subscribe({
       next: (data: Calificacion[]) => {
         this.loading.hide();
         this.quejasSiTramitadas = data;

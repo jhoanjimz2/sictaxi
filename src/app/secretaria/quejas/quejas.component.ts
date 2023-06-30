@@ -68,7 +68,11 @@ export class QuejasComponent {
   }
   quejasTramitadas(idVinculacion: number) {
     const dialogRef = this.dialog.open(ModalQuejasTramitadasComponent, {
-      data: { idVinculacion: idVinculacion },
+      data: { 
+        idVinculacion: idVinculacion,
+        fechaInicial: this.fechaInicial,
+        fechaFinal: this.fechaFinal,
+      },
       height: '450px',
       width: '600px',
     });

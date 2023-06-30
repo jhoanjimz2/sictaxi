@@ -53,16 +53,16 @@ export class EstadisticasService extends ConexionService {
   getConductoresBienCalificados(data: ReqEstadisticaConductores) {
     return this.postAuth('/getEstadisticaConductoresBienCalificados', data);
   }
-  getDataQuejas(idVinculacion: number) {
-    let params = { idVinculacion };
+  getDataQuejas(idVinculacion: number,fechaInicial: string, fechaFinal: string) {
+    let params = { idVinculacion, fechaInicial, fechaFinal };
     return this.getAuth('/getDataQuejas', params);
   }
-  getDataQuejasTramitadas(idVinculacion: number) {
-    let params = { idVinculacion };
+  getDataQuejasTramitadas(idVinculacion: number,fechaInicial: string, fechaFinal: string) {
+    let params = { idVinculacion, fechaInicial, fechaFinal };
     return this.getAuth('/getDataQuejasTramitadas', params);
   }
-  getDataBuenasCalificaciones(idVinculacion: number) {
-    let params = { idVinculacion };
+  getDataBuenasCalificaciones(idVinculacion: number,fechaInicial: string, fechaFinal: string) {
+    let params = { idVinculacion, fechaInicial, fechaFinal };
     return this.getAuth('/getDataBuenasCalificaciones', params);
   }
   getDataDocumentosVencidos(page: number) {
