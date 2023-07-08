@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { Subject, debounceTime } from 'rxjs';
@@ -136,10 +136,23 @@ export class ConductorComponent implements OnChanges {
       }
     })
   }
+  _refrendar() {
+    this.refrendar.emit();
+  }
   next() {
     this.form.markAllAsTouched();
-    if ( this.form.valid ) {
-      this.form.controls['cedula'].enable();
+    if ( this.form.valid ) this.validarCampos1()
+    else this.validarCampos2();
+  }
+  validarCampos1() {
+    var fechaActual = new Date();
+    var fechaNacimiento = new Date(moment(this.form.controls['fechaNacimiento'].value).format('YYYY-MM-DD'));
+    var fechaLicenciaConduccion = new Date(moment(this.form.controls['fechaLicenciaConduccion'].value).format('YYYY-MM-DD'));
+    if (this.img == '') this.loading.error('Por favor, sube o captura una foto con la webcam.');
+    else if (fechaActual.getTime() <= fechaNacimiento.getTime()) this.loading.error('Fecha de nacimiento mayor a la fecha actual, por favor ingresa una fecha válida.');
+    else if (fechaActual.getTime() > fechaLicenciaConduccion.getTime()) this.loading.error('Licencia de conducción vencida, por favor ingresa una fecha válida.');
+    else {
+      if (this.id) this.form.controls['cedula'].enable();
       this.saveForm.emit({ 
         ...this.form.value,
         fechaLicenciaConduccion: moment(this.form.controls['fechaLicenciaConduccion'].value).format('DD/MM/YYYY'),
@@ -147,13 +160,27 @@ export class ConductorComponent implements OnChanges {
         fechaUltimaRefrendacion: moment(this.form.controls['fechaUltimaRefrendacion'].value).format('DD/MM/YYYY'),
         foto: this.imgsubir 
       });
-      this.form.controls['cedula'].disable();
-    } else this.loading.error('Todos los campos son obligatorios');
+      if (this.id) this.form.controls['cedula'].disable();
+    }
   }
-  _refrendar() {
-    this.refrendar.emit();
-  }
-  prueba(event: any) {
-    console.log(event)
+  validarCampos2() {
+    if      (!this.form.controls['cedula'].valid && !this.id)      this.loading.error('Por favor, ingresa el número de cédula del conductor.');
+    else if (!this.form.controls['nombres'].valid)                 this.loading.error('Por favor, ingresa los nombres del conductor.');
+    else if (!this.form.controls['apellidos'].valid)               this.loading.error('Por favor, ingresa los apellidos del conductor.');
+    else if (!this.form.controls['fechaNacimiento'].valid)         this.loading.error('Por favor, ingresa la fecha de nacimiento del conductor.');
+    else if (!this.form.controls['tipoSangre'].valid)              this.loading.error('Por favor, seleccione el tipo de sangre del conductor.');
+    else if (!this.form.controls['rh'].valid)                      this.loading.error('Por favor, seleccione el tipo de sangre del conductor.');
+    else if (!this.form.controls['sexo'].valid)                    this.loading.error('Por favor, seleccione el sexo.');
+    else if (!this.form.controls['estadoCivil'].valid)             this.loading.error('Por favor, seleccione el estado civil.');
+    else if (!this.form.controls['direccion'].valid)               this.loading.error('Por favor, ingrese la dirección del conductor.');
+    else if (!this.form.controls['barrio'].valid)                  this.loading.error('Por favor, ingresa el barrio del conductor.');
+    else if (!this.form.controls['telefono'].valid)                this.loading.error('Por favor, ingrese el teléfono o celular del conductor.');
+    else if (!this.form.controls['email'].valid)                   this.loading.error('Por favor, ingresa el email del conductor.');
+    else if (!this.form.controls['categoriaPase'].valid)           this.loading.error('Por favor, seleccione la categoría de la licencia del conductor.');
+    else if (!this.form.controls['fechaLicenciaConduccion'].valid) this.loading.error('Por favor, ingrese la fecha de vencimiento de la licencia del conductor');
+    else if (!this.form.controls['idAfp'].valid)                   this.loading.error('Por favor, seleccione el fondo de pensiones del conductor.');
+    else if (!this.form.controls['idArl'].valid)                   this.loading.error('Por favor, seleccione la ARL del conductor.');
+    else if (!this.form.controls['idEps'].valid)                   this.loading.error('Por favor, seleccione la EPS del conductor.');
+    else if (!this.form.controls['jornada'].valid)                 this.loading.error('Por favor, seleccione la jornada del conductor.');
   }
 }

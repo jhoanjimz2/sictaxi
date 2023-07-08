@@ -36,4 +36,11 @@ export interface ConductorSearch {
     numeroMotor:             string;
     numeroChasis:            string;
     img:                     string;
+    
+    fechaTarjetaOperacionF:   Date;
+    fechaTarjetaOperacion:    Date;
+    fechaNumeroRCC:           Date;
+    fechaNumeroRCE:           Date;
+    fechaNumeroSOAT:          Date;
+    fechaNumeroTecnoMecanica: Date;
 }

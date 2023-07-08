@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ConductorBxC, GetConductorIDVinculacion } from 'src/app/interfaces';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -87,11 +87,40 @@ export class InfoComplementariaComponent implements OnChanges {
   _next() {
     this.form.markAllAsTouched();
     if ( this.form.valid ) {
-      this.saveForm.emit({ ...this.form.value });
-    } else this.loading.error('Todos los campos son obligatorios');
+      if (parseInt(this.form.controls['tiempoComoConductor'].value) <= 0) this.loading.error('Por favor, ingrese el tiempo valido como conductor');
+      else if (this.form.controls['otraLabor'].value == "1") {
+        if (parseInt(this.form.controls['tiempoOtraLabor'].value) <= 0) this.loading.error('Por favor, ingrese el tiempo valido realizando la otra labor.');
+        else this.saveForm.emit({ ...this.form.value });
+      }
+      else this.saveForm.emit({ ...this.form.value });
+    }
+    else this.validarCampos2();
   }
   _refrendar() {
     this.refrendar.emit();
+  }
+  validarCampos2() {
+    if      (!this.form.controls['parentescoJefeHogar'].valid)     this.loading.error('Por favor, seleccione el parentesco con el jefe del hogar.');
+    else if (!this.form.controls['numeroHijos'].valid)             this.loading.error('Por favor, ingrese el número de hijos.');
+    else if (!this.form.controls['personasCargo'].valid)           this.loading.error('Por favor, ingrese las personas a cargo.');
+    else if (!this.form.controls['nivelEducativoAlcanzado'].valid) this.loading.error('Por favor, seleccione el nivel educativo alcanzado.');
+    else if (!this.form.controls['estudia'].valid)                 this.loading.error('Por favor, seleccione si el conductor estudia o no.');
+    else if (!this.form.controls['tipoDiscapacidad'].valid)        this.loading.error('Por favor, seleccione el tipo de discapacidad.');
+    else if (!this.form.controls['taxistaOcacional'].valid)        this.loading.error('Por favor, seleccione si el conductor es taxista ocacional o no.');
+    else if (!this.form.controls['tiempoComoConductor'].valid)     this.loading.error('Por favor, ingrese el tiempo como conductor');
+    else if (!this.form.controls['conductorLaborUnidad'].valid)    this.loading.error('Por favor, seleccione la unidad de tiempo como conductor');
+    else if (!this.form.controls['ingresosAproxConductor'].valid)  this.loading.error('Por favor, seleccione los ingresos aproximados como conductor.');
+    else if (!this.form.controls['otraLabor'].valid)               this.loading.error('Por favor, seleccione si el conductor realiza otra labor.');
+    else if (!this.form.controls['ingresosOtraLabor'].valid)       this.loading.error('Por favor, seleccione los ingresos aproximados realizando la otra labor.');
+    else if (!this.form.controls['tiempoOtraLabor'].valid)         this.loading.error('Por favor, ingrese el tiempo realizando la otra labor.');
+    else if (!this.form.controls['otraLaborUnidad'].valid)         this.loading.error('Por favor, seleccione la unidad de tiempo con la otra labor');
+    else if (!this.form.controls['estratoSocioEconomico'].valid)   this.loading.error('Por favor, seleccione el estrato socioeconómico.');
+    else if (!this.form.controls['tipoVivienda'].valid)            this.loading.error('Por favor, seleccione el tipo de vivienda.');
+    else if (!this.form.controls['luz'].valid)                     this.loading.error('Por favor, seleccione si tiene servicio de luz .');
+    else if (!this.form.controls['agua'].valid)                    this.loading.error('Por favor, seleccione si tiene servicio de agua.');
+    else if (!this.form.controls['gas'].valid)                     this.loading.error('Por favor, seleccione si tiene servicio de gas.');
+    else if (!this.form.controls['alcantarillado'].valid)          this.loading.error('Por favor, seleccione ti tiene servicio de alcantarillado.');
+    else if (!this.form.controls['recoleccionBasura'].valid)       this.loading.error('Por favor, seleccione si tiene servicio de recolección de basura.');
   }
 
 }

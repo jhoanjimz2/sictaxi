@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import * as moment from 'moment';
 import { Subject, debounceTime } from 'rxjs';
-import { Aseguradora, Asociacion2, GetConductorIDVinculacion, Marca, RespAsociasiones, VehiculoBxC } from 'src/app/interfaces';
+import { Aseguradora, Asociacion2, GetConductorIDVinculacion, Marca, VehiculoBxC } from 'src/app/interfaces';
 import { AddConductorService } from 'src/app/services/add-conductor.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -100,7 +100,28 @@ export class VehiculoComponent {
   }
   _guardar() {
     this.form.markAllAsTouched();
-    if ( this.form.valid ) {
+    if ( this.form.valid ) this.validarCampos1();
+    else this.validarCampos2();
+  }
+  _refrendar() {
+    this.refrendar.emit();
+  }
+
+  validarCampos1() {
+    var fechaActual = new Date();
+    var fechaTarjetaOperacion = new Date(moment(this.form.controls['fechaTarjetaOperacion'].value).format('YYYY-MM-DD'));
+    var fechaTarjetaOperacionF = new Date(moment(this.form.controls['fechaTarjetaOperacionF'].value).format('YYYY-MM-DD'));
+    var fechaNumeroRCE = new Date(moment(this.form.controls['fechaNumeroRCE'].value).format('YYYY-MM-DD'));
+    var fechaNumeroRCC = new Date(moment(this.form.controls['fechaNumeroRCC'].value).format('YYYY-MM-DD'));
+    var fechaNumeroSOAT = new Date(moment(this.form.controls['fechaNumeroSOAT'].value).format('YYYY-MM-DD'));
+    var fechaNumeroTecnoMecanica = new Date(moment(this.form.controls['fechaNumeroTecnoMecanica'].value).format('YYYY-MM-DD'));
+    if (fechaActual.getTime() < fechaTarjetaOperacion.getTime())         this.loading.error('Fecha de expedición de tarjeta de operación inválida, por favor ingresa una fecha válida.');
+    else if (fechaActual.getTime() > fechaTarjetaOperacionF.getTime())   this.loading.error('Fecha de tarjeta de operación vencida, por favor ingresa una fecha válida.');
+    else if (fechaActual.getTime() > fechaNumeroRCE.getTime())           this.loading.error('Fecha de RCE vencida, por favor ingresa una fecha válida.');
+    else if (fechaActual.getTime() > fechaNumeroRCC.getTime())           this.loading.error('Fecha de RCC vencida, por favor ingresa una fecha válida.');
+    else if (fechaActual.getTime() > fechaNumeroSOAT.getTime())          this.loading.error('Fecha de SOAT vencida, por favor ingresa una fecha válida.');
+    else if (fechaActual.getTime() > fechaNumeroTecnoMecanica.getTime()) this.loading.error('Fecha de la revisión técnico mecánica vencida, por favor ingresa una fecha válida.');
+    else {
       this.saveForm.emit({ 
         ...this.form.value,
         fechaTarjetaOperacion: moment(this.form.controls['fechaTarjetaOperacion'].value).format('DD/MM/YYYY'),
@@ -110,10 +131,33 @@ export class VehiculoComponent {
         fechaNumeroSOAT: moment(this.form.controls['fechaNumeroSOAT'].value).format('DD/MM/YYYY'),
         fechaNumeroTecnoMecanica: moment(this.form.controls['fechaNumeroTecnoMecanica'].value).format('DD/MM/YYYY'),
       });
-    } else this.loading.error('Todos los campos son obligatorios');
+    }
   }
-  _refrendar() {
-    this.refrendar.emit();
+
+  validarCampos2() {
+    if      (!this.form.controls['placa'].valid)                    this.loading.error('Por favor, ingrese la placa del vehículo.');
+    else if (!this.form.controls['idMarca'].valid)                  this.loading.error('Por favor, seleccione la marca del vehículo.');
+    else if (!this.form.controls['modelo'].valid)                   this.loading.error('Por favor, ingrese el modelo del vehículo.');
+    else if (!this.form.controls['cedulaPropietario'].valid)        this.loading.error('Por favor, ingrese la cédula del propietario del vehículo.');
+    else if (!this.form.controls['nombrePropietario'].valid)        this.loading.error('Por favor, ingrese el nombre completo del propietario del vehículo.');
+    else if (!this.form.controls['direccionPropietario'].valid)     this.loading.error('Por favor, ingrese la dirección del propietario del vehículo.');
+    else if (!this.form.controls['telefonoPropietario'].valid)      this.loading.error('Por favor, ingrese el telefono del propietario del vehículo.');
+    else if (!this.form.controls['numeroMotor'].valid)              this.loading.error('Por favor, ingrese el número de motor del vehículo.');
+    else if (!this.form.controls['numeroChasis'].valid)             this.loading.error('Por favor, ingrese el número de chasis del vehículo.');
+    else if (!this.form.controls['tarjetaOperacion'].valid)         this.loading.error('Por favor, ingrese el número de tarjeta de operación del vehículo.');
+    else if (!this.form.controls['fechaTarjetaOperacion'].valid)    this.loading.error('Por favor, ingrese la fecha de expedición de la tarjeta de operación del vehículo.');
+    else if (!this.form.controls['fechaTarjetaOperacionF'].valid)   this.loading.error('Por favor, ingrese la fecha de vencimiento de la tarjeta de operación del vehículo.');
+    else if (!this.form.controls['numeroRCC'].valid)                this.loading.error('Por favor, ingrese el RCC del vehículo.');
+    else if (!this.form.controls['numeroRCE'].valid)                this.loading.error('Por favor, ingrese el RCE del vehículo.');
+    else if (!this.form.controls['numeroSOAT'].valid)               this.loading.error('Por favor, ingrese el número SOAT del vehículo.');
+    else if (!this.form.controls['numeroTecnoMecanica'].valid)      this.loading.error('Por favor, ingrese la técnico mecánica del vehículo.');
+    else if (!this.form.controls['fechaNumeroRCC'].valid)           this.loading.error('Por favor, ingrese la fecha de vencimiento del RCE del vehículo.');
+    else if (!this.form.controls['fechaNumeroRCE'].valid)           this.loading.error('Por favor, ingrese la fecha de vencimiento del RCC del vehículo.');
+    else if (!this.form.controls['fechaNumeroSOAT'].valid)          this.loading.error('Por favor, ingrese la fecha de vencimiento del SOAT del vehículo.');
+    else if (!this.form.controls['fechaNumeroTecnoMecanica'].valid) this.loading.error('Por favor, ingrese la fecha de vencimiento de la técnico mecánica del vehículo.');
+    else if (!this.form.controls['idAseguradora'].valid)            this.loading.error('Por favor, seleccione la aseguradora del vehículo.');
+    else if (!this.form.controls['idAsociacion'].valid)             this.loading.error('Por favor, seleccione la asociación del vehículo.');
+    else if (!this.form.controls['idMatricula'].valid)              this.loading.error('Por favor, ingrese el numero de registro del vehículo.');
   }
   
 }

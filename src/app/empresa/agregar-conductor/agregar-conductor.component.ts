@@ -2,6 +2,7 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { AddCrearConductor, ConductorBxC, FormAddConductor1, FormAddConductor2, FormAddConductor3, GetConductorIDVinculacion, RespBusquedaPorCedula, RespBusquedaPorPlaca, VehiculoBxC } from 'src/app/interfaces';
 import { AddConductorService } from 'src/app/services/add-conductor.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -128,6 +129,31 @@ export class AgregarConductorComponent {
 
   next(event: number) { this.seleccionado = event; }
   
+  validarFechas() {
+    var fechaActual                 = new Date();
+
+    var fechaNacimiento             = new Date(moment(this._form1.controls['fechaNacimiento'].value).format('YYYY-MM-DD'));
+    var fechaLicenciaConduccion     = new Date(moment(this._form1.controls['fechaLicenciaConduccion'].value).format('YYYY-MM-DD'));
+
+    var fechaTarjetaOperacion = new Date(moment(this._form3.controls['fechaTarjetaOperacion'].value).format('YYYY-MM-DD'));
+    var fechaTarjetaOperacionF = new Date(moment(this._form3.controls['fechaTarjetaOperacionF'].value).format('YYYY-MM-DD'));
+    var fechaNumeroRCE = new Date(moment(this._form3.controls['fechaNumeroRCE'].value).format('YYYY-MM-DD'));
+    var fechaNumeroRCC = new Date(moment(this._form3.controls['fechaNumeroRCC'].value).format('YYYY-MM-DD'));
+    var fechaNumeroSOAT = new Date(moment(this._form3.controls['fechaNumeroSOAT'].value).format('YYYY-MM-DD'));
+    var fechaNumeroTecnoMecanica = new Date(moment(this._form3.controls['fechaNumeroTecnoMecanica'].value).format('YYYY-MM-DD'));
+
+    if (fechaActual.getTime() <= fechaNacimiento.getTime())              this.loading.error('Fecha de nacimiento mayor a la fecha actual, para poder refrendar debe actualizar la fecha.');
+    else if (fechaActual.getTime() > fechaLicenciaConduccion.getTime())  this.loading.error('Licencia de conducción vencida, para poder refrendar debe actualizar la fecha.');
+    else if (fechaActual.getTime() < fechaTarjetaOperacion.getTime())    this.loading.error('Fecha de expedición de tarjeta de operación inválida, para poder refrendar debe actualizar la fecha.');
+    else if (fechaActual.getTime() > fechaTarjetaOperacionF.getTime())   this.loading.error('Fecha de tarjeta de operación vencida, para poder refrendar debe actualizar la fecha.');
+    else if (fechaActual.getTime() > fechaNumeroRCE.getTime())           this.loading.error('Fecha de RCE vencida, para poder refrendar debe actualizar la fecha.');
+    else if (fechaActual.getTime() > fechaNumeroRCC.getTime())           this.loading.error('Fecha de RCC vencida, para poder refrendar debe actualizar la fecha.');
+    else if (fechaActual.getTime() > fechaNumeroSOAT.getTime())          this.loading.error('Fecha de SOAT vencida, para poder refrendar debe actualizar la fecha.');
+    else if (fechaActual.getTime() > fechaNumeroTecnoMecanica.getTime()) this.loading.error('Fecha de la revisión técnico mecánica vencida, para poder refrendar debe actualizar la fecha.');
+    
+    else this.refrendar();
+  }
+
   refrendar() {
     this.loading.show();
     this.aC.refrendar(this.id).subscribe({

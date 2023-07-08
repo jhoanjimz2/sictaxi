@@ -23,7 +23,7 @@
     <div class="row mt-20">
         <div class="col">
             <app-conductor 
-                (refrendar)="refrendar()"
+                (refrendar)="validarFechas()"
                 (saveForm)="savedForm($event, 1)"
                 (busquedaXCedula)="buscarC($event)"
 
@@ -37,7 +37,7 @@
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-info-complementaria 
-                (refrendar)="refrendar()"
+                (refrendar)="validarFechas()"
                 (saveForm)="savedForm($event, 2)"
 
                 [conductorBxC]="conductorBxC"
@@ -50,7 +50,7 @@
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-vehiculo 
-                (refrendar)="refrendar()"
+                (refrendar)="validarFechas()"
                 (saveForm)="savedForm($event, 3)"
                 (busquedaXPlaca)="buscarV($event)"
 
@@ -64,7 +64,7 @@
                 class="animado animate__animated animate__fadeInRight"
             />
             <app-refrendaciones 
-                (refrendar)="refrendar()"
+                (refrendar)="validarFechas()"
 
                 [id]="id" 
                 [conductor]="conductor" 
