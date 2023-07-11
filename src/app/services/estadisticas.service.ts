@@ -222,6 +222,10 @@ export class EstadisticasService extends ConexionService {
     let params = { ciudad: 'SantaMarta', page };
     return this.getAuthExcel('/exportConductoresRegistradosExcel', params)
   }
+  getExcelConductoresRegistradosExcelNoPage() {
+    let params = { ciudad: 'SantaMarta' };
+    return this.getAuthExcel('/exportConductoresRegistradosExcel', params)
+  }
   //TAXISTAS REGISTRADOS
 
 

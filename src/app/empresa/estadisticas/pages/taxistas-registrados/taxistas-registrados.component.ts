@@ -41,7 +41,7 @@ export class TaxistasRegistradosComponent {
   }
   exportar() {
     this.loading.show();
-    this.eS.getExcelConductoresRegistradosExcel().subscribe({
+    this.eS.getExcelConductoresRegistradosExcelNoPage().subscribe({
       next: (data: any) => {
         this.download.download(data, 'Taxistas Registrados');
       }, error: (error: any) => {
