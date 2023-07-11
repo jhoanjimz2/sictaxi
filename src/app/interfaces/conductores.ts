@@ -3,6 +3,7 @@
 export interface RespBuscarConductores {
     data:  ConductorSearch[];
     pages: number;
+    pagesExcel?: number
 }
 
 export interface ConductorSearch {

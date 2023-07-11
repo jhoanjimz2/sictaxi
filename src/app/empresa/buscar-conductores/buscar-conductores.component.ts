@@ -20,6 +20,8 @@ export class BuscarConductoresComponent {
   totalPages: number = 0;
   paginaActual: number = 0;
   filtro: string = '';
+
+  pagesExcel: number = 1;
   
   constructor( 
     private loading: LoadingService,
@@ -35,6 +37,7 @@ export class BuscarConductoresComponent {
       next: (data: RespBuscarConductores) => {
         this.totalPages = data.pages;
         this.conductores = data.data;
+        this.pagesExcel = data.pagesExcel!;
         this.loading.hide();
       }, error: (error: any) => {
         this.totalPages = 0;
