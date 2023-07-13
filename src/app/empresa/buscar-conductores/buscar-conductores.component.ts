@@ -71,10 +71,10 @@ export class BuscarConductoresComponent {
     });
   }
 
-  exportar() {
+  exportar(page: number) {
     this.loading.show();
     let id = JSON.parse(localStorage.getItem('user')!).id;
-    this.sC.getExcelConductoresListadoGeneralEmpresa(id).subscribe({
+    this.sC.getExcelConductoresListadoGeneralEmpresa(id, page).subscribe({
       next: (data: any) => {
         this.download.download(data, 'Conductores');
       }, error: (error: any) => {

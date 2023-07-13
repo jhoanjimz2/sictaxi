@@ -7,7 +7,7 @@
             <label class="titulo">Conductores</label>
         </div>
         <div class="col-6 flex-end">
-            <app-export-excel [exportMultiple]="pagesExcel" (export)="exportar()"/>
+            <app-export-excel [exportMultiple]="pagesExcel" (export)="exportar($event)"/>
         </div>
     </div>
     <div class="row pb-80">
