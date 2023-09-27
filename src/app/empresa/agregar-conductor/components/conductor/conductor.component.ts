@@ -59,7 +59,7 @@ export class ConductorComponent implements OnChanges {
     this.form.controls['cedula'].setValue(this.conductorBxC.cedula);
     this.form.controls['nombres'].setValue(this.conductorBxC.nombres);
     this.form.controls['apellidos'].setValue(this.conductorBxC.apellidos);
-    this.form.controls['fechaNacimiento'].setValue(this.conductorBxC.fechaNacimiento);
+    this.form.controls['fechaNacimiento'].setValue(this.setFormat(this.conductorBxC.fechaNacimiento));
     this.form.controls['tipoSangre'].setValue(this.conductorBxC.tipoSangre);
     this.form.controls['rh'].setValue(this.conductorBxC.rh);
     this.form.controls['sexo'].setValue(this.conductorBxC.sexo);
@@ -69,7 +69,7 @@ export class ConductorComponent implements OnChanges {
     this.form.controls['telefono'].setValue(this.conductorBxC.telefono);
     this.form.controls['email'].setValue(this.conductorBxC.email);
     this.form.controls['categoriaPase'].setValue(this.conductorBxC.categoriaPase);
-    this.form.controls['fechaLicenciaConduccion'].setValue(this.conductorBxC.fechaLicenciaConduccion);
+    this.form.controls['fechaLicenciaConduccion'].setValue(this.setFormat(this.conductorBxC.fechaLicenciaConduccion));
     this.form.controls['idArl'].setValue(this.conductorBxC.idArl);
     this.form.controls['idEps'].setValue(this.conductorBxC.idEps);
     this.form.controls['idAfp'].setValue(this.conductorBxC.idAfp);
@@ -79,7 +79,7 @@ export class ConductorComponent implements OnChanges {
     this.form.controls['cedula'].setValue(this.conductor.conductor.cedula);
     this.form.controls['nombres'].setValue(this.conductor.conductor.nombres);
     this.form.controls['apellidos'].setValue(this.conductor.conductor.apellidos);
-    this.form.controls['fechaNacimiento'].setValue(this.conductor.conductor.fechaNacimiento);
+    this.form.controls['fechaNacimiento'].setValue(this.setFormat(this.conductor.conductor.fechaNacimiento));
     this.form.controls['tipoSangre'].setValue(this.conductor.conductor.tipoSangre);
     this.form.controls['rh'].setValue(this.conductor.conductor.rh);
     this.form.controls['sexo'].setValue(this.conductor.conductor.sexo);
@@ -89,15 +89,19 @@ export class ConductorComponent implements OnChanges {
     this.form.controls['telefono'].setValue(this.conductor.conductor.telefono);
     this.form.controls['email'].setValue(this.conductor.conductor.email);
     this.form.controls['categoriaPase'].setValue(this.conductor.conductor.categoriaPase);
-    this.form.controls['fechaLicenciaConduccion'].setValue(this.conductor.conductor.fechaLicenciaConduccion);
+    this.form.controls['fechaLicenciaConduccion'].setValue(this.setFormat(this.conductor.conductor.fechaLicenciaConduccion));
     this.form.controls['idArl'].setValue(this.conductor.conductor.seguridad_social[0].id);
     this.form.controls['idEps'].setValue(this.conductor.conductor.seguridad_social[1].id);
     this.form.controls['idAfp'].setValue(this.conductor.conductor.seguridad_social[2].id);
     this.form.controls['jornada'].setValue(this.conductor.jornada);
     this.form.controls['consecutivo'].setValue(this.conductor.consecutivo);
-    this.form.controls['fechaUltimaRefrendacion'].setValue(this.conductor.fechaUltimaRefrendacion);
+    this.form.controls['fechaUltimaRefrendacion'].setValue(this.setFormat(this.conductor.fechaUltimaRefrendacion));
     this.form.controls['cedula'].disable();
     this.img = environment.apiImg + this.conductor.conductor.fotoURL;
+  }
+  setFormat(fecha: string | Date) {
+    if (!fecha) return '';
+    return moment(fecha).format('YYYY/MM/DD');
   }
   transformar(fecha: any) {
     return moment(fecha).utc().format('YYYY-MM-DD')

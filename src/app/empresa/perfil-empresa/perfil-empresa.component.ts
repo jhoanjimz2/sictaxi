@@ -70,12 +70,16 @@ export class PerfilEmpresaComponent {
     this.form.controls['nombreRepresentante'].setValue(data.nombreRepresentante);
     this.form.controls['direccionRepresentante'].setValue(data.nombreRepresentante);
     this.form.controls['telefonoRepresentante'].setValue(data.telefonoRepresentante);
-    this.form.controls['fechaHabilitacion'].setValue(data.fechaHabilitacion);
+    this.form.controls['fechaHabilitacion'].setValue(this.setFormat(data.fechaHabilitacion));
     this.form.controls['numeroActoAdministrativo'].setValue(data.numeroActoAdministrativo);
     this.form.controls['capacidadVinculada'].setValue(data.capacidadVinculada);
     this.form.controls['email'].disable();
     this.img = environment.apiImgEmpresas + data.logo;
     this.loading.hide();
+  }
+  setFormat(fecha: string | Date) {
+    if (!fecha) return '';
+    return moment(fecha).format('YYYY/MM/DD');
   }
 
   guardar() {

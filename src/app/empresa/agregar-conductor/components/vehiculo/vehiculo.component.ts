@@ -59,16 +59,16 @@ export class VehiculoComponent {
     this.form.controls['numeroMotor'].setValue(this.vehiculoBxC.numeroMotor);
     this.form.controls['numeroChasis'].setValue(this.vehiculoBxC.numeroChasis);
     this.form.controls['tarjetaOperacion'].setValue(this.vehiculoBxC.tarjetaOperacion);
-    this.form.controls['fechaTarjetaOperacion'].setValue(this.vehiculoBxC.fechaTarjetaOperacion);
-    this.form.controls['fechaTarjetaOperacionF'].setValue(this.vehiculoBxC.fechaTarjetaOperacionF);
+    this.form.controls['fechaTarjetaOperacion'].setValue(this.setFormat(this.vehiculoBxC.fechaTarjetaOperacion));
+    this.form.controls['fechaTarjetaOperacionF'].setValue(this.setFormat(this.vehiculoBxC.fechaTarjetaOperacionF));
     this.form.controls['numeroRCC'].setValue(this.vehiculoBxC.numeroRCC);
     this.form.controls['numeroRCE'].setValue(this.vehiculoBxC.numeroRCE);
     this.form.controls['numeroSOAT'].setValue(this.vehiculoBxC.numeroSOAT);
     this.form.controls['numeroTecnoMecanica'].setValue(this.vehiculoBxC.numeroTecnoMecanica);
-    this.form.controls['fechaNumeroRCC'].setValue(this.vehiculoBxC.fechaNumeroRCC);
-    this.form.controls['fechaNumeroRCE'].setValue(this.vehiculoBxC.fechaNumeroRCE);
-    this.form.controls['fechaNumeroSOAT'].setValue(this.vehiculoBxC.fechaNumeroSOAT);
-    this.form.controls['fechaNumeroTecnoMecanica'].setValue(this.vehiculoBxC.fechaNumeroTecnoMecanica);
+    this.form.controls['fechaNumeroRCC'].setValue(this.setFormat(this.vehiculoBxC.fechaNumeroRCC));
+    this.form.controls['fechaNumeroRCE'].setValue(this.setFormat(this.vehiculoBxC.fechaNumeroRCE));
+    this.form.controls['fechaNumeroSOAT'].setValue(this.setFormat(this.vehiculoBxC.fechaNumeroSOAT));
+    this.form.controls['fechaNumeroTecnoMecanica'].setValue(this.setFormat(this.vehiculoBxC.fechaNumeroTecnoMecanica));
     this.form.controls['idAseguradora'].setValue(this.vehiculoBxC.idAseguradora);
     this.form.controls['idAsociacion'].setValue(this.vehiculoBxC.idAsociacion);
     this.form.controls['idMatricula'].setValue(this.vehiculoBxC.idMatricula);
@@ -84,19 +84,23 @@ export class VehiculoComponent {
     this.form.controls['numeroMotor'].setValue(this.conductor.vehiculo.numeroMotor);
     this.form.controls['numeroChasis'].setValue(this.conductor.vehiculo.numeroChasis);
     this.form.controls['tarjetaOperacion'].setValue(this.conductor.vehiculo.tarjetaOperacion);
-    this.form.controls['fechaTarjetaOperacion'].setValue(this.conductor.vehiculo.fechaTarjetaOperacion);
-    this.form.controls['fechaTarjetaOperacionF'].setValue(this.conductor.vehiculo.fechaTarjetaOperacionF);
+    this.form.controls['fechaTarjetaOperacion'].setValue(this.setFormat(this.conductor.vehiculo.fechaTarjetaOperacion));
+    this.form.controls['fechaTarjetaOperacionF'].setValue(this.setFormat(this.conductor.vehiculo.fechaTarjetaOperacionF));
     this.form.controls['numeroRCC'].setValue(this.conductor.vehiculo.numeroRCC);
     this.form.controls['numeroRCE'].setValue(this.conductor.vehiculo.numeroRCE);
     this.form.controls['numeroSOAT'].setValue(this.conductor.vehiculo.numeroSOAT);
     this.form.controls['numeroTecnoMecanica'].setValue(this.conductor.vehiculo.numeroTecnoMecanica);
-    this.form.controls['fechaNumeroRCC'].setValue(this.conductor.vehiculo.fechaNumeroRCC);
-    this.form.controls['fechaNumeroRCE'].setValue(this.conductor.vehiculo.fechaNumeroRCE);
-    this.form.controls['fechaNumeroSOAT'].setValue(this.conductor.vehiculo.fechaNumeroSOAT);
-    this.form.controls['fechaNumeroTecnoMecanica'].setValue(this.conductor.vehiculo.fechaNumeroTecnoMecanica);
+    this.form.controls['fechaNumeroRCC'].setValue(this.setFormat(this.conductor.vehiculo.fechaNumeroRCC));
+    this.form.controls['fechaNumeroRCE'].setValue(this.setFormat(this.conductor.vehiculo.fechaNumeroRCE));
+    this.form.controls['fechaNumeroSOAT'].setValue(this.setFormat(this.conductor.vehiculo.fechaNumeroSOAT));
+    this.form.controls['fechaNumeroTecnoMecanica'].setValue(this.setFormat(this.conductor.vehiculo.fechaNumeroTecnoMecanica));
     this.form.controls['idAseguradora'].setValue(this.conductor.vehiculo.idAseguradora);
     this.form.controls['idAsociacion'].setValue(this.conductor.vehiculo.idAsociacion);
     this.form.controls['idMatricula'].setValue(this.conductor.vehiculo.idMatricula);
+  }
+  setFormat(fecha: string | Date) {
+    if (!fecha) return '';
+    return moment(fecha).format('YYYY/MM/DD');
   }
   _guardar() {
     this.form.markAllAsTouched();
