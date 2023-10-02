@@ -152,7 +152,6 @@ export class ConductorComponent implements OnChanges {
     var fechaActual = new Date();
     var fechaNacimiento = new Date(moment(this.form.controls['fechaNacimiento'].value).format('YYYY-MM-DD'));
     var fechaLicenciaConduccion = new Date(moment(this.form.controls['fechaLicenciaConduccion'].value).format('YYYY-MM-DD'));
-    var fechaUltimaRefrendacion = new Date(moment(this.form.controls['fechaUltimaRefrendacion'].value).format('YYYY-MM-DD'));
     if (this.img == '') this.loading.error('Por favor, sube o captura una foto con la webcam.');
     else if (fechaActual.getTime() <= fechaNacimiento.getTime()) this.loading.error('Fecha de nacimiento mayor a la fecha actual, por favor ingresa una fecha válida.');
     else if (fechaActual.getTime() > fechaLicenciaConduccion.getTime()) this.loading.error('Licencia de conducción vencida, por favor ingresa una fecha válida.');
@@ -160,9 +159,9 @@ export class ConductorComponent implements OnChanges {
       if (this.id) this.form.controls['cedula'].enable();
       this.saveForm.emit({ 
         ...this.form.value,
-        fechaLicenciaConduccion: moment(fechaLicenciaConduccion).format('DD/MM/YYYY'),
-        fechaNacimiento: moment(fechaNacimiento).format('DD/MM/YYYY'),
-        fechaUltimaRefrendacion: moment(fechaUltimaRefrendacion).format('DD/MM/YYYY'),
+        fechaNacimiento: moment(this.form.controls['fechaNacimiento'].value).format('DD/MM/YYYY'),
+        fechaLicenciaConduccion: moment(this.form.controls['fechaLicenciaConduccion'].value).format('DD/MM/YYYY'),
+        fechaUltimaRefrendacion: moment(this.form.controls['fechaUltimaRefrendacion'].value).format('DD/MM/YYYY'),
         foto: this.imgsubir 
       });
       if (this.id) this.form.controls['cedula'].disable();

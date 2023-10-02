@@ -100,7 +100,7 @@ export class VehiculoComponent {
   }
   setFormat(fecha: string | Date) {
     if (!fecha) return '';
-    return moment(fecha).format('YYYY/MM/DD');
+    return moment(fecha).utc().format('YYYY/MM/DD');
   }
   _guardar() {
     this.form.markAllAsTouched();
@@ -128,12 +128,12 @@ export class VehiculoComponent {
     else {
       this.saveForm.emit({ 
         ...this.form.value,
-        fechaTarjetaOperacion: moment(fechaTarjetaOperacion).format('DD/MM/YYYY'),
-        fechaTarjetaOperacionF: moment(fechaTarjetaOperacionF).format('DD/MM/YYYY'),
-        fechaNumeroRCC: moment(fechaNumeroRCC).format('DD/MM/YYYY'),
-        fechaNumeroRCE: moment(fechaNumeroRCE).format('DD/MM/YYYY'),
-        fechaNumeroSOAT: moment(fechaNumeroSOAT).format('DD/MM/YYYY'),
-        fechaNumeroTecnoMecanica: moment(fechaNumeroTecnoMecanica).format('DD/MM/YYYY'),
+        fechaTarjetaOperacion: moment(this.form.controls['fechaTarjetaOperacion'].value).format('DD/MM/YYYY'),
+        fechaTarjetaOperacionF: moment(this.form.controls['fechaTarjetaOperacionF'].value).format('DD/MM/YYYY'),
+        fechaNumeroRCC: moment(this.form.controls['fechaNumeroRCC'].value).format('DD/MM/YYYY'),
+        fechaNumeroRCE: moment(this.form.controls['fechaNumeroRCE'].value).format('DD/MM/YYYY'),
+        fechaNumeroSOAT: moment(this.form.controls['fechaNumeroSOAT'].value).format('DD/MM/YYYY'),
+        fechaNumeroTecnoMecanica: moment(this.form.controls['fechaNumeroTecnoMecanica'].value).format('DD/MM/YYYY'),
       });
     }
   }
