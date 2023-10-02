@@ -115,8 +115,8 @@ export class VehiculoComponent {
     var fechaActual = new Date();
     var fechaTarjetaOperacion = new Date(moment(this.form.controls['fechaTarjetaOperacion'].value).format('YYYY-MM-DD'));
     var fechaTarjetaOperacionF = new Date(moment(this.form.controls['fechaTarjetaOperacionF'].value).format('YYYY-MM-DD'));
-    var fechaNumeroRCE = new Date(moment(this.form.controls['fechaNumeroRCE'].value).format('YYYY-MM-DD'));
     var fechaNumeroRCC = new Date(moment(this.form.controls['fechaNumeroRCC'].value).format('YYYY-MM-DD'));
+    var fechaNumeroRCE = new Date(moment(this.form.controls['fechaNumeroRCE'].value).format('YYYY-MM-DD'));
     var fechaNumeroSOAT = new Date(moment(this.form.controls['fechaNumeroSOAT'].value).format('YYYY-MM-DD'));
     var fechaNumeroTecnoMecanica = new Date(moment(this.form.controls['fechaNumeroTecnoMecanica'].value).format('YYYY-MM-DD'));
     if (fechaActual.getTime() < fechaTarjetaOperacion.getTime())         this.loading.error('Fecha de expedición de tarjeta de operación inválida, por favor ingresa una fecha válida.');
@@ -128,12 +128,12 @@ export class VehiculoComponent {
     else {
       this.saveForm.emit({ 
         ...this.form.value,
-        fechaTarjetaOperacion: moment(this.form.controls['fechaTarjetaOperacion'].value).format('DD/MM/YYYY'),
-        fechaTarjetaOperacionF: moment(this.form.controls['fechaTarjetaOperacionF'].value).format('DD/MM/YYYY'),
-        fechaNumeroRCC: moment(this.form.controls['fechaNumeroRCC'].value).format('DD/MM/YYYY'),
-        fechaNumeroRCE: moment(this.form.controls['fechaNumeroRCE'].value).format('DD/MM/YYYY'),
-        fechaNumeroSOAT: moment(this.form.controls['fechaNumeroSOAT'].value).format('DD/MM/YYYY'),
-        fechaNumeroTecnoMecanica: moment(this.form.controls['fechaNumeroTecnoMecanica'].value).format('DD/MM/YYYY'),
+        fechaTarjetaOperacion: moment(fechaTarjetaOperacion).format('DD/MM/YYYY'),
+        fechaTarjetaOperacionF: moment(fechaTarjetaOperacionF).format('DD/MM/YYYY'),
+        fechaNumeroRCC: moment(fechaNumeroRCC).format('DD/MM/YYYY'),
+        fechaNumeroRCE: moment(fechaNumeroRCE).format('DD/MM/YYYY'),
+        fechaNumeroSOAT: moment(fechaNumeroSOAT).format('DD/MM/YYYY'),
+        fechaNumeroTecnoMecanica: moment(fechaNumeroTecnoMecanica).format('DD/MM/YYYY'),
       });
     }
   }
