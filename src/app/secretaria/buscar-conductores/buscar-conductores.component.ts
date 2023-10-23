@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ConductorSearch, RespBuscarConductores } from 'src/app/interfaces';
+import { ConductorSearchSecretaria, RespBuscarConductoresSecretaria } from 'src/app/interfaces';
 import { ModalPerfilTaxistaComponent } from 'src/app/modals/modal-perfil-taxista/modal-perfil-taxista.component';
 import { DownloadService } from 'src/app/services/download.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -13,7 +13,7 @@ import { SearchCondutoresService } from 'src/app/services/search-condutores.serv
 })
 export class BuscarConductoresComponent {
 
-  conductores: ConductorSearch[] = [];
+  conductores: ConductorSearchSecretaria[] = [];
   totalPages: number = 0;
   paginaActual: number = 0;
   filtro: string = '';
@@ -29,7 +29,7 @@ export class BuscarConductoresComponent {
     this.loading.show();
     this.paginaActual = pagina;
     this.sC.getConductoresGeneral(pagina, this.filtro).subscribe({
-      next: (data: RespBuscarConductores) => {
+      next: (data: RespBuscarConductoresSecretaria) => {
         this.totalPages = data.pages;
         this.conductores = data.data;
         this.loading.hide();

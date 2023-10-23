@@ -85,28 +85,30 @@ export class BuscarConductoresComponent {
   }
 
   validarFechas(conductor: ConductorSearch) {
-    var fechaActual                 = new Date();
+    // var fechaActual                 = new Date();
 
-    var fechaNacimiento             = new Date(moment(conductor.fechaNacimiento).format('YYYY-MM-DD'));
-    var fechaLicenciaConduccion     = new Date(moment(conductor.licenciaConduccionFecha).format('YYYY-MM-DD'));
+    // var fechaNacimiento             = new Date(moment(conductor.fechaNacimiento).format('YYYY-MM-DD'));
+    // var fechaLicenciaConduccion     = new Date(moment(conductor.licenciaConduccionFecha).format('YYYY-MM-DD'));
 
-    var fechaTarjetaOperacion = new Date(moment(conductor.fechaTarjetaOperacion).format('YYYY-MM-DD'));
-    var fechaTarjetaOperacionF = new Date(moment(conductor.fechaTarjetaOperacionF).format('YYYY-MM-DD'));
-    var fechaNumeroRCE = new Date(moment(conductor.fechaNumeroRCE).format('YYYY-MM-DD'));
-    var fechaNumeroRCC = new Date(moment(conductor.fechaNumeroRCC).format('YYYY-MM-DD'));
-    var fechaNumeroSOAT = new Date(moment(conductor.fechaNumeroSOAT).format('YYYY-MM-DD'));
-    var fechaNumeroTecnoMecanica = new Date(moment(conductor.fechaNumeroTecnoMecanica).format('YYYY-MM-DD'));
+    // var fechaTarjetaOperacion = new Date(moment(conductor.fechaTarjetaOperacion).format('YYYY-MM-DD'));
+    // var fechaTarjetaOperacionF = new Date(moment(conductor.fechaTarjetaOperacionF).format('YYYY-MM-DD'));
+    // var fechaNumeroRCE = new Date(moment(conductor.fechaNumeroRCE).format('YYYY-MM-DD'));
+    // var fechaNumeroRCC = new Date(moment(conductor.fechaNumeroRCC).format('YYYY-MM-DD'));
+    // var fechaNumeroSOAT = new Date(moment(conductor.fechaNumeroSOAT).format('YYYY-MM-DD'));
+    // var fechaNumeroTecnoMecanica = new Date(moment(conductor.fechaNumeroTecnoMecanica).format('YYYY-MM-DD'));
 
-    if (fechaActual.getTime() <= fechaNacimiento.getTime())              this.loading.error('Fecha de nacimiento mayor a la fecha actual, para imprimir el tarjeton debe actualizar la fecha.');
-    else if (fechaActual.getTime() > fechaLicenciaConduccion.getTime())  this.loading.error('Licencia de conducción vencida, para imprimir el tarjeton debe actualizar la fecha.');
-    else if (fechaActual.getTime() < fechaTarjetaOperacion.getTime())    this.loading.error('Fecha de expedición de tarjeta de operación inválida, para imprimir el tarjeton debe actualizar la fecha.');
-    else if (fechaActual.getTime() > fechaTarjetaOperacionF.getTime())   this.loading.error('Fecha de tarjeta de operación vencida, para imprimir el tarjeton debe actualizar la fecha.');
-    else if (fechaActual.getTime() > fechaNumeroRCE.getTime())           this.loading.error('Fecha de RCE vencida, para imprimir el tarjeton debe actualizar la fecha.');
-    else if (fechaActual.getTime() > fechaNumeroRCC.getTime())           this.loading.error('Fecha de RCC vencida, para imprimir el tarjeton debe actualizar la fecha.');
-    else if (fechaActual.getTime() > fechaNumeroSOAT.getTime())          this.loading.error('Fecha de SOAT vencida, para imprimir el tarjeton debe actualizar la fecha.');
-    else if (fechaActual.getTime() > fechaNumeroTecnoMecanica.getTime()) this.loading.error('Fecha de la revisión técnico mecánica vencida, para imprimir el tarjeton debe actualizar la fecha.');
+    // if (fechaActual.getTime() <= fechaNacimiento.getTime())              this.loading.error('Fecha de nacimiento mayor a la fecha actual, para imprimir el tarjeton debe actualizar la fecha.');
+    // else if (fechaActual.getTime() > fechaLicenciaConduccion.getTime())  this.loading.error('Licencia de conducción vencida, para imprimir el tarjeton debe actualizar la fecha.');
+    // else if (fechaActual.getTime() < fechaTarjetaOperacion.getTime())    this.loading.error('Fecha de expedición de tarjeta de operación inválida, para imprimir el tarjeton debe actualizar la fecha.');
+    // else if (fechaActual.getTime() > fechaTarjetaOperacionF.getTime())   this.loading.error('Fecha de tarjeta de operación vencida, para imprimir el tarjeton debe actualizar la fecha.');
+    // else if (fechaActual.getTime() > fechaNumeroRCE.getTime())           this.loading.error('Fecha de RCE vencida, para imprimir el tarjeton debe actualizar la fecha.');
+    // else if (fechaActual.getTime() > fechaNumeroRCC.getTime())           this.loading.error('Fecha de RCC vencida, para imprimir el tarjeton debe actualizar la fecha.');
+    // else if (fechaActual.getTime() > fechaNumeroSOAT.getTime())          this.loading.error('Fecha de SOAT vencida, para imprimir el tarjeton debe actualizar la fecha.');
+    // else if (fechaActual.getTime() > fechaNumeroTecnoMecanica.getTime()) this.loading.error('Fecha de la revisión técnico mecánica vencida, para imprimir el tarjeton debe actualizar la fecha.');
     
-    else this.pdfExportar(conductor.idVinculacion);
+    // else this.pdfExportar(conductor.idVinculacion);
+
+    this.pdfExportar(conductor.idVinculacion);
   }
 
   pdfExportar(id: string){

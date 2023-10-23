@@ -5,8 +5,32 @@ export interface RespBuscarConductores {
     pages: number;
     pagesExcel?: number
 }
+export interface RespBuscarConductoresSecretaria {
+    data:  ConductorSearchSecretaria[];
+    pages: number;
+    pagesExcel?: number
+}
 
 export interface ConductorSearch {
+    idVinculacion:           string;
+    idConductor:             string;
+    nombres:                 string;
+    cedula:                  string;
+    telefono:                string;
+    licenciaConduccion:      string;
+    licenciaConduccionFecha: string;
+    categoriaPase:           string;
+    tarjetaOperacion:        string;
+    fechaTarjeta:            string;
+    eps:                     string;
+    arl:                     string;
+    afp:                     string;
+    placa:                   string;
+    img:                     string;
+    fechaUltimaRefrendacion: Date;
+}
+
+export interface ConductorSearchSecretaria {
     idVinculacion:           string;
     idConductor:             string;
     nombres:                 string;

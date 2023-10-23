@@ -51,15 +51,7 @@
 .linea-dos {
     display: flex;
     width: 100%;
-}
-.w1 {
-    width: calc(40% - 20px);
-}
-.w2 {
-    width: calc(30% - 10px);
-}
-.w3 {
-    width: calc(30% - 40px);
+    justify-content: space-between;
 }
 .textos-container {
     line-height: 1;
@@ -79,9 +71,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.separador {
-    width: 10px;
 }
 .botonanimado {
     font-size: 12px;

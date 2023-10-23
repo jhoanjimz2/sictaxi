@@ -23,26 +23,20 @@
                             <label>Cédula: <span>{{conductor.cedula}}</span></label><br>
                             <label>Licencia: <span>{{conductor.licenciaConduccion}} - vence el {{conductor.licenciaConduccionFecha | date: 'dd/MM/YYYY'}}</span></label><br>
                             <label>Tarjeta de operación: <span>{{conductor.tarjetaOperacion}}</span></label><br>
-                            <label>Dirección: <span>{{conductor.direccion}}</span></label><br>
                             <label>Teléfono: <span>{{conductor.telefono}}</span></label><br>
+                        </div>
+                        <div class="separador"></div>
+                        <div class="textos-container w2">
                             <label>Categoría pase: <span>{{conductor.categoriaPase}}</span></label><br>
-                            <label>Tipo de sangre: <span>{{conductor.tipoSangre}}</span></label><br>
                             <label>EPS: <span>{{conductor.eps}}</span></label><br>
                             <label>ARL: <span>{{conductor.arl}}</span></label><br>
                             <label>AFP: <span>{{conductor.afp}}</span></label>
                         </div>
                         <div class="separador"></div>
-                        <div class="textos-container w2">
-                            <label>Fecha de nacimiento: <span>{{conductor.fechaNacimiento | date: 'dd/MM/YYYY'}}</span></label><br>
+                        <div class="textos-container w3">
+                            <label>Placa: <span>{{conductor.placa}}</span></label><br>
                             <label>Fecha de tarjeta: <span>{{conductor.fechaTarjeta | date: 'dd/MM/YYYY'}}</span></label><br>
-                            <label>Número RCC: <span>{{conductor.numeroRCC}}</span></label><br>
-                            <label>Número RCE: <span>{{conductor.numeroRCE}}</span></label><br>
-                            <label>SOAT: <span>{{conductor.numeroSOAT}}</span></label><br>
-                            <label>Número de tecnicomecánica: <span>{{conductor.numeroTecnomecanica}}</span></label><br>
-                            <label>Propietario: <span>{{conductor.nombrePropietario}}</span></label><br>
-                            <label>Cédula del propietario: <span>{{conductor.cedulaPropietario}}</span></label><br>
-                            <label>Télefono del propietario: <span>{{conductor.telefonoPropietario}}</span></label><br>
-                            <label>Dirección del propietario: <span>{{conductor.direccionPropietario}}</span></label>
+                            <label>Fecha ultima refrendación: <span>{{conductor.fechaUltimaRefrendacion | date: 'dd/MM/YYYY'}}</span></label>
                         </div>
                         <div class="separador"></div>
                         <div class="centrar">
@@ -57,14 +51,6 @@
                                     <img [src]="'assets/imprimir.svg' | imagenes">Imprimir
                                 </button>
                             </div>
-                        </div>
-                        <div class="separador"></div>
-                        <div class="textos-container w3">
-                            <img [src]="'assets/taxi.svg' | imagenes"><br>
-                            <label>HYUNDAI Modelo: <span>{{conductor.modelo}}</span></label><br>
-                            <label>Placa: <span>{{conductor.placa}}</span></label><br>
-                            <label>Número de motor: <span>{{conductor.numeroMotor}}</span></label><br>
-                            <label>Número de chasis: <span>{{conductor.numeroChasis}}</span></label>
                         </div>
                     </div>
                 </div>
