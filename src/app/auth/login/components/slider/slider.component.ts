@@ -13,7 +13,7 @@ export class SliderComponent {
     window.open('https://apps.apple.com/us/app/buen-taxi/id1363253486');
   }
   instagram() {
-    window.open('https://www.instagram.com/innlabcol/');
+    window.open('https://www.instagram.com/innlabcorp/');
   }
   twitter() {
     window.open('https://twitter.com/InnLabCorp');
